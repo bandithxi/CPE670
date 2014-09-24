@@ -1,0 +1,24 @@
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task TASK_sonarSensor() {
+    // start with sensors de-activated for good measure
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+     
+    while (true) {
+          // turn on, read from the sensor, turn off
+          I2CWrite(RIGHT_SONAR, 0x41, 0x03);
+          int rightBuffer = SensorUS(RIGHT_SONAR);
+          Wait(MS_50);
+          I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+          
+          
+          Acquire(gStrategyMutex);
+
+
+
+          Release(gStrategyMutex);
+    }
+}

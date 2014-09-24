@@ -1,0 +1,1474 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__D0TASK_checkSonar	6	1	0	4	30
+1	__D0TASK_movement	6	1	4	4	41
+2	__D0RFIDDummy	6	1	8	4	3
+3	__D0TASK_checkRfid	6	1	12	4	9
+4	__DU0TASK_movement	5	1	16	4	2
+5	__D0SetSensorLowspeed_inline_main	6	1	20	4	3
+6	__DU0SetSensorLowspeed_inline_main	5	1	24	4	2
+7	__D0WriteI2CByte	6	1	28	4	8
+8	__DU0WriteI2CByte	5	1	32	4	6
+9	__RLSBmutex3	9	0	36	4	2
+10	__SPTArgsMutex	9	0	40	4	4
+11	__RLSBmutex1	9	0	44	4	4
+12	__RLSBmutex2	9	0	48	4	2
+13	__D0GetI2CByte	6	1	52	4	6
+14	__DU0GetRFIDArray	5	1	56	4	4
+15	__D0RFIDCommand	6	1	60	4	2
+16	__DU0GetI2CByte	5	1	64	4	7
+17	__D0GetRFIDArray	6	1	68	4	8
+18	__signed_stack_001TASK_movement	6	1	72	4	16
+19	__signed_stack_002TASK_movement	6	1	76	4	4
+20	__signed_stack_001TASK_checkSonar	6	1	80	4	14
+21	__signed_stack_002TASK_checkSonar	6	1	84	4	6
+22	__signed_stack_003TASK_movement	6	1	88	4	2
+23	gStrategyMutex	9	0	92	4	6
+24	__Wait_7qG2_ms_7qG2_000_inline_TASK_movement	5	1	96	4	3
+25	__signed_stack_001WriteI2CByte	6	1	100	4	8
+26	__Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray	5	1	104	4	2
+27	__signed_stack_001GetI2CByte	6	1	108	4	8
+28	__signed_stack_001GetRFIDArray	6	1	112	4	4
+29	__D0SetSensorLowspeed_inline_SetSensorUltrasonic	6	1	116	4	6
+30	__DU0SetSensorLowspeed_inline_SetSensorUltrasonic	5	1	120	4	4
+31	__unsigned_stack_001GetRFIDArray	5	1	124	4	2
+32	__signed_stack_003TASK_checkRfid	6	1	128	4	2
+33	__unsigned_stack_001TASK_checkRfid	5	1	132	4	8
+34	__signed_stack_001TASK_checkRfid	6	1	136	4	6
+35	__signed_stack_002TASK_checkRfid	6	1	140	4	10
+36	__RLSBmutex0	9	0	144	4	4
+37	__CLSRMutex2	9	0	148	4	2
+38	__CLSWMutex2	9	0	152	4	4
+39	__OnRevMutex	9	0	156	4	2
+40	__CLSCSMutex3	9	0	160	4	6
+41	__TextOutMutex	9	0	164	4	8
+42	__CLSRMutex3	9	0	168	4	2
+43	__CLSWMutex3	9	0	172	4	4
+44	__CLSRMutex0	9	0	176	4	4
+45	__CLSWMutex0	9	0	180	4	6
+46	__CLSCSMutex0	9	0	184	4	8
+47	__CLSCSMutex1	9	0	188	4	8
+48	__CLSCSMutex2	9	0	192	4	6
+49	__CLSRMutex1	9	0	196	4	4
+50	__CLSWMutex1	9	0	200	4	6
+51	__PointOutMutex	9	0	204	4	2
+52	__TASK_checkSonar_7qG2_leftBuffer_7qG2_001	4	1	208	2	2
+53	__constVal200	4	0	210	2	2
+54	__TASK_checkSonar_7qG2_difference_7qG2_001	4	1	212	2	5
+55	__TASK_checkSonar_7qG2_rightBuffer_7qG2_001	4	1	214	2	3
+56	__GetRFIDArray_7qG2_i_7qG2_001	4	1	216	2	6
+57	gStrategy	4	1	218	2	6
+58	__TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000	4	1	220	2	6
+59	__TASK_checkRfid_7qG2_dataSum_7qG2_001	4	1	222	2	3
+60	__TASK_movement_7qG2_leftWheelSpeed_7qG2_000	4	1	224	2	10
+61	__TASK_movement_7qG2_rightWheelSpeed_7qG2_000	4	1	226	2	12
+62	__TASK_movement_7qG2_cruiseSpeed_7qG2_000	4	1	228	2	4
+63	__WriteI2CByte_return	1	1	230	1	5
+64	__RFIDDummy_7qG2_port_7qG2_000	1	1	231	1	3
+65	__WriteI2CByte_7qG2_data_7qG2_000	1	1	232	1	3
+66	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	233	1	2
+67	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	234	1	2
+68	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	235	1	2
+69	__RFIDCommand_7qG2_command_7qG2_000	1	1	236	1	2
+70	__RFIDDummy_return	1	1	237	1	5
+71	__RFIDCommand_7qG2_port_7qG2_000	1	1	238	1	2
+72	__constVal80	2	0	239	1	1
+73	__GetI2CByte_return	1	1	240	1	5
+74	__GetI2CByte_7qG2_port_7qG2_000	1	1	241	1	4
+75	__GetI2CByte_7qG2_reg_7qG2_000	1	1	242	1	3
+76	__GetI2CByte_7qG2_add_7qG2_000	1	1	243	1	3
+77	__GetI2CByte_7qG2_count_7qG2_000	1	1	244	1	3
+78	__WriteI2CByte_7qG2_reg_7qG2_000	1	1	245	1	3
+79	__constVal32	2	0	246	1	24
+80	__WriteI2CByte_7qG2_port_7qG2_000	1	1	247	1	4
+81	__WriteI2CByte_7qG2_add_7qG2_000	1	1	248	1	3
+82	__RFIDCommand_return	1	1	249	1	4
+83	__OnRev_Tmp	2	1	250	1	2
+84	__SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main	1	1	251	1	10
+85	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	252	1	4
+86	__SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main	1	1	253	1	4
+87	gUturnMade	1	1	254	1	3
+88	____initialize_global_data_return	1	1	255	1	3
+89	__SetSensorUltrasonic_7qG2_port_7qG2_000_inline_main	1	1	256	1	2
+90	__constVal96	2	0	257	1	8
+91	__constVal63	2	0	258	1	8
+92	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	259	1	4
+93	__GetRFIDArray_7qG2_continuous_7qG2_000	1	1	260	1	2
+94	__SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main	1	1	261	1	2
+95	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	262	1	2
+96	__GetRFIDArray_7qG2_port_7qG2_000	1	1	263	1	5
+97	__GetRFIDArray_return	1	1	264	1	3
+98	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	265	1	4
+99	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	266	1	4
+100	__SetSensorLowspeed_7qG2_port_7qG2_000_inline_main	1	1	267	1	4
+101	__ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	268	1	2
+102	__constVal7	2	0	269	1	2
+103	__constVal66	2	0	270	1	1
+104	__RLSReadPort	1	1	271	1	4
+105	__RLSBytesCountVar	1	1	272	1	8
+106	__RLSBIterationsVar	1	1	273	1	4
+107	__ArrHelper__GetI2CByte_98_0	1	1	274	1	2
+108	__zfTASK_checkRfid	1	1	275	1	5
+109	__zfTASK_checkSonar	1	1	276	1	14
+110	__zfGetRFIDArray	1	1	277	1	8
+111	__ArrHelper__TASK_checkRfid_98_0	1	1	278	1	10
+112	__zfGetI2CByte	1	1	279	1	3
+113	____ReadLSBytes1_return	1	1	280	1	3
+114	____ReadLSBytes0_return	1	1	281	1	3
+115	__RLSBIterations0	1	1	282	1	4
+116	__RLSBResult0	2	1	283	1	7
+117	__RLSBytesCount0	1	1	284	1	7
+118	__RLSBResult1	2	1	285	1	7
+119	____ReadLSBytesVar_return	1	1	286	1	3
+120	__RLSBResultVar	2	1	287	1	8
+121	__constVal2	2	0	288	1	5
+122	__RLSBytesCount1	1	1	289	1	7
+123	__RLSBIterations1	1	1	290	1	4
+124	__ResetSensorTmp	1	1	291	1	2
+125	__ResetSensorPort	1	1	292	1	5
+126	__constVal5	2	0	293	1	1
+127	__zfSetSensorLowspeed_inline_SetSensorUltrasonic	1	1	294	1	4
+128	____ResetSensorSubroutine_return	1	1	295	1	5
+129	__zfSetSensorLowspeed_inline_main	1	1	296	1	2
+130	__zfTASK_movement	1	1	297	1	16
+131	__constVal0	2	1	298	1	34
+132	__constVal1	2	0	299	1	12
+133	__zfWriteI2CByte	1	1	300	1	3
+134	__constVal4	2	0	301	1	4
+135	__constVal3	2	0	302	1	8
+136	__CLSWArgs0	8	0	4	12	15
+137	__CLSWArgs0.Result	2	1	304	1	15
+138	__CLSWArgs0.Port	1	1	305	1	15
+139	__CLSWArgs0.Buffer	7	0	306	4	15
+140	__CLSWArgs0.Buffer.Buffer_type	1	0	0	1	0
+141	__CLSWArgs0.ReturnLen	1	1	308	1	15
+142	__CLSCSArgs0	8	0	3	4	14
+143	__CLSCSArgs0.Result	2	1	312	1	14
+144	__CLSCSArgs0.Port	1	1	313	1	14
+145	__CLSCSArgs0.BytesReady	1	1	314	1	14
+146	__CLSCSArgs1	8	0	3	4	4
+147	__CLSCSArgs1.Result	2	1	316	1	4
+148	__CLSCSArgs1.Port	1	1	317	1	4
+149	__CLSCSArgs1.BytesReady	1	1	318	1	4
+150	__PointOutArgs	8	0	3	12	4
+151	__PointOutArgs.Result	2	1	320	1	4
+152	__PointOutArgs.Location	8	0	2	4	4
+153	__PointOutArgs.Location.X	4	1	324	2	4
+154	__PointOutArgs.Location.Y	4	1	326	2	4
+155	__PointOutArgs.Options	5	1	328	4	4
+156	__SPTArgs	8	0	5	8	12
+157	__SPTArgs.Result	2	1	332	1	12
+158	__SPTArgs.Frequency	3	1	334	2	12
+159	__SPTArgs.Duration	3	1	336	2	12
+160	__SPTArgs.Loop	1	1	338	1	12
+161	__SPTArgs.Volume	1	1	339	1	12
+162	__CLSRArgs1	8	0	4	12	5
+163	__CLSRArgs1.Result	2	1	340	1	5
+164	__CLSRArgs1.Port	1	1	341	1	5
+165	__CLSRArgs1.Buffer	7	0	342	4	5
+166	__CLSRArgs1.Buffer.Buffer_type	1	0	0	1	0
+167	__CLSRArgs1.BufferLen	1	1	344	1	5
+168	__CLSWArgs1	8	0	4	12	5
+169	__CLSWArgs1.Result	2	1	348	1	5
+170	__CLSWArgs1.Port	1	1	349	1	5
+171	__CLSWArgs1.Buffer	7	0	350	4	5
+172	__CLSWArgs1.Buffer.Buffer_type	1	0	0	1	0
+173	__CLSWArgs1.ReturnLen	1	1	352	1	5
+174	__TextOutArgs	8	0	4	16	24
+175	__TextOutArgs.Result	2	1	356	1	24
+176	__TextOutArgs.Location	8	0	2	4	24
+177	__TextOutArgs.Location.X	4	1	360	2	24
+178	__TextOutArgs.Location.Y	4	1	362	2	24
+179	__TextOutArgs.Text	7	0	364	4	24
+180	__TextOutArgs.Text.Text_type	1	0	0	1	0
+181	__TextOutArgs.Options	5	1	368	4	24
+182	__CLSRArgs0	8	0	4	12	10
+183	__CLSRArgs0.Result	2	1	372	1	10
+184	__CLSRArgs0.Port	1	1	373	1	10
+185	__CLSRArgs0.Buffer	7	0	374	4	10
+186	__CLSRArgs0.Buffer.Buffer_type	1	0	0	1	0
+187	__CLSRArgs0.BufferLen	1	1	376	1	10
+188	__RLSReadBuf0	7	0	378	4	8
+189	__RLSReadBuf0.__RLSReadBuf0_type	1	0	0	1	0
+190	__OUT_AC	7	0	380	4	2
+191	__OUT_AC.__OUT_AC_type	1	0	0	1	0
+192	__WriteI2CByte_7qG2_inbuf_7qG2_000	7	0	382	4	8
+193	__WriteI2CByte_7qG2_inbuf_7qG2_000.__WriteI2CByte_7qG2_inbuf_7qG2_000_type	1	0	0	1	0
+194	__RLSLastGoodRead0	7	0	384	4	2
+195	__RLSLastGoodRead0.__RLSLastGoodRead0_type	1	0	0	1	0
+196	__RLSReadBufVar	7	0	386	4	8
+197	__RLSReadBufVar.__RLSReadBufVar_type	1	0	0	1	0
+198	__GetRFIDArray_7qG2_d_7qG2_000	7	0	388	4	4
+199	__GetRFIDArray_7qG2_d_7qG2_000.__GetRFIDArray_7qG2_d_7qG2_000_type	1	0	0	1	0
+200	__RLSReadBuf1	7	0	390	4	8
+201	__RLSReadBuf1.__RLSReadBuf1_type	1	0	0	1	0
+202	__RLSBbufLSWrite1	7	0	392	4	2
+203	__RLSBbufLSWrite1.__RLSBbufLSWrite1_type	1	0	0	1	0
+204	__TASK_checkRfid_7qG2_rfidData_7qG2_000	7	0	394	4	8
+205	__TASK_checkRfid_7qG2_rfidData_7qG2_000.__TASK_checkRfid_7qG2_rfidData_7qG2_000_type	1	0	0	1	0
+206	__RLSLastGoodReadVar	7	0	396	4	2
+207	__RLSLastGoodReadVar.__RLSLastGoodReadVar_type	1	0	0	1	0
+208	__RLSLastGoodRead1	7	0	398	4	2
+209	__RLSLastGoodRead1.__RLSLastGoodRead1_type	1	0	0	1	0
+210	__GetI2CByte_7qG2_inbuf_7qG2_000	7	0	400	4	6
+211	__GetI2CByte_7qG2_inbuf_7qG2_000.__GetI2CByte_7qG2_inbuf_7qG2_000_type	1	0	0	1	0
+212	__GetI2CByte_7qG2_outbuf_7qG2_000	7	0	402	4	2
+213	__GetI2CByte_7qG2_outbuf_7qG2_000.__GetI2CByte_7qG2_outbuf_7qG2_000_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	207	0	#line 207 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	208	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	207	2	#line 207 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	208	2	#line 208 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	208	2	#line 208 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	208	2	#line 208 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	209	2		set __SetSensorUltrasonic_7qG2_port_7qG2_000_inline_main, 1
+0	208	5	#line 208 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	3768	5	#line 3768 "NXCDefs.h"
+0	3769	5		mov __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal1
+0	3768	7	#line 3768 "NXCDefs.h"
+0	3768	7	#line 3768 "NXCDefs.h"
+0	3769	7		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal1
+0	3758	9	#line 3758 "NXCDefs.h"
+0	3759	9		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	11	#line 3758 "NXCDefs.h"
+0	3758	11	#line 3758 "NXCDefs.h"
+0	3759	11		mov __DU0SetSensorLowspeed_inline_SetSensorUltrasonic, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	13	#line 3758 "NXCDefs.h"
+0	3759	13		tst 5, __zfSetSensorLowspeed_inline_SetSensorUltrasonic, __DU0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	16	#line 3758 "NXCDefs.h"
+0	3759	16		brtst 4, __001__001__NXC_Label_36, __zfSetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	19	#line 3758 "NXCDefs.h"
+0	3759	19		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 11
+0	3758	22	#line 3758 "NXCDefs.h"
+0	3759	22		jmp __001__001__NXC_Label_37
+0	3758	24	#line 3758 "NXCDefs.h"
+0	3759	24		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 10
+0	3758	27	#line 3758 "NXCDefs.h"
+0	3759	27		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __D0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3663	29	#line 3663 "NXCDefs.h"
+0	3664	29		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3663	33	#line 3663 "NXCDefs.h"
+0	3759	33	#line 3759 "NXCDefs.h"
+0	3759	33	#line 3759 "NXCDefs.h"
+0	3760	33		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3759	35	#line 3759 "NXCDefs.h"
+0	3759	35	#line 3759 "NXCDefs.h"
+0	3760	35		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3759	38	#line 3759 "NXCDefs.h"
+0	3676	38	#line 3676 "NXCDefs.h"
+0	3677	38		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 1
+0	3676	42	#line 3676 "NXCDefs.h"
+0	3760	42	#line 3760 "NXCDefs.h"
+0	3760	42	#line 3760 "NXCDefs.h"
+0	3761	42		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3760	44	#line 3760 "NXCDefs.h"
+0	3694	44	#line 3694 "NXCDefs.h"
+0	3695	44	#pragma macro 4
+0	3695	44		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3695	46		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9615	48	#line 9615 "NXCDefs.h"
+0	3694	48	#line 3694 "NXCDefs.h"
+0	3761	48	#line 3761 "NXCDefs.h"
+0	3768	48	#line 3768 "NXCDefs.h"
+0	209	48	#line 209 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	209	48	#line 209 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	210	48		set __SetSensorUltrasonic_7qG2_port_7qG2_000_inline_main, 0
+0	209	51	#line 209 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	3768	51	#line 3768 "NXCDefs.h"
+0	3769	51		mov __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal0
+0	3768	53	#line 3768 "NXCDefs.h"
+0	3768	53	#line 3768 "NXCDefs.h"
+0	3769	53		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal1
+0	3758	55	#line 3758 "NXCDefs.h"
+0	3759	55		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	57	#line 3758 "NXCDefs.h"
+0	3758	57	#line 3758 "NXCDefs.h"
+0	3759	57		mov __DU0SetSensorLowspeed_inline_SetSensorUltrasonic, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	59	#line 3758 "NXCDefs.h"
+0	3759	59		tst 5, __zfSetSensorLowspeed_inline_SetSensorUltrasonic, __DU0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	62	#line 3758 "NXCDefs.h"
+0	3759	62		brtst 4, __001__002__NXC_Label_36, __zfSetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	65	#line 3758 "NXCDefs.h"
+0	3759	65		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 11
+0	3758	68	#line 3758 "NXCDefs.h"
+0	3759	68		jmp __001__002__NXC_Label_37
+0	3758	70	#line 3758 "NXCDefs.h"
+0	3759	70		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 10
+0	3758	73	#line 3758 "NXCDefs.h"
+0	3759	73		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __D0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3663	75	#line 3663 "NXCDefs.h"
+0	3664	75		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3663	79	#line 3663 "NXCDefs.h"
+0	3759	79	#line 3759 "NXCDefs.h"
+0	3759	79	#line 3759 "NXCDefs.h"
+0	3760	79		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3759	81	#line 3759 "NXCDefs.h"
+0	3759	81	#line 3759 "NXCDefs.h"
+0	3760	81		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3759	84	#line 3759 "NXCDefs.h"
+0	3676	84	#line 3676 "NXCDefs.h"
+0	3677	84		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 1
+0	3676	88	#line 3676 "NXCDefs.h"
+0	3760	88	#line 3760 "NXCDefs.h"
+0	3760	88	#line 3760 "NXCDefs.h"
+0	3761	88		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3760	90	#line 3760 "NXCDefs.h"
+0	3694	90	#line 3694 "NXCDefs.h"
+0	3695	90	#pragma macro 4
+0	3695	90		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3695	92		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9689	94	#line 9689 "NXCDefs.h"
+0	3694	94	#line 3694 "NXCDefs.h"
+0	3761	94	#line 3761 "NXCDefs.h"
+0	3768	94	#line 3768 "NXCDefs.h"
+0	210	94	#line 210 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	210	94	#line 210 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	211	94		set __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main, 3
+0	210	97	#line 210 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	211	97	#line 211 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	212	97		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main, __constVal1
+0	3758	99	#line 3758 "NXCDefs.h"
+0	3759	99		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3758	101	#line 3758 "NXCDefs.h"
+0	3758	101	#line 3758 "NXCDefs.h"
+0	3759	101		mov __DU0SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main
+0	3758	103	#line 3758 "NXCDefs.h"
+0	3759	103		tst 5, __zfSetSensorLowspeed_inline_main, __DU0SetSensorLowspeed_inline_main
+0	3758	106	#line 3758 "NXCDefs.h"
+0	3759	106		brtst 4, __004__NXC_Label_36, __zfSetSensorLowspeed_inline_main
+0	3758	109	#line 3758 "NXCDefs.h"
+0	3759	109		set __D0SetSensorLowspeed_inline_main, 11
+0	3758	112	#line 3758 "NXCDefs.h"
+0	3759	112		jmp __004__NXC_Label_37
+0	3758	114	#line 3758 "NXCDefs.h"
+0	3759	114		set __D0SetSensorLowspeed_inline_main, 10
+0	3758	117	#line 3758 "NXCDefs.h"
+0	3759	117		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __D0SetSensorLowspeed_inline_main
+0	3663	119	#line 3663 "NXCDefs.h"
+0	3664	119		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3663	123	#line 3663 "NXCDefs.h"
+0	3759	123	#line 3759 "NXCDefs.h"
+0	3759	123	#line 3759 "NXCDefs.h"
+0	3760	123		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3759	125	#line 3759 "NXCDefs.h"
+0	3759	125	#line 3759 "NXCDefs.h"
+0	3760	125		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3759	128	#line 3759 "NXCDefs.h"
+0	3676	128	#line 3676 "NXCDefs.h"
+0	3677	128		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 1
+0	3676	132	#line 3676 "NXCDefs.h"
+0	3760	132	#line 3760 "NXCDefs.h"
+0	3760	132	#line 3760 "NXCDefs.h"
+0	3760	132	#line 3760 "NXCDefs.h"
+0	3694	132	#line 3694 "NXCDefs.h"
+0	3695	132	#pragma macro 4
+0	3695	132		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3695	134		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9785	136	#line 9785 "NXCDefs.h"
+0	3694	136	#line 3694 "NXCDefs.h"
+0	3761	136	#line 3761 "NXCDefs.h"
+0	211	136	#line 211 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+0	212	136		exit 0, 2
+1	4885	0		setin __constVal1, __ResetSensorPort, 5
+1	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+1	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+1	4889	11		subret ____ResetSensorSubroutine_return
+2	5672	0	#pragma macro 25
+2	5672	0		acquire __CLSWMutex0
+2	5672	1		set __CLSWArgs0.Port, 0
+2	5672	4		mov __CLSWArgs0.ReturnLen, __RLSBytesCount0
+2	5672	6		mov __CLSWArgs0.Buffer, __RLSReadBuf0
+2	5672	8		syscall 21, __CLSWArgs0
+2	5672	11		mov __RLSBResult0, __CLSWArgs0.Result
+2	5672	13		release __CLSWMutex0
+2	5673	14	#line 5673 "NXTDefs.h"
+2	5674	14		brtst 4, __RLSBReturn0, __RLSBytesCount0
+2	5675	17		arrinit __RLSReadBuf0, __constVal0, __RLSBytesCount0
+2	5676	21		brtst 5, __RLSBError0, __RLSBResult0
+2	5677	24		set __RLSBIterations0, 4
+2	5679	27	#pragma macro 23
+2	5679	27		acquire __CLSCSMutex0
+2	5679	28		set __CLSCSArgs0.Port, 0
+2	5679	31		syscall 23, __CLSCSArgs0
+2	5679	34		mov __RLSBytesCount0, __CLSCSArgs0.BytesReady
+2	5679	36		mov __RLSBResult0, __CLSCSArgs0.Result
+2	5679	38		release __CLSCSMutex0
+2	5679	39	#line 5679 "NXTDefs.h"
+2	5680	39		sub __RLSBIterations0, __RLSBIterations0, __constVal1
+2	5681	43		brtst 2, __RLSBError0, __RLSBIterations0
+2	5682	46		brtst 0, __RLSBError0, __RLSBResult0
+2	5683	49		brtst 4, __RLSBReadyToRead0, __RLSBResult0
+2	5685	52		wait 15
+2	5686	54		jmp __RLSBDoCheckStatus0
+2	5689	56	#pragma macro 25
+2	5689	56		acquire __CLSRMutex0
+2	5689	57		set __CLSRArgs0.Port, 0
+2	5689	60		mov __CLSRArgs0.BufferLen, __RLSBytesCount0
+2	5689	62		syscall 22, __CLSRArgs0
+2	5689	65		mov __RLSReadBuf0, __CLSRArgs0.Buffer
+2	5689	67		mov __RLSBResult0, __CLSRArgs0.Result
+2	5689	69		release __CLSRMutex0
+2	5689	70	#line 5689 "NXTDefs.h"
+2	5690	70		brtst 5, __RLSBError0, __RLSBResult0
+2	5691	73		mov __RLSLastGoodRead0, __RLSReadBuf0
+2	5692	75		jmp __RLSBDone0
+2	5694	77		mov __RLSReadBuf0, __RLSLastGoodRead0
+2	5696	79		arrsize __RLSBytesCount0, __RLSReadBuf0
+2	5698	82		subret ____ReadLSBytes0_return
+3	5710	0	#pragma macro 25
+3	5710	0		acquire __CLSWMutex1
+3	5710	1		set __CLSWArgs1.Port, 1
+3	5710	4		mov __CLSWArgs1.ReturnLen, __RLSBytesCount1
+3	5710	6		mov __CLSWArgs1.Buffer, __RLSReadBuf1
+3	5710	8		syscall 21, __CLSWArgs1
+3	5710	11		mov __RLSBResult1, __CLSWArgs1.Result
+3	5710	13		release __CLSWMutex1
+3	5710	14	#line 5710 "NXTDefs.h"
+3	5711	14		brtst 4, __RLSBReturn1, __RLSBytesCount1
+3	5712	17		arrinit __RLSReadBuf1, __constVal0, __RLSBytesCount1
+3	5713	21		brtst 5, __RLSBError1, __RLSBResult1
+3	5714	24		set __RLSBIterations1, 4
+3	5716	27	#pragma macro 23
+3	5716	27		acquire __CLSCSMutex1
+3	5716	28		set __CLSCSArgs1.Port, 1
+3	5716	31		syscall 23, __CLSCSArgs1
+3	5716	34		mov __RLSBytesCount1, __CLSCSArgs1.BytesReady
+3	5716	36		mov __RLSBResult1, __CLSCSArgs1.Result
+3	5716	38		release __CLSCSMutex1
+3	5716	39	#line 5716 "NXTDefs.h"
+3	5717	39		sub __RLSBIterations1, __RLSBIterations1, __constVal1
+3	5718	43		brtst 2, __RLSBError1, __RLSBIterations1
+3	5719	46		brtst 0, __RLSBError1, __RLSBResult1
+3	5720	49		brtst 4, __RLSBReadyToRead1, __RLSBResult1
+3	5722	52		wait 15
+3	5723	54		jmp __RLSBDoCheckStatus1
+3	5726	56	#pragma macro 25
+3	5726	56		acquire __CLSRMutex1
+3	5726	57		set __CLSRArgs1.Port, 1
+3	5726	60		mov __CLSRArgs1.BufferLen, __RLSBytesCount1
+3	5726	62		syscall 22, __CLSRArgs1
+3	5726	65		mov __RLSReadBuf1, __CLSRArgs1.Buffer
+3	5726	67		mov __RLSBResult1, __CLSRArgs1.Result
+3	5726	69		release __CLSRMutex1
+3	5726	70	#line 5726 "NXTDefs.h"
+3	5727	70		brtst 5, __RLSBError1, __RLSBResult1
+3	5728	73		mov __RLSLastGoodRead1, __RLSReadBuf1
+3	5729	75		jmp __RLSBDone1
+3	5731	77		mov __RLSReadBuf1, __RLSLastGoodRead1
+3	5733	79		arrsize __RLSBytesCount1, __RLSReadBuf1
+3	5735	82		subret ____ReadLSBytes1_return
+4	5821	0	#pragma macro 25
+4	5821	0		acquire __CLSWMutex0
+4	5821	1		acquire __CLSWMutex1
+4	5821	2		acquire __CLSWMutex2
+4	5821	3		acquire __CLSWMutex3
+4	5821	4		mov __CLSWArgs0.Port, __RLSReadPort
+4	5821	6		mov __CLSWArgs0.ReturnLen, __RLSBytesCountVar
+4	5821	8		mov __CLSWArgs0.Buffer, __RLSReadBufVar
+4	5821	10		syscall 21, __CLSWArgs0
+4	5821	13		mov __RLSBResultVar, __CLSWArgs0.Result
+4	5821	15		release __CLSWMutex0
+4	5821	16		release __CLSWMutex1
+4	5821	17		release __CLSWMutex2
+4	5821	18		release __CLSWMutex3
+4	5821	19	#line 5821 "NXTDefs.h"
+4	5822	19		brtst 4, __RLSBReturnVar, __RLSBytesCountVar
+4	5823	22		arrinit __RLSReadBufVar, __constVal0, __RLSBytesCountVar
+4	5824	26		brtst 5, __RLSBErrorVar, __RLSBResultVar
+4	5825	29		set __RLSBIterationsVar, 4
+4	5827	32	#pragma macro 23
+4	5827	32		acquire __CLSCSMutex0
+4	5827	33		acquire __CLSCSMutex1
+4	5827	34		acquire __CLSCSMutex2
+4	5827	35		acquire __CLSCSMutex3
+4	5827	36		mov __CLSCSArgs0.Port, __RLSReadPort
+4	5827	38		syscall 23, __CLSCSArgs0
+4	5827	41		mov __RLSBytesCountVar, __CLSCSArgs0.BytesReady
+4	5827	43		mov __RLSBResultVar, __CLSCSArgs0.Result
+4	5827	45		release __CLSCSMutex0
+4	5827	46		release __CLSCSMutex1
+4	5827	47		release __CLSCSMutex2
+4	5827	48		release __CLSCSMutex3
+4	5827	49	#line 5827 "NXTDefs.h"
+4	5828	49		sub __RLSBIterationsVar, __RLSBIterationsVar, __constVal1
+4	5829	53		brtst 2, __RLSBErrorVar, __RLSBIterationsVar
+4	5830	56		brtst 0, __RLSBErrorVar, __RLSBResultVar
+4	5831	59		brtst 4, __RLSBReadyToReadVar, __RLSBResultVar
+4	5833	62		wait 15
+4	5834	64		jmp __RLSBDoCheckStatusVar
+4	5837	66	#pragma macro 25
+4	5837	66		acquire __CLSRMutex0
+4	5837	67		acquire __CLSRMutex1
+4	5837	68		acquire __CLSRMutex2
+4	5837	69		acquire __CLSRMutex3
+4	5837	70		mov __CLSRArgs0.Port, __RLSReadPort
+4	5837	72		mov __CLSRArgs0.BufferLen, __RLSBytesCountVar
+4	5837	74		syscall 22, __CLSRArgs0
+4	5837	77		mov __RLSReadBufVar, __CLSRArgs0.Buffer
+4	5837	79		mov __RLSBResultVar, __CLSRArgs0.Result
+4	5837	81		release __CLSRMutex0
+4	5837	82		release __CLSRMutex1
+4	5837	83		release __CLSRMutex2
+4	5837	84		release __CLSRMutex3
+4	5837	85	#line 5837 "NXTDefs.h"
+4	5838	85		brtst 5, __RLSBErrorVar, __RLSBResultVar
+4	5839	88		mov __RLSLastGoodReadVar, __RLSReadBufVar
+4	5840	90		jmp __RLSBDoneVar
+4	5842	92		mov __RLSReadBufVar, __RLSLastGoodReadVar
+4	5844	94		arrsize __RLSBytesCountVar, __RLSReadBufVar
+4	5846	97		subret ____ReadLSBytesVar_return
+5	50	0	#line 50 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	51	0		arrinit __GetI2CByte_7qG2_inbuf_7qG2_000, __constVal0, __constVal2
+5	50	4	#line 50 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	50	4	#line 50 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	51	4	#line 51 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	52	4		set __signed_stack_001GetI2CByte, 0
+5	51	7	#line 51 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	52	7	#line 52 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	53	7		mov __DU0GetI2CByte, __GetI2CByte_7qG2_add_7qG2_000
+5	52	9	#line 52 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	53	9		replace __GetI2CByte_7qG2_inbuf_7qG2_000, __GetI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001GetI2CByte, __DU0GetI2CByte
+5	52	14	#line 52 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	52	14	#line 52 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	53	14		set __signed_stack_001GetI2CByte, 1
+5	52	17	#line 52 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	53	17	#line 53 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	17		mov __DU0GetI2CByte, __GetI2CByte_7qG2_reg_7qG2_000
+5	53	19	#line 53 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	19		replace __GetI2CByte_7qG2_inbuf_7qG2_000, __GetI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001GetI2CByte, __DU0GetI2CByte
+5	53	24	#line 53 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	24	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	24		set __GetI2CByte_7qG2_count_7qG2_000, 1
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	27	#pragma macro 23
+5	55	27		acquire __CLSCSMutex0
+5	55	28		acquire __CLSCSMutex1
+5	55	29		acquire __CLSCSMutex2
+5	55	30		acquire __CLSCSMutex3
+5	55	31		mov __CLSCSArgs0.Port, __GetI2CByte_7qG2_port_7qG2_000
+5	55	33		syscall 23, __CLSCSArgs0
+5	55	36		mov __D0GetI2CByte, __CLSCSArgs0.Result
+5	55	39		release __CLSCSMutex0
+5	55	40		release __CLSCSMutex1
+5	55	41		release __CLSCSMutex2
+5	55	42		release __CLSCSMutex3
+5	7483	43	#line 7483 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	54	43	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	43		mov __signed_stack_001GetI2CByte, __D0GetI2CByte
+5	54	45	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	45		set __D0GetI2CByte, 32
+5	54	48	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	48		cmp 4, __zfGetI2CByte, __signed_stack_001GetI2CByte, __D0GetI2CByte
+5	54	52	#line 54 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	52		mov __D0GetI2CByte, __zfGetI2CByte
+5	55	54	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	56	54		brtst 4, __NXC_Label_629, __zfGetI2CByte
+5	55	57	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	57	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	56	57		jmp __NXC_Label_628
+5	55	59	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	59	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	56	59	#pragma macro 28
+5	56	59		acquire __RLSBmutex0
+5	56	60		acquire __RLSBmutex1
+5	56	61		acquire __RLSBmutex2
+5	56	62		acquire __RLSBmutex3
+5	56	63		mov __RLSReadPort, __GetI2CByte_7qG2_port_7qG2_000
+5	56	65		mov __RLSReadBufVar, __GetI2CByte_7qG2_inbuf_7qG2_000
+5	56	67		mov __RLSBytesCountVar, __GetI2CByte_7qG2_count_7qG2_000
+5	56	69		subcall __ReadLSBytesVar, ____ReadLSBytesVar_return
+5	56	71		tst 4, __D0GetI2CByte, __RLSBResultVar
+5	56	74		mov __GetI2CByte_7qG2_count_7qG2_000, __RLSBytesCountVar
+5	56	76		mov __GetI2CByte_7qG2_outbuf_7qG2_000, __RLSReadBufVar
+5	56	78		release __RLSBmutex0
+5	56	79		release __RLSBmutex1
+5	56	80		release __RLSBmutex2
+5	56	81		release __RLSBmutex3
+5	7502	82	#line 7502 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	82	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	55	82	#line 55 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	56	82	#line 56 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	57	82		set __signed_stack_001GetI2CByte, 0
+5	56	85	#line 56 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	56	85	#line 56 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	57	85		index __ArrHelper__GetI2CByte_98_0, __GetI2CByte_7qG2_outbuf_7qG2_000, __signed_stack_001GetI2CByte
+5	56	89	#line 56 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	57	89	#line 57 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	57	89	#line 57 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	58	89	#line 58 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	59	89		mov __DU0GetI2CByte, __ArrHelper__GetI2CByte_98_0
+5	58	91	#line 58 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	59	91		subret __GetI2CByte_return
+5	58	93	#line 58 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	60	93	#line 60 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+5	61	93		subret __GetI2CByte_return
+6	80	0	#line 80 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	81	0		arrinit __WriteI2CByte_7qG2_inbuf_7qG2_000, __constVal0, __constVal3
+6	80	4	#line 80 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	80	4	#line 80 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	81	4	#line 81 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	82	4		set __signed_stack_001WriteI2CByte, 0
+6	81	7	#line 81 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	82	7	#line 82 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	83	7		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_add_7qG2_000
+6	82	9	#line 82 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	83	9		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	82	14	#line 82 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	82	14	#line 82 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	83	14		set __signed_stack_001WriteI2CByte, 1
+6	82	17	#line 82 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	83	17	#line 83 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	17		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_reg_7qG2_000
+6	83	19	#line 83 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	19		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	83	24	#line 83 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	83	24	#line 83 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	24		set __signed_stack_001WriteI2CByte, 2
+6	83	27	#line 83 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	27	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	27		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_data_7qG2_000
+6	84	29	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	29		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	84	34	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	34	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	34	#pragma macro 23
+6	85	34		acquire __CLSCSMutex0
+6	85	35		acquire __CLSCSMutex1
+6	85	36		acquire __CLSCSMutex2
+6	85	37		acquire __CLSCSMutex3
+6	85	38		mov __CLSCSArgs0.Port, __WriteI2CByte_7qG2_port_7qG2_000
+6	85	40		syscall 23, __CLSCSArgs0
+6	85	43		mov __D0WriteI2CByte, __CLSCSArgs0.Result
+6	85	46		release __CLSCSMutex0
+6	85	47		release __CLSCSMutex1
+6	85	48		release __CLSCSMutex2
+6	85	49		release __CLSCSMutex3
+6	7804	50	#line 7804 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	84	50	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	50		mov __signed_stack_001WriteI2CByte, __D0WriteI2CByte
+6	84	52	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	52		set __D0WriteI2CByte, 32
+6	84	55	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	55		cmp 4, __zfWriteI2CByte, __signed_stack_001WriteI2CByte, __D0WriteI2CByte
+6	84	59	#line 84 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	59		mov __D0WriteI2CByte, __zfWriteI2CByte
+6	85	61	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	86	61		brtst 4, __NXC_Label_688, __zfWriteI2CByte
+6	85	64	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	64	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	86	64		jmp __NXC_Label_687
+6	85	66	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	66	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	86	66	#pragma macro 25
+6	86	66		acquire __CLSWMutex0
+6	86	67		acquire __CLSWMutex1
+6	86	68		acquire __CLSWMutex2
+6	86	69		acquire __CLSWMutex3
+6	86	70		mov __CLSWArgs0.Port, __WriteI2CByte_7qG2_port_7qG2_000
+6	86	72		mov __CLSWArgs0.ReturnLen, __constVal0
+6	86	74		mov __CLSWArgs0.Buffer, __WriteI2CByte_7qG2_inbuf_7qG2_000
+6	86	76		syscall 21, __CLSWArgs0
+6	86	79		mov __D0WriteI2CByte, __CLSWArgs0.Result
+6	86	82		release __CLSWMutex0
+6	86	83		release __CLSWMutex1
+6	86	84		release __CLSWMutex2
+6	86	85		release __CLSWMutex3
+6	7823	86	#line 7823 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	86	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	86	86		subret __WriteI2CByte_return
+6	85	88	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	85	88	#line 85 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	92	88	#line 92 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+6	93	88		subret __WriteI2CByte_return
+7	114	0	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	115	0		mov __WriteI2CByte_7qG2_port_7qG2_000, __RFIDDummy_7qG2_port_7qG2_000
+7	114	2	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	114	2	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	115	2		set __WriteI2CByte_7qG2_add_7qG2_000, 4
+7	114	5	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	114	5	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	115	5		set __WriteI2CByte_7qG2_reg_7qG2_000, 0
+7	114	8	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	114	8	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	115	8		set __WriteI2CByte_7qG2_data_7qG2_000, 0
+7	114	11	#line 114 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	115	11	#line 115 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	116	11		subcall WriteI2CByte, __WriteI2CByte_return
+7	115	13	#line 115 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	116	13		mov __D0RFIDDummy, __D0WriteI2CByte
+7	115	15	#line 115 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	116	15		subret __RFIDDummy_return
+7	115	17	#line 115 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	117	17	#line 117 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+7	118	17		subret __RFIDDummy_return
+8	119	0	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	120	0		mov __WriteI2CByte_7qG2_port_7qG2_000, __RFIDCommand_7qG2_port_7qG2_000
+8	119	2	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	119	2	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	120	2		set __WriteI2CByte_7qG2_add_7qG2_000, 4
+8	119	5	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	119	5	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	120	5		set __WriteI2CByte_7qG2_reg_7qG2_000, 65
+8	119	8	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	119	8	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	120	8		mov __WriteI2CByte_7qG2_data_7qG2_000, __RFIDCommand_7qG2_command_7qG2_000
+8	119	10	#line 119 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	120	10	#line 120 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	121	10		subcall WriteI2CByte, __WriteI2CByte_return
+8	120	12	#line 120 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	121	12		mov __D0RFIDCommand, __D0WriteI2CByte
+8	120	14	#line 120 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	121	14		subret __RFIDCommand_return
+8	120	16	#line 120 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	122	16	#line 122 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+8	123	16		subret __RFIDCommand_return
+9	130	0	#line 130 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	131	0		mov __RFIDDummy_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	130	2	#line 130 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	131	2	#line 131 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	132	2		subcall RFIDDummy, __RFIDDummy_return
+9	131	4	#line 131 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	132	4		mov __D0GetRFIDArray, __D0RFIDDummy
+9	131	6	#line 131 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	132	6	#line 132 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	133	6		mov __DU0GetRFIDArray, __GetRFIDArray_7qG2_continuous_7qG2_000
+9	133	8	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	8		tst 5, __zfGetRFIDArray, __DU0GetRFIDArray
+9	133	11	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	11		brtst 4, __NXC_Label_736, __zfGetRFIDArray
+9	133	14	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	14		mov __RFIDCommand_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	133	16	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	133	16	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	16		set __RFIDCommand_7qG2_command_7qG2_000, 2
+9	133	19	#line 133 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	19	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	19		subcall RFIDCommand, __RFIDCommand_return
+9	134	21	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	21		mov __D0GetRFIDArray, __D0RFIDCommand
+9	134	23	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	23	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	23		mov __GetI2CByte_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	134	25	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	25	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	25		set __GetI2CByte_7qG2_add_7qG2_000, 4
+9	134	28	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	134	28	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	28		set __GetI2CByte_7qG2_reg_7qG2_000, 50
+9	134	31	#line 134 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	31	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	31		subcall GetI2CByte, __GetI2CByte_return
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	33		mov __unsigned_stack_001GetRFIDArray, __DU0GetI2CByte
+9	135	35	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	135	35	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	35		set __D0GetRFIDArray, 0
+9	135	38	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	38		cmp 4, __zfGetRFIDArray, __unsigned_stack_001GetRFIDArray, __D0GetRFIDArray
+9	135	42	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	42		mov __D0GetRFIDArray, __zfGetRFIDArray
+9	135	44	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	44		brtst 4, __NXC_Label_751, __zfGetRFIDArray
+9	135	47	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	136	47		set __Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray, 250
+9	135	50	#line 135 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	7921	50	#line 7921 "NXCDefs.h"
+9	7922	50		wait 250
+9	7921	52	#line 7921 "NXCDefs.h"
+9	136	52	#line 136 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	52		set __GetRFIDArray_7qG2_i_7qG2_001, 0
+9	137	55	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	137	55	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	55		mov __signed_stack_001GetRFIDArray, __GetRFIDArray_7qG2_i_7qG2_001
+9	137	57	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	137	57	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	57		set __D0GetRFIDArray, 5
+9	137	60	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	60		cmp 0, __zfGetRFIDArray, __signed_stack_001GetRFIDArray, __D0GetRFIDArray
+9	137	64	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	64		mov __D0GetRFIDArray, __zfGetRFIDArray
+9	137	66	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	66		brtst 4, __NXC_Label_755, __zfGetRFIDArray
+9	137	69	#line 137 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	138	69		jmp __NXC_Label_756
+9	138	71	#line 138 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	71		add __GetRFIDArray_7qG2_i_7qG2_001, __GetRFIDArray_7qG2_i_7qG2_001, __constVal1
+9	139	75	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	75		jmp __NXC_Label_754
+9	139	77	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	77		mov __signed_stack_001GetRFIDArray, __GetRFIDArray_7qG2_i_7qG2_001
+9	139	79	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	79	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	79		mov __GetI2CByte_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	139	81	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	81	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	81		set __GetI2CByte_7qG2_add_7qG2_000, 4
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	84		add __GetI2CByte_7qG2_reg_7qG2_000, __constVal66, __GetRFIDArray_7qG2_i_7qG2_001
+9	139	88	#line 139 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	140	88	#line 140 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	141	88		subcall GetI2CByte, __GetI2CByte_return
+9	140	90	#line 140 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	141	90		mov __DU0GetRFIDArray, __DU0GetI2CByte
+9	140	92	#line 140 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	141	92		replace __GetRFIDArray_7qG2_d_7qG2_000, __GetRFIDArray_7qG2_d_7qG2_000, __signed_stack_001GetRFIDArray, __DU0GetRFIDArray
+9	140	97	#line 140 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	141	97	#line 141 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	142	97		jmp __NXC_Label_757
+9	141	99	#line 141 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	141	99	#line 141 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	142	99		set __Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray, 200
+9	141	102	#line 141 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	7921	102	#line 7921 "NXCDefs.h"
+9	7922	102		wait 200
+9	7921	104	#line 7921 "NXCDefs.h"
+9	142	104	#line 142 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	144	104	#line 144 "C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc"
+9	145	104		subret __GetRFIDArray_return
+10	76	0	#line 76 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	77	0		set __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000, 0
+10	76	3	#line 76 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	76	3	#line 76 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	77	3		set __D0TASK_checkSonar, 1
+10	77	6	#line 77 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	78	6		tst 5, __zfTASK_checkSonar, __D0TASK_checkSonar
+10	77	9	#line 77 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	78	9		brtst 4, __NXC_Label_833, __zfTASK_checkSonar
+10	77	12	#line 77 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	78	12	#pragma macro 26
+10	78	12		acquire __RLSBmutex1
+10	78	13		mov __RLSReadBuf1, __RLSBbufLSWrite1
+10	78	15		set __RLSBytesCount1, 1
+10	78	18		wait 15
+10	78	20		subcall __ReadLSBytes1, ____ReadLSBytes1_return
+10	78	22		index __D0TASK_checkSonar, __RLSReadBuf1, 65535
+10	78	26		release __RLSBmutex1
+10	8663	27	#line 8663 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	77	27	#line 77 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	78	27		mov __TASK_checkSonar_7qG2_rightBuffer_7qG2_001, __D0TASK_checkSonar
+10	78	29	#line 78 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	79	29	#pragma macro 26
+10	79	29		acquire __RLSBmutex0
+10	79	30		mov __RLSReadBuf0, __RLSBbufLSWrite1
+10	79	32		set __RLSBytesCount0, 1
+10	79	35		wait 15
+10	79	37		subcall __ReadLSBytes0, ____ReadLSBytes0_return
+10	79	39		index __D0TASK_checkSonar, __RLSReadBuf0, 65535
+10	79	43		release __RLSBmutex0
+10	8673	44	#line 8673 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	78	44	#line 78 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	79	44		mov __TASK_checkSonar_7qG2_leftBuffer_7qG2_001, __D0TASK_checkSonar
+10	80	46	#line 80 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	80	46	#line 80 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	82	46	#line 82 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	82	46	#line 82 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	83	46		sub __TASK_checkSonar_7qG2_difference_7qG2_001, __TASK_checkSonar_7qG2_rightBuffer_7qG2_001, __D0TASK_checkSonar
+10	82	50	#line 82 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	6069	50	#line 6069 "NXCDefs.h"
+10	6070	50	#pragma macro 6
+10	6070	50		acquire __PointOutMutex
+10	6070	51		mov __PointOutArgs.Location.X, __constVal200
+10	6070	53		mov __PointOutArgs.Location.Y, __constVal200
+10	6070	55		mov __PointOutArgs.Options, __constVal1
+10	6070	57		syscall 14, __PointOutArgs
+10	6070	60		release __PointOutMutex
+10	8695	61	#line 8695 "NXCDefs.h"
+10	6069	61	#line 6069 "NXCDefs.h"
+10	83	61	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	83	61	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	61		set __signed_stack_001TASK_checkSonar, 2
+10	83	64	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	83	64	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	64		set __signed_stack_002TASK_checkSonar, 48
+10	83	67	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	83	67	#line 83 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	67		mov __D0TASK_checkSonar, __TASK_checkSonar_7qG2_rightBuffer_7qG2_001
+10	84	69	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	69		acquire __TextOutMutex
+10	84	70	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	70		mov __TextOutArgs.Location.X, __signed_stack_001TASK_checkSonar
+10	84	73	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	73		mov __TextOutArgs.Location.Y, __signed_stack_002TASK_checkSonar
+10	84	76	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	76		set __TextOutArgs.Options, 0
+10	84	79	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	79		numtostr __TextOutArgs.Text, __D0TASK_checkSonar
+10	84	82	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	82		syscall 13, __TextOutArgs
+10	84	85	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	85		mov __D0TASK_checkSonar, __TextOutArgs.Result
+10	84	88	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	88		release __TextOutMutex
+10	84	89	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	89	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	89		set __signed_stack_001TASK_checkSonar, 2
+10	84	92	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	92	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	92		set __signed_stack_002TASK_checkSonar, 32
+10	84	95	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	84	95	#line 84 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	95		mov __D0TASK_checkSonar, __TASK_checkSonar_7qG2_leftBuffer_7qG2_001
+10	85	97	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	97		acquire __TextOutMutex
+10	85	98	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	98		mov __TextOutArgs.Location.X, __signed_stack_001TASK_checkSonar
+10	85	101	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	101		mov __TextOutArgs.Location.Y, __signed_stack_002TASK_checkSonar
+10	85	104	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	104		set __TextOutArgs.Options, 0
+10	85	107	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	107		numtostr __TextOutArgs.Text, __D0TASK_checkSonar
+10	85	110	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	110		syscall 13, __TextOutArgs
+10	85	113	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	113		mov __D0TASK_checkSonar, __TextOutArgs.Result
+10	85	116	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	116		release __TextOutMutex
+10	85	117	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	117	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	117		set __signed_stack_001TASK_checkSonar, 2
+10	85	120	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	120	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	120		set __signed_stack_002TASK_checkSonar, 0
+10	85	123	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	85	123	#line 85 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	86	123		mov __D0TASK_checkSonar, __TASK_checkSonar_7qG2_difference_7qG2_001
+10	87	125	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	125		acquire __TextOutMutex
+10	87	126	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	126		mov __TextOutArgs.Location.X, __signed_stack_001TASK_checkSonar
+10	87	129	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	129		mov __TextOutArgs.Location.Y, __signed_stack_002TASK_checkSonar
+10	87	132	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	132		set __TextOutArgs.Options, 0
+10	87	135	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	135		numtostr __TextOutArgs.Text, __D0TASK_checkSonar
+10	87	138	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	138		syscall 13, __TextOutArgs
+10	87	141	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	141		mov __D0TASK_checkSonar, __TextOutArgs.Result
+10	87	144	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	144		release __TextOutMutex
+10	87	145	#line 87 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	145	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	145		acquire gStrategyMutex
+10	88	146	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	146	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	146		mov __D0TASK_checkSonar, __TASK_checkSonar_7qG2_difference_7qG2_001
+10	88	148	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	148		abs __signed_stack_001TASK_checkSonar, __D0TASK_checkSonar
+10	88	151	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	88	151	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	151		set __D0TASK_checkSonar, 18
+10	88	154	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	154		cmp 1, __zfTASK_checkSonar, __signed_stack_001TASK_checkSonar, __D0TASK_checkSonar
+10	88	158	#line 88 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	89	158		mov __D0TASK_checkSonar, __zfTASK_checkSonar
+10	89	160	#line 89 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	90	160		brtst 4, __NXC_Label_864, __zfTASK_checkSonar
+10	91	163	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	92	163		set __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000, 0
+10	91	166	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	91	166	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	91	166	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	92	166		mov __signed_stack_001TASK_checkSonar, __TASK_checkSonar_7qG2_difference_7qG2_001
+10	91	168	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	91	168	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	92	168		set __D0TASK_checkSonar, 18
+10	91	171	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	92	171		cmp 1, __zfTASK_checkSonar, __signed_stack_001TASK_checkSonar, __D0TASK_checkSonar
+10	91	175	#line 91 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	92	175		mov __D0TASK_checkSonar, __zfTASK_checkSonar
+10	92	177	#line 92 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	93	177		brtst 4, __NXC_Label_869, __zfTASK_checkSonar
+10	93	180	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	180		set gStrategy, 2
+10	93	183	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	93	183	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	93	183	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	183		jmp __NXC_Label_872
+10	93	185	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	185		mov __signed_stack_001TASK_checkSonar, __TASK_checkSonar_7qG2_difference_7qG2_001
+10	93	187	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	93	187	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	187		set __D0TASK_checkSonar, -18
+10	93	190	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	190		cmp 0, __zfTASK_checkSonar, __signed_stack_001TASK_checkSonar, __D0TASK_checkSonar
+10	93	194	#line 93 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	94	194		mov __D0TASK_checkSonar, __zfTASK_checkSonar
+10	94	196	#line 94 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	95	196		brtst 4, __NXC_Label_875, __zfTASK_checkSonar
+10	95	199	#line 95 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	96	199		set gStrategy, 3
+10	95	202	#line 95 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	95	202	#line 95 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	96	202	#line 96 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	96	202	#line 96 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	97	202	#line 97 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	98	202		jmp __NXC_Label_878
+10	99	204	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	100	204		add __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000, __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000, __constVal1
+10	99	208	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	99	208	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	100	208		mov __signed_stack_001TASK_checkSonar, __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000
+10	99	210	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	99	210	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	100	210		set __D0TASK_checkSonar, 5
+10	99	213	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	100	213		cmp 3, __zfTASK_checkSonar, __signed_stack_001TASK_checkSonar, __D0TASK_checkSonar
+10	99	217	#line 99 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	100	217		mov __D0TASK_checkSonar, __zfTASK_checkSonar
+10	100	219	#line 100 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	101	219		brtst 4, __NXC_Label_881, __zfTASK_checkSonar
+10	101	222	#line 101 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	102	222		set __TASK_checkSonar_7qG2_obstacleFreeCycleCount_7qG2_000, 0
+10	101	225	#line 101 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	101	225	#line 101 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	102	225	#line 102 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	103	225		set gStrategy, 0
+10	102	228	#line 102 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	102	228	#line 102 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	105	228	#line 105 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	105	228	#line 105 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	106	228	#line 106 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	107	228		release gStrategyMutex
+10	106	229	#line 106 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	116	229	#line 116 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	117	229		jmp __NXC_Label_832
+10	116	231	#line 116 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+10	117	231		exit -1, -1
+11	118	0	#line 118 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	119	0		set __RFIDDummy_7qG2_port_7qG2_000, 3
+11	118	3	#line 118 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	120	3	#line 120 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	121	3		subcall RFIDDummy, __RFIDDummy_return
+11	120	5	#line 120 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	121	5		mov __D0TASK_checkRfid, __D0RFIDDummy
+11	120	7	#line 120 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	121	7	#line 121 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	122	7		arrinit __TASK_checkRfid_7qG2_rfidData_7qG2_000, __constVal0, __constVal5
+11	121	11	#line 121 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	122	11		set __D0TASK_checkRfid, 1
+11	122	14	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	123	14		tst 5, __zfTASK_checkRfid, __D0TASK_checkRfid
+11	122	17	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	123	17		brtst 4, __NXC_Label_889, __zfTASK_checkRfid
+11	122	20	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	123	20		set __GetRFIDArray_7qG2_port_7qG2_000, 3
+11	122	23	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	122	23	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	123	23		mov __GetRFIDArray_7qG2_d_7qG2_000, __TASK_checkRfid_7qG2_rfidData_7qG2_000
+11	122	25	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	123	25		set __GetRFIDArray_7qG2_continuous_7qG2_000, 1
+11	122	28	#line 122 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	124	28	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	28		subcall GetRFIDArray, __GetRFIDArray_return
+11	124	30	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	30		mov __TASK_checkRfid_7qG2_rfidData_7qG2_000, __GetRFIDArray_7qG2_d_7qG2_000
+11	124	32	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	124	32	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	32		set __signed_stack_001TASK_checkRfid, 0
+11	124	35	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	124	35	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	35		index __ArrHelper__TASK_checkRfid_98_0, __TASK_checkRfid_7qG2_rfidData_7qG2_000, __signed_stack_001TASK_checkRfid
+11	124	39	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	39		mov __unsigned_stack_001TASK_checkRfid, __ArrHelper__TASK_checkRfid_98_0
+11	124	41	#line 124 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	41	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	41		set __signed_stack_002TASK_checkRfid, 1
+11	125	44	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	44	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	44		index __ArrHelper__TASK_checkRfid_98_0, __TASK_checkRfid_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_checkRfid
+11	125	48	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	125	48	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	48		add __unsigned_stack_001TASK_checkRfid, __unsigned_stack_001TASK_checkRfid, __ArrHelper__TASK_checkRfid_98_0
+11	125	52	#line 125 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	52	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	52		set __signed_stack_002TASK_checkRfid, 2
+11	126	55	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	55	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	55		index __ArrHelper__TASK_checkRfid_98_0, __TASK_checkRfid_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_checkRfid
+11	126	59	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	126	59	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	59		add __unsigned_stack_001TASK_checkRfid, __unsigned_stack_001TASK_checkRfid, __ArrHelper__TASK_checkRfid_98_0
+11	126	63	#line 126 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	63	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	128	63		set __signed_stack_002TASK_checkRfid, 3
+11	127	66	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	66	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	128	66		index __ArrHelper__TASK_checkRfid_98_0, __TASK_checkRfid_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_checkRfid
+11	127	70	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	127	70	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	128	70		add __unsigned_stack_001TASK_checkRfid, __unsigned_stack_001TASK_checkRfid, __ArrHelper__TASK_checkRfid_98_0
+11	127	74	#line 127 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	128	74	#line 128 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	129	74		set __signed_stack_002TASK_checkRfid, 4
+11	128	77	#line 128 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	128	77	#line 128 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	129	77		index __ArrHelper__TASK_checkRfid_98_0, __TASK_checkRfid_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_checkRfid
+11	128	81	#line 128 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	131	81	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	132	81		add __TASK_checkRfid_7qG2_dataSum_7qG2_001, __unsigned_stack_001TASK_checkRfid, __ArrHelper__TASK_checkRfid_98_0
+11	131	85	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	131	85	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	132	85		mov __signed_stack_001TASK_checkRfid, __TASK_checkRfid_7qG2_dataSum_7qG2_001
+11	131	87	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	131	87	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	132	87		set __D0TASK_checkRfid, 0
+11	131	90	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	132	90		cmp 1, __zfTASK_checkRfid, __signed_stack_001TASK_checkRfid, __D0TASK_checkRfid
+11	131	94	#line 131 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	132	94		mov __D0TASK_checkRfid, __zfTASK_checkRfid
+11	132	96	#line 132 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	133	96		brtst 4, __NXC_Label_910, __zfTASK_checkRfid
+11	133	99	#line 133 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	99		acquire gStrategyMutex
+11	133	100	#line 133 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	100	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	135	100		set gStrategy, 1
+11	134	103	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	103	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	103	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	135	103		mov __signed_stack_001TASK_checkRfid, __TASK_checkRfid_7qG2_dataSum_7qG2_001
+11	134	105	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	105	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	135	105		set __signed_stack_002TASK_checkRfid, 100
+11	134	108	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	108	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	135	108		set __signed_stack_003TASK_checkRfid, 4
+11	134	111	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	134	111	#line 134 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	135	111		set __D0TASK_checkRfid, 0
+11	135	114	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	114		acquire __SPTArgsMutex
+11	135	115	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	115		mov __SPTArgs.Frequency, __signed_stack_001TASK_checkRfid
+11	135	117	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	117		mov __SPTArgs.Duration, __signed_stack_002TASK_checkRfid
+11	135	119	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	119		mov __SPTArgs.Volume, __signed_stack_003TASK_checkRfid
+11	135	122	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	122		mov __SPTArgs.Loop, __D0TASK_checkRfid
+11	135	125	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	125		syscall 10, __SPTArgs
+11	135	128	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	128		mov __D0TASK_checkRfid, __SPTArgs.Result
+11	135	131	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	131		release __SPTArgsMutex
+11	135	132	#line 135 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	136	132	#line 136 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	137	132		release gStrategyMutex
+11	136	133	#line 136 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	138	133	#line 138 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	147	133	#line 147 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	148	133		jmp __NXC_Label_888
+11	147	135	#line 147 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+11	148	135		exit -1, -1
+12	151	0	#line 151 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	152	0		set __TASK_movement_7qG2_cruiseSpeed_7qG2_000, 80
+12	151	3	#line 151 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	152	3	#line 152 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	153	3		mov __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __constVal80
+12	152	5	#line 152 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	154	5	#line 154 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	155	5		mov __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+12	154	7	#line 154 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	154	7	#line 154 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	155	7		set __D0TASK_movement, 1
+12	155	10	#line 155 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	156	10		tst 5, __zfTASK_movement, __D0TASK_movement
+12	155	13	#line 155 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	156	13		brtst 4, __NXC_Label_928, __zfTASK_movement
+12	157	16	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	158	16		acquire gStrategyMutex
+12	157	17	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	157	17	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	158	17		set __signed_stack_001TASK_movement, 7
+12	157	20	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	157	20	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	158	20		set __signed_stack_002TASK_movement, 56
+12	157	23	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	157	23	#line 157 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	158	23		mov __D0TASK_movement, gStrategy
+12	159	25	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	25		acquire __TextOutMutex
+12	159	26	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	26		mov __TextOutArgs.Location.X, __signed_stack_001TASK_movement
+12	159	29	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	29		mov __TextOutArgs.Location.Y, __signed_stack_002TASK_movement
+12	159	32	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	32		set __TextOutArgs.Options, 0
+12	159	35	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	35		numtostr __TextOutArgs.Text, __D0TASK_movement
+12	159	38	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	38		syscall 13, __TextOutArgs
+12	159	41	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	41		mov __D0TASK_movement, __TextOutArgs.Result
+12	159	44	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	44		release __TextOutMutex
+12	159	45	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	159	45	#line 159 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	160	45		mov __D0TASK_movement, gStrategy
+12	163	47		brcmp 4, __NXC_Label_940, __constVal2, __D0TASK_movement
+12	164	51		brcmp 4, __NXC_Label_956, __constVal3, __D0TASK_movement
+12	165	55		brcmp 4, __NXC_Label_972, __constVal1, __D0TASK_movement
+12	166	59		brcmp 4, __NXC_Label_998, __constVal0, __D0TASK_movement
+12	167	63		jmp __NXC_Label_999
+12	168	65		jmp __NXC_Label_939
+12	161	67	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	161	67	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	162	67		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000
+12	161	69	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	161	69	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	162	69		set __D0TASK_movement, 84
+12	161	72	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	162	72		cmp 0, __zfTASK_movement, __signed_stack_001TASK_movement, __D0TASK_movement
+12	161	76	#line 161 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	162	76		mov __D0TASK_movement, __zfTASK_movement
+12	162	79	#line 162 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	163	79		brtst 4, __NXC_Label_943, __zfTASK_movement
+12	163	82	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	163	82	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	82		add __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __constVal4
+12	163	86	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	163	86	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	86		jmp __NXC_Label_946
+12	163	88	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	88		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	163	90	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	163	90	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	90		set __D0TASK_movement, 30
+12	163	93	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	93		cmp 1, __zfTASK_movement, __signed_stack_001TASK_movement, __D0TASK_movement
+12	163	97	#line 163 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	164	97		mov __D0TASK_movement, __zfTASK_movement
+12	164	100	#line 164 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	165	100		brtst 4, __NXC_Label_949, __zfTASK_movement
+12	165	103	#line 165 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	165	103	#line 165 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	166	103		sub __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __constVal4
+12	165	107	#line 165 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	166	107	#line 166 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	166	107	#line 166 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	166	107	#line 166 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	167	107		mov __D0TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	167	109	#line 167 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	168	109	#pragma macro 7
+12	168	109		setout __constVal2, 2, __D0TASK_movement, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9257	132	#line 9257 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	167	132	#line 167 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	167	132	#line 167 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	168	132		mov __D0TASK_movement, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000
+12	168	134	#line 168 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	169	134	#pragma macro 7
+12	169	134		setout __constVal0, 2, __D0TASK_movement, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9264	157	#line 9264 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	168	157	#line 168 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	169	157	#line 169 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	170	157		jmp __NXC_Label_939
+12	169	159	#line 169 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	170	159	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	170	159	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	171	159		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	170	161	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	170	161	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	171	161		set __D0TASK_movement, 84
+12	170	164	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	171	164		cmp 0, __zfTASK_movement, __signed_stack_001TASK_movement, __D0TASK_movement
+12	170	168	#line 170 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	171	168		mov __D0TASK_movement, __zfTASK_movement
+12	171	171	#line 171 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	172	171		brtst 4, __NXC_Label_959, __zfTASK_movement
+12	172	174	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	172	174	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	174		add __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __constVal4
+12	172	178	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	172	178	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	178		jmp __NXC_Label_962
+12	172	180	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	180		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000
+12	172	182	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	172	182	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	182		set __D0TASK_movement, 30
+12	172	185	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	185		cmp 1, __zfTASK_movement, __signed_stack_001TASK_movement, __D0TASK_movement
+12	172	189	#line 172 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	173	189		mov __D0TASK_movement, __zfTASK_movement
+12	173	192	#line 173 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	174	192		brtst 4, __NXC_Label_965, __zfTASK_movement
+12	174	195	#line 174 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	174	195	#line 174 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	175	195		sub __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __constVal4
+12	174	199	#line 174 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	175	199	#line 175 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	175	199	#line 175 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	175	199	#line 175 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	176	199		mov __D0TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	176	201	#line 176 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	177	201	#pragma macro 7
+12	177	201		setout __constVal2, 2, __D0TASK_movement, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9325	224	#line 9325 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	176	224	#line 176 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	176	224	#line 176 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	177	224		mov __D0TASK_movement, __TASK_movement_7qG2_leftWheelSpeed_7qG2_000
+12	177	226	#line 177 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	178	226	#pragma macro 7
+12	178	226		setout __constVal0, 2, __D0TASK_movement, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9332	249	#line 9332 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	177	249	#line 177 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	178	249	#line 178 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	179	249		jmp __NXC_Label_939
+12	178	251	#line 178 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	179	251	#line 179 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	179	251	#line 179 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	179	251	#line 179 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	180	251		not __DU0TASK_movement, gUturnMade
+12	180	254	#line 180 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	181	254		tst 5, __zfTASK_movement, __DU0TASK_movement
+12	180	257	#line 180 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	181	257		brtst 4, __NXC_Label_975, __zfTASK_movement
+12	181	260	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	182	260		set gUturnMade, 1
+12	181	263	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	181	263	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	181	263	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	182	263		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	181	265	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	181	265	#line 181 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	182	265		set __D0TASK_movement, 2
+12	182	268	#line 182 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	268	#pragma macro 7
+12	183	268		setout __OUT_AC, 2, __signed_stack_001TASK_movement, 1, __constVal7, 8, __D0TASK_movement, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9367	291	#line 9367 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	182	291	#line 182 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	182	291	#line 182 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	291		set __Wait_7qG2_ms_7qG2_000_inline_TASK_movement, 500
+12	182	294	#line 182 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	7921	294	#line 7921 "NXCDefs.h"
+12	7922	294		wait 500
+12	7921	296	#line 7921 "NXCDefs.h"
+12	183	296	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	296	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	184	296		set __signed_stack_001TASK_movement, 1000
+12	183	299	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	299	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	184	299		set __signed_stack_002TASK_movement, 1000
+12	183	302	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	302	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	184	302		set __signed_stack_003TASK_movement, 4
+12	183	305	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	183	305	#line 183 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	184	305		set __D0TASK_movement, 0
+12	184	308	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	308		acquire __SPTArgsMutex
+12	184	309	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	309		mov __SPTArgs.Frequency, __signed_stack_001TASK_movement
+12	184	312	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	312		mov __SPTArgs.Duration, __signed_stack_002TASK_movement
+12	184	315	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	315		mov __SPTArgs.Volume, __signed_stack_003TASK_movement
+12	184	318	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	318		mov __SPTArgs.Loop, __D0TASK_movement
+12	184	321	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	321		syscall 10, __SPTArgs
+12	184	324	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	324		mov __D0TASK_movement, __SPTArgs.Result
+12	184	327	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	327		release __SPTArgsMutex
+12	184	328	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	184	328	#line 184 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	328		set __D0TASK_movement, 60
+12	185	331	#line 185 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	186	331	#pragma macro 7
+12	186	331		setout __constVal2, 2, __D0TASK_movement, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9427	354	#line 9427 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	354	#line 185 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	185	354	#line 185 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	186	354		set __D0TASK_movement, 60
+12	186	357	#line 186 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	187	357	#pragma macro 10
+12	187	357		acquire __OnRevMutex
+12	187	358		neg __OnRev_Tmp, __D0TASK_movement
+12	187	361		setout __constVal0, 2, __OnRev_Tmp, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	187	384		release __OnRevMutex
+12	9434	385	#line 9434 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	186	385	#line 186 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	186	385	#line 186 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	187	385		set __Wait_7qG2_ms_7qG2_000_inline_TASK_movement, 750
+12	186	388	#line 186 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	7921	388	#line 7921 "NXCDefs.h"
+12	7922	388		wait 750
+12	7921	390	#line 7921 "NXCDefs.h"
+12	187	390	#line 187 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	188	390	#line 188 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	189	390	#line 189 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	190	390		jmp __NXC_Label_939
+12	189	392	#line 189 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	190	392	#line 190 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	191	392	#line 191 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	192	392	#line 192 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	193	392		mov __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+12	192	394	#line 192 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	192	394	#line 192 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	193	394	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	194	394		mov __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+12	193	396	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	193	396	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	193	396	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	194	396		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+12	193	398	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	193	398	#line 193 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	194	398		set __D0TASK_movement, 2
+12	194	401	#line 194 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	195	401	#pragma macro 7
+12	195	401		setout __OUT_AC, 2, __signed_stack_001TASK_movement, 1, __constVal7, 8, __D0TASK_movement, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+12	9480	424	#line 9480 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	194	424	#line 194 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	195	424	#line 195 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	195	424	#line 195 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	196	424	#line 196 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	197	424	#line 197 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	198	424		release gStrategyMutex
+12	197	425	#line 197 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	197	425	#line 197 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	198	425		set __Wait_7qG2_ms_7qG2_000_inline_TASK_movement, 10
+12	197	428	#line 197 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	7921	428	#line 7921 "NXCDefs.h"
+12	7922	428		wait 10
+12	7921	430	#line 7921 "NXCDefs.h"
+12	198	430	#line 198 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	206	430	#line 206 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	207	430		jmp __NXC_Label_927
+12	206	432	#line 206 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+12	207	432		exit -1, -1
+13	214	0	#line 214 "C:\Users\student\Desktop\Lab03\Lab03_2.nxc"
+13	215	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\student\Desktop\Lab03\Lab03_2.nxc
+1	__ResetSensorSubroutine	139	NXTDefs.h
+2	__ReadLSBytes0	152	NXTDefs.h
+3	__ReadLSBytes1	236	NXTDefs.h
+4	__ReadLSBytesVar	320	NXTDefs.h
+5	GetI2CByte	419	C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc
+6	WriteI2CByte	514	C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc
+7	RFIDDummy	604	C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc
+8	RFIDCommand	623	C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc
+9	GetRFIDArray	641	C:\Users\student\Desktop\Lab03\.\RFIDlib.nxc
+10	TASK_checkSonar	747	C:\Users\student\Desktop\Lab03\Lab03_2.nxc
+11	TASK_checkRfid	981	C:\Users\student\Desktop\Lab03\Lab03_2.nxc
+12	TASK_movement	1119	C:\Users\student\Desktop\Lab03\Lab03_2.nxc
+13	__initialize_global_data	1554	C:\Users\student\Desktop\Lab03\Lab03_2.nxc

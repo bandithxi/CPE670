@@ -1,0 +1,238 @@
+/**
+ *  Configurations
+ */
+#define RIGHT_SONAR IN_1
+#define LEFT_SONAR 666
+
+#define RFID_SENSOR IN_4
+
+#define COLOR_SENSOR IN_3
+
+#define RIGHT_WHEEL OUT_C
+#define LEFT_WHEEL OUT_A
+#define BOTH_WHEELS OUT_AC
+
+#define FULL_SPEED 100
+#define MODERATE_SPEED 75
+#define SLOW_SPEED 50
+#define SPEED_INCREMENT 4
+
+#define CLOSE_RANGE 12 // in cm(ish)
+
+
+/**
+ * An enumeration of avoidance strategy values.
+ */
+#define PROCEED 0
+#define ENDZONE 1
+#define TURN_RIGHT 2
+#define TURN_LEFT 3
+#define COMPLETE_TURN 4
+
+#define GATHER 0
+#define EGRESS 1
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#define FORWARD true
+#define REVERSE false
+#define RIGHT true
+#define LEFT false
+
+
+/**
+ * Constants for convenient use of the blockingMove() type methods.
+ */
+#include "RFIDlib.nxc"
+
+#define NO_OBSTACLE 255
+
+
+/**
+ * These mutexes are used to prevent ciritical section violations.
+ * They ensure that only one task has access to the wheels at a time,
+ * and that only one task is reading or writing to the avoidance
+ * strategy variable.
+ */
+mutex gStrategyMutex;   // wasn't sure how atomic operations can be with NXC
+mutex gScoreMutex;
+
+/**
+ * Global variables to allow for inter-process communication for determining
+ * which strategies to use.
+ */
+int gStrategy = PROCEED;
+int gSeekMode = false;
+int gFoodCount = 0;
+
+
+typedef struct {
+        byte red;
+        byte green;
+        byte blue;
+} RGBval;
+
+
+/**
+ * Creates a thread that will be responsible for detecting when the
+ * touch sensors are activated and determining the appropriate
+ * avoidance strategy.
+ */
+task TASK_sonarSensor() {
+    // start with sensors de-activated for good measure
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+     
+    while (true) {
+          // turn on, read from the sensor, turn off
+          I2CWrite(RIGHT_SONAR, 0x41, 0x03);
+          int rightBuffer = SensorUS(RIGHT_SONAR);
+          Wait(MS_50);
+          I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+          
+          
+          Acquire(gStrategyMutex);
+
+
+
+          Release(gStrategyMutex);
+    }
+}
+
+
+/**
+ *
+ */
+task TASK_rfidSensor() {
+   // send dummy command to wake up sensor
+   RFIDDummy(RFID_SENSOR);
+
+   byte rfidData[5];
+   while (true) {
+      GetRFIDArray(RFID_SENSOR, rfidData, true);
+
+      int dataSum = rfidData[0] +
+                    rfidData[1] +
+                    rfidData[2] +
+                    rfidData[3] +
+                    rfidData[4]
+      ;
+      Wait(MS_50);
+      
+      if (dataSum > 0) {
+         Acquire(gScoreMutex);
+         gFoodCount++;
+         PlayTone(TONE_A3, MS_250);
+         Release(gScoreMutex);
+      }
+   }
+}
+
+
+/**
+ *
+ */
+task TASK_colorSensor() {
+
+   while (true) {
+     // int x = SensorHTColorNum(COLOR_SENSOR);
+      
+      
+      // we might be able to use RGB values to somehow compensate for ppor
+      // color number results
+     byte colorNum;
+      byte red;
+     byte green;
+      byte blue;
+      
+      bool readSuccess = ReadSensorHTColor(
+           COLOR_SENSOR,
+           colorNum,
+           red,
+           green,
+           blue
+      );
+      Wait(MS_50);
+      
+      if (colorNum > 0) {
+
+         ClearScreen();
+         NumOut(4, LCD_LINE2, blue);
+
+
+         Acquire(gScoreMutex);
+         gFoodCount++;
+         PlayTone(TONE_A5, MS_100);
+         Release(gScoreMutex);
+
+      }
+   }
+}
+
+
+
+void gatherFood() {
+
+}
+
+void goHome() {
+  
+}
+
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task TASK_movement() {
+     int cruiseSpeed = FULL_SPEED;
+
+     int rightWheelSpeed = cruiseSpeed;
+     int leftWheelSpeed = cruiseSpeed;
+
+     while (true) {
+           Acquire(gStrategyMutex);
+
+           gStrategy = 666;
+
+           switch(gStrategy) {
+                case PROCEED:
+                     rightWheelSpeed = cruiseSpeed;
+                     leftWheelSpeed = cruiseSpeed;
+                     OnFwdReg(BOTH_WHEELS, rightWheelSpeed, OUT_REGMODE_SYNC);
+                     break;
+                default:
+                     break;
+           }
+           
+           Release(gStrategyMutex);
+           Wait(MS_10);
+    }
+}
+
+
+
+task TASK_contestTimer() {
+    Wait(MIN_1);
+    PlayTone(1000, MS_250);
+}
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+     Precedes(
+              TASK_movement,
+              TASK_sonarSensor,
+              TASK_rfidSensor,
+              TASK_colorSensor
+     );
+     
+
+     SetSensorUltrasonic(RIGHT_SONAR);
+     SetSensorLowspeed(RFID_SENSOR);
+     SetSensorLowspeed(COLOR_SENSOR);
+}

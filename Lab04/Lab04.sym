@@ -1,0 +1,1230 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__DU0TASK_colorSensor	5	1	0	4	2
+1	__D0TASK_movement	6	1	4	4	6
+2	__D0RFIDDummy	6	1	8	4	3
+3	__D0TASK_colorSensor	6	1	12	4	10
+4	__D0TASK_rfidSensor	6	1	16	4	9
+5	__DU0WriteI2CByte	5	1	20	4	6
+6	__D0SetSensorLowspeed_inline_main	6	1	24	4	6
+7	__D0TASK_sonarSensor	6	1	28	4	6
+8	__D0WriteI2CByte	6	1	32	4	8
+9	__RLSBmutex3	9	0	36	4	2
+10	__SPTArgsMutex	9	0	40	4	4
+11	__RLSBmutex1	9	0	44	4	2
+12	__RLSBmutex2	9	0	48	4	4
+13	__D0GetI2CByte	6	1	52	4	6
+14	__DU0GetRFIDArray	5	1	56	4	4
+15	__D0RFIDCommand	6	1	60	4	2
+16	__DU0GetI2CByte	5	1	64	4	7
+17	__D0GetRFIDArray	6	1	68	4	8
+18	__DU0SetSensorLowspeed_inline_main	5	1	72	4	4
+19	__signed_stack_002TASK_rfidSensor	6	1	76	4	10
+20	__signed_stack_003TASK_rfidSensor	6	1	80	4	2
+21	__signed_stack_001TASK_movement	6	1	84	4	2
+22	__signed_stack_001TASK_rfidSensor	6	1	88	4	6
+23	__unsigned_stack_001TASK_rfidSensor	5	1	92	4	8
+24	gStrategyMutex	9	0	96	4	4
+25	gScoreMutex	9	0	100	4	4
+26	__signed_stack_001WriteI2CByte	6	1	104	4	8
+27	__Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray	5	1	108	4	2
+28	__signed_stack_001GetI2CByte	6	1	112	4	8
+29	__signed_stack_001GetRFIDArray	6	1	116	4	4
+30	__D0SetSensorLowspeed_inline_SetSensorUltrasonic	6	1	120	4	3
+31	__DU0SetSensorLowspeed_inline_SetSensorUltrasonic	5	1	124	4	2
+32	__unsigned_stack_001GetRFIDArray	5	1	128	4	2
+33	__signed_stack_003TASK_colorSensor	6	1	132	4	2
+34	__unsigned_stack_001TASK_colorSensor	5	1	136	4	2
+35	__signed_stack_001TASK_colorSensor	6	1	140	4	4
+36	__signed_stack_002TASK_colorSensor	6	1	144	4	4
+37	__CLSWMutex3	9	0	148	4	4
+38	__CLSCSMutex3	9	0	152	4	6
+39	__CLSRMutex2	9	0	156	4	4
+40	__CLSRMutex3	9	0	160	4	2
+41	__RLSBmutex0	9	0	164	4	4
+42	__PointOutMutex	9	0	168	4	2
+43	__TextOutMutex	9	0	172	4	2
+44	__CLSWMutex2	9	0	176	4	6
+45	__CLSRMutex0	9	0	180	4	4
+46	__CLSWMutex0	9	0	184	4	12
+47	__CLSCSMutex0	9	0	188	4	8
+48	__CLSCSMutex1	9	0	192	4	6
+49	__CLSCSMutex2	9	0	196	4	8
+50	__CLSRMutex1	9	0	200	4	2
+51	__CLSWMutex1	9	0	204	4	4
+52	__constVal200	4	0	208	2	2
+53	__TASK_rfidSensor_7qG2_dataSum_7qG2_001	4	1	210	2	2
+54	__TASK_movement_7qG2_cruiseSpeed_7qG2_000	4	1	212	2	4
+55	__TASK_movement_7qG2_leftWheelSpeed_7qG2_000	4	1	214	2	2
+56	__TASK_movement_7qG2_rightWheelSpeed_7qG2_000	4	1	216	2	3
+57	__constVal666	4	0	218	2	1
+58	__GetRFIDArray_7qG2_i_7qG2_001	4	1	220	2	6
+59	gFoodCount	4	1	222	2	4
+60	__RFIDDummy_return	1	1	224	1	5
+61	__RFIDCommand_7qG2_port_7qG2_000	1	1	225	1	2
+62	__RFIDCommand_7qG2_command_7qG2_000	1	1	226	1	2
+63	__GetRFIDArray_7qG2_port_7qG2_000	1	1	227	1	5
+64	__GetRFIDArray_7qG2_continuous_7qG2_000	1	1	228	1	2
+65	__GetRFIDArray_return	1	1	229	1	3
+66	__RFIDCommand_return	1	1	230	1	4
+67	__GetI2CByte_7qG2_add_7qG2_000	1	1	231	1	3
+68	__GetI2CByte_7qG2_reg_7qG2_000	1	1	232	1	3
+69	__GetI2CByte_return	1	1	233	1	5
+70	__constVal3	2	0	234	1	3
+71	__constVal0	2	1	235	1	13
+72	__GetI2CByte_7qG2_port_7qG2_000	1	1	236	1	4
+73	__GetI2CByte_7qG2_count_7qG2_000	1	1	237	1	3
+74	__WriteI2CByte_7qG2_data_7qG2_000	1	1	238	1	3
+75	__WriteI2CByte_return	1	1	239	1	5
+76	__RFIDDummy_7qG2_port_7qG2_000	1	1	240	1	3
+77	__WriteI2CByte_7qG2_port_7qG2_000	1	1	241	1	4
+78	__WriteI2CByte_7qG2_add_7qG2_000	1	1	242	1	3
+79	__WriteI2CByte_7qG2_reg_7qG2_000	1	1	243	1	3
+80	__constVal1	2	0	244	1	11
+81	__SetSensorLowspeed_7qG2_port_7qG2_000_inline_main	1	1	245	1	10
+82	__SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main	1	1	246	1	4
+83	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	247	1	2
+84	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	248	1	2
+85	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	249	1	2
+86	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	250	1	4
+87	__ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	251	1	2
+88	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	252	1	4
+89	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	253	1	4
+90	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main	1	1	254	1	4
+91	__TASK_colorSensor_7qG2_blue_7qG2_001	1	1	255	1	2
+92	__constVal96	2	0	256	1	1
+93	__TASK_colorSensor_7qG2_colorNum_7qG2_001	1	1	257	1	2
+94	__constVal32	2	0	258	1	3
+95	__constVal65	2	0	259	1	3
+96	__SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main	1	1	260	1	2
+97	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main	1	1	261	1	2
+98	__SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main	1	1	262	1	4
+99	__constVal63	2	0	263	1	1
+100	____initialize_global_data_return	1	1	264	1	3
+101	__constVal2	2	0	265	1	1
+102	__zfTASK_colorSensor	1	1	266	1	5
+103	____ReadLSBytesVar_return	1	1	267	1	3
+104	__zfGetI2CByte	1	1	268	1	3
+105	__zfGetRFIDArray	1	1	269	1	8
+106	__zfTASK_sonarSensor	1	1	270	1	2
+107	__RLSBytesCount2	1	1	271	1	7
+108	__zfTASK_rfidSensor	1	1	272	1	5
+109	__zfTASK_movement	1	1	273	1	2
+110	__RLSBIterations2	1	1	274	1	4
+111	__constVal100	2	0	275	1	1
+112	__constVal7	2	0	276	1	1
+113	__RLSReadPort	1	1	277	1	4
+114	__RLSBytesCountVar	1	1	278	1	8
+115	__RLSBIterationsVar	1	1	279	1	4
+116	__ArrHelper__TASK_rfidSensor_98_0	1	1	280	1	10
+117	____ReadLSBytes0_return	1	1	281	1	3
+118	__ArrHelper__GetI2CByte_98_0	1	1	282	1	2
+119	__constVal66	2	0	283	1	1
+120	__RLSBResultVar	2	1	284	1	8
+121	__zfWriteI2CByte	1	1	285	1	3
+122	__RLSBytesCount0	1	1	286	1	7
+123	__RLSBIterations0	1	1	287	1	4
+124	__zfSetSensorLowspeed_inline_SetSensorUltrasonic	1	1	288	1	2
+125	____ReadLSBytes2_return	1	1	289	1	3
+126	__ResetSensorPort	1	1	290	1	5
+127	__constVal5	2	0	291	1	1
+128	____ResetSensorSubroutine_return	1	1	292	1	5
+129	__ResetSensorTmp	1	1	293	1	2
+130	__RLSBResult0	2	1	294	1	7
+131	__RLSBResult2	2	1	295	1	8
+132	__zfSetSensorLowspeed_inline_main	1	1	296	1	4
+133	__PointOutArgs	8	0	3	12	4
+134	__PointOutArgs.Result	2	1	300	1	4
+135	__PointOutArgs.Location	8	0	2	4	4
+136	__PointOutArgs.Location.X	4	1	304	2	4
+137	__PointOutArgs.Location.Y	4	1	306	2	4
+138	__PointOutArgs.Options	5	1	308	4	4
+139	__CLSWArgs0	8	0	4	12	30
+140	__CLSWArgs0.Result	2	1	312	1	30
+141	__CLSWArgs0.Port	1	1	313	1	30
+142	__CLSWArgs0.Buffer	7	0	314	4	30
+143	__CLSWArgs0.Buffer.Buffer_type	1	0	0	1	0
+144	__CLSWArgs0.ReturnLen	1	1	316	1	30
+145	__CLSRArgs2	8	0	4	12	5
+146	__CLSRArgs2.Result	2	1	320	1	5
+147	__CLSRArgs2.Port	1	1	321	1	5
+148	__CLSRArgs2.Buffer	7	0	322	4	5
+149	__CLSRArgs2.Buffer.Buffer_type	1	0	0	1	0
+150	__CLSRArgs2.BufferLen	1	1	324	1	5
+151	__CLSRArgs0	8	0	4	12	10
+152	__CLSRArgs0.Result	2	1	328	1	10
+153	__CLSRArgs0.Port	1	1	329	1	10
+154	__CLSRArgs0.Buffer	7	0	330	4	10
+155	__CLSRArgs0.Buffer.Buffer_type	1	0	0	1	0
+156	__CLSRArgs0.BufferLen	1	1	332	1	10
+157	__SPTArgs	8	0	5	8	12
+158	__SPTArgs.Result	2	1	336	1	12
+159	__SPTArgs.Frequency	3	1	338	2	12
+160	__SPTArgs.Duration	3	1	340	2	12
+161	__SPTArgs.Loop	1	1	342	1	12
+162	__SPTArgs.Volume	1	1	343	1	12
+163	__CLSCSArgs2	8	0	3	4	4
+164	__CLSCSArgs2.Result	2	1	344	1	4
+165	__CLSCSArgs2.Port	1	1	345	1	4
+166	__CLSCSArgs2.BytesReady	1	1	346	1	4
+167	__CLSWArgs2	8	0	4	12	5
+168	__CLSWArgs2.Result	2	1	348	1	5
+169	__CLSWArgs2.Port	1	1	349	1	5
+170	__CLSWArgs2.Buffer	7	0	350	4	5
+171	__CLSWArgs2.Buffer.Buffer_type	1	0	0	1	0
+172	__CLSWArgs2.ReturnLen	1	1	352	1	5
+173	__TextOutArgs	8	0	4	16	6
+174	__TextOutArgs.Result	2	1	356	1	6
+175	__TextOutArgs.Location	8	0	2	4	6
+176	__TextOutArgs.Location.X	4	1	360	2	6
+177	__TextOutArgs.Location.Y	4	1	362	2	6
+178	__TextOutArgs.Text	7	0	364	4	6
+179	__TextOutArgs.Text.Text_type	1	0	0	1	0
+180	__TextOutArgs.Options	5	1	368	4	6
+181	__CLSCSArgs0	8	0	3	4	14
+182	__CLSCSArgs0.Result	2	1	372	1	14
+183	__CLSCSArgs0.Port	1	1	373	1	14
+184	__CLSCSArgs0.BytesReady	1	1	374	1	14
+185	__GetRFIDArray_7qG2_d_7qG2_000	7	0	376	4	4
+186	__GetRFIDArray_7qG2_d_7qG2_000.__GetRFIDArray_7qG2_d_7qG2_000_type	1	0	0	1	0
+187	__GetI2CByte_7qG2_inbuf_7qG2_000	7	0	378	4	6
+188	__GetI2CByte_7qG2_inbuf_7qG2_000.__GetI2CByte_7qG2_inbuf_7qG2_000_type	1	0	0	1	0
+189	__RLSReadBufVar	7	0	380	4	8
+190	__RLSReadBufVar.__RLSReadBufVar_type	1	0	0	1	0
+191	__GetI2CByte_7qG2_outbuf_7qG2_000	7	0	382	4	2
+192	__GetI2CByte_7qG2_outbuf_7qG2_000.__GetI2CByte_7qG2_outbuf_7qG2_000_type	1	0	0	1	0
+193	__WriteI2CByte_7qG2_inbuf_7qG2_000	7	0	384	4	8
+194	__WriteI2CByte_7qG2_inbuf_7qG2_000.__WriteI2CByte_7qG2_inbuf_7qG2_000_type	1	0	0	1	0
+195	__RLSLastGoodRead2	7	0	386	4	2
+196	__RLSLastGoodRead2.__RLSLastGoodRead2_type	1	0	0	1	0
+197	__TASK_rfidSensor_7qG2_rfidData_7qG2_000	7	0	388	4	8
+198	__TASK_rfidSensor_7qG2_rfidData_7qG2_000.__TASK_rfidSensor_7qG2_rfidData_7qG2_000_type	1	0	0	1	0
+199	__RLSReadBuf2	7	0	390	4	9
+200	__RLSReadBuf2.__RLSReadBuf2_type	1	0	0	1	0
+201	__RLSLastGoodRead0	7	0	392	4	2
+202	__RLSLastGoodRead0.__RLSLastGoodRead0_type	1	0	0	1	0
+203	__RLSBbufLSWrite1	7	0	394	4	2
+204	__RLSBbufLSWrite1.__RLSBbufLSWrite1_type	1	0	0	1	0
+205	__RLSReadBuf0	7	0	396	4	8
+206	__RLSReadBuf0.__RLSReadBuf0_type	1	0	0	1	0
+207	__OUT_AC	7	0	398	4	1
+208	__OUT_AC.__OUT_AC_type	1	0	0	1	0
+209	__RLSLastGoodReadVar	7	0	400	4	2
+210	__RLSLastGoodReadVar.__RLSLastGoodReadVar_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	213	0	#line 213 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	214	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	213	2	#line 213 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	221	2	#line 221 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	221	2	#line 221 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	221	2	#line 221 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	221	2	#line 221 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	3768	2	#line 3768 "NXCDefs.h"
+0	3769	2		mov __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal0
+0	3768	4	#line 3768 "NXCDefs.h"
+0	3768	4	#line 3768 "NXCDefs.h"
+0	3769	4		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main, __constVal1
+0	3758	6	#line 3758 "NXCDefs.h"
+0	3759	6		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	8	#line 3758 "NXCDefs.h"
+0	3758	8	#line 3758 "NXCDefs.h"
+0	3759	8		mov __DU0SetSensorLowspeed_inline_SetSensorUltrasonic, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3758	10	#line 3758 "NXCDefs.h"
+0	3759	10		tst 5, __zfSetSensorLowspeed_inline_SetSensorUltrasonic, __DU0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	13	#line 3758 "NXCDefs.h"
+0	3759	13		brtst 4, __001__001__NXC_Label_36, __zfSetSensorLowspeed_inline_SetSensorUltrasonic
+0	3758	16	#line 3758 "NXCDefs.h"
+0	3759	16		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 11
+0	3758	19	#line 3758 "NXCDefs.h"
+0	3759	19		jmp __001__001__NXC_Label_37
+0	3758	21	#line 3758 "NXCDefs.h"
+0	3759	21		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 10
+0	3758	24	#line 3758 "NXCDefs.h"
+0	3759	24		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __D0SetSensorLowspeed_inline_SetSensorUltrasonic
+0	3663	26	#line 3663 "NXCDefs.h"
+0	3664	26		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3663	30	#line 3663 "NXCDefs.h"
+0	3759	30	#line 3759 "NXCDefs.h"
+0	3759	30	#line 3759 "NXCDefs.h"
+0	3760	30		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3759	32	#line 3759 "NXCDefs.h"
+0	3759	32	#line 3759 "NXCDefs.h"
+0	3760	32		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 0
+0	3759	35	#line 3759 "NXCDefs.h"
+0	3676	35	#line 3676 "NXCDefs.h"
+0	3677	35		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_main, 1
+0	3676	39	#line 3676 "NXCDefs.h"
+0	3760	39	#line 3760 "NXCDefs.h"
+0	3760	39	#line 3760 "NXCDefs.h"
+0	3760	39	#line 3760 "NXCDefs.h"
+0	3694	39	#line 3694 "NXCDefs.h"
+0	3695	39	#pragma macro 4
+0	3695	39		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_main
+0	3695	41		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9824	43	#line 9824 "NXCDefs.h"
+0	3694	43	#line 3694 "NXCDefs.h"
+0	3761	43	#line 3761 "NXCDefs.h"
+0	3768	43	#line 3768 "NXCDefs.h"
+0	222	43	#line 222 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	222	43	#line 222 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	223	43		set __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main, 3
+0	222	46	#line 222 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	223	46	#line 223 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	224	46		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main, __constVal1
+0	3758	48	#line 3758 "NXCDefs.h"
+0	3759	48		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3758	50	#line 3758 "NXCDefs.h"
+0	3758	50	#line 3758 "NXCDefs.h"
+0	3759	50		mov __DU0SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main
+0	3758	52	#line 3758 "NXCDefs.h"
+0	3759	52		tst 5, __zfSetSensorLowspeed_inline_main, __DU0SetSensorLowspeed_inline_main
+0	3758	55	#line 3758 "NXCDefs.h"
+0	3759	55		brtst 4, __004__NXC_Label_36, __zfSetSensorLowspeed_inline_main
+0	3758	58	#line 3758 "NXCDefs.h"
+0	3759	58		set __D0SetSensorLowspeed_inline_main, 11
+0	3758	61	#line 3758 "NXCDefs.h"
+0	3759	61		jmp __004__NXC_Label_37
+0	3758	63	#line 3758 "NXCDefs.h"
+0	3759	63		set __D0SetSensorLowspeed_inline_main, 10
+0	3758	66	#line 3758 "NXCDefs.h"
+0	3759	66		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __D0SetSensorLowspeed_inline_main
+0	3663	68	#line 3663 "NXCDefs.h"
+0	3664	68		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3663	72	#line 3663 "NXCDefs.h"
+0	3759	72	#line 3759 "NXCDefs.h"
+0	3759	72	#line 3759 "NXCDefs.h"
+0	3760	72		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3759	74	#line 3759 "NXCDefs.h"
+0	3759	74	#line 3759 "NXCDefs.h"
+0	3760	74		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3759	77	#line 3759 "NXCDefs.h"
+0	3676	77	#line 3676 "NXCDefs.h"
+0	3677	77		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 1
+0	3676	81	#line 3676 "NXCDefs.h"
+0	3760	81	#line 3760 "NXCDefs.h"
+0	3760	81	#line 3760 "NXCDefs.h"
+0	3761	81		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3760	83	#line 3760 "NXCDefs.h"
+0	3694	83	#line 3694 "NXCDefs.h"
+0	3695	83	#pragma macro 4
+0	3695	83		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3695	85		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9920	87	#line 9920 "NXCDefs.h"
+0	3694	87	#line 3694 "NXCDefs.h"
+0	3761	87	#line 3761 "NXCDefs.h"
+0	223	87	#line 223 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	223	87	#line 223 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	224	87		set __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main, 2
+0	223	90	#line 223 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	224	90	#line 224 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	225	90		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main, __constVal1
+0	3758	92	#line 3758 "NXCDefs.h"
+0	3759	92		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3758	94	#line 3758 "NXCDefs.h"
+0	3758	94	#line 3758 "NXCDefs.h"
+0	3759	94		mov __DU0SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_main
+0	3758	96	#line 3758 "NXCDefs.h"
+0	3759	96		tst 5, __zfSetSensorLowspeed_inline_main, __DU0SetSensorLowspeed_inline_main
+0	3758	99	#line 3758 "NXCDefs.h"
+0	3759	99		brtst 4, __005__NXC_Label_36, __zfSetSensorLowspeed_inline_main
+0	3758	102	#line 3758 "NXCDefs.h"
+0	3759	102		set __D0SetSensorLowspeed_inline_main, 11
+0	3758	105	#line 3758 "NXCDefs.h"
+0	3759	105		jmp __005__NXC_Label_37
+0	3758	107	#line 3758 "NXCDefs.h"
+0	3759	107		set __D0SetSensorLowspeed_inline_main, 10
+0	3758	110	#line 3758 "NXCDefs.h"
+0	3759	110		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __D0SetSensorLowspeed_inline_main
+0	3663	112	#line 3663 "NXCDefs.h"
+0	3664	112		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3663	116	#line 3663 "NXCDefs.h"
+0	3759	116	#line 3759 "NXCDefs.h"
+0	3759	116	#line 3759 "NXCDefs.h"
+0	3760	116		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3759	118	#line 3759 "NXCDefs.h"
+0	3759	118	#line 3759 "NXCDefs.h"
+0	3760	118		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, 0
+0	3759	121	#line 3759 "NXCDefs.h"
+0	3676	121	#line 3676 "NXCDefs.h"
+0	3677	121		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, 1
+0	3676	125	#line 3676 "NXCDefs.h"
+0	3760	125	#line 3760 "NXCDefs.h"
+0	3760	125	#line 3760 "NXCDefs.h"
+0	3761	125		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_main, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3760	127	#line 3760 "NXCDefs.h"
+0	3694	127	#line 3694 "NXCDefs.h"
+0	3695	127	#pragma macro 4
+0	3695	127		mov __ResetSensorPort, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_main
+0	3695	129		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	9987	131	#line 9987 "NXCDefs.h"
+0	3694	131	#line 3694 "NXCDefs.h"
+0	3761	131	#line 3761 "NXCDefs.h"
+0	224	131	#line 224 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+0	225	131		exit 0, 3
+1	4885	0		setin __constVal1, __ResetSensorPort, 5
+1	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+1	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+1	4889	11		subret ____ResetSensorSubroutine_return
+2	5672	0	#pragma macro 25
+2	5672	0		acquire __CLSWMutex0
+2	5672	1		set __CLSWArgs0.Port, 0
+2	5672	4		mov __CLSWArgs0.ReturnLen, __RLSBytesCount0
+2	5672	6		mov __CLSWArgs0.Buffer, __RLSReadBuf0
+2	5672	8		syscall 21, __CLSWArgs0
+2	5672	11		mov __RLSBResult0, __CLSWArgs0.Result
+2	5672	13		release __CLSWMutex0
+2	5673	14	#line 5673 "NXTDefs.h"
+2	5674	14		brtst 4, __RLSBReturn0, __RLSBytesCount0
+2	5675	17		arrinit __RLSReadBuf0, __constVal0, __RLSBytesCount0
+2	5676	21		brtst 5, __RLSBError0, __RLSBResult0
+2	5677	24		set __RLSBIterations0, 4
+2	5679	27	#pragma macro 23
+2	5679	27		acquire __CLSCSMutex0
+2	5679	28		set __CLSCSArgs0.Port, 0
+2	5679	31		syscall 23, __CLSCSArgs0
+2	5679	34		mov __RLSBytesCount0, __CLSCSArgs0.BytesReady
+2	5679	36		mov __RLSBResult0, __CLSCSArgs0.Result
+2	5679	38		release __CLSCSMutex0
+2	5679	39	#line 5679 "NXTDefs.h"
+2	5680	39		sub __RLSBIterations0, __RLSBIterations0, __constVal1
+2	5681	43		brtst 2, __RLSBError0, __RLSBIterations0
+2	5682	46		brtst 0, __RLSBError0, __RLSBResult0
+2	5683	49		brtst 4, __RLSBReadyToRead0, __RLSBResult0
+2	5685	52		wait 15
+2	5686	54		jmp __RLSBDoCheckStatus0
+2	5689	56	#pragma macro 25
+2	5689	56		acquire __CLSRMutex0
+2	5689	57		set __CLSRArgs0.Port, 0
+2	5689	60		mov __CLSRArgs0.BufferLen, __RLSBytesCount0
+2	5689	62		syscall 22, __CLSRArgs0
+2	5689	65		mov __RLSReadBuf0, __CLSRArgs0.Buffer
+2	5689	67		mov __RLSBResult0, __CLSRArgs0.Result
+2	5689	69		release __CLSRMutex0
+2	5689	70	#line 5689 "NXTDefs.h"
+2	5690	70		brtst 5, __RLSBError0, __RLSBResult0
+2	5691	73		mov __RLSLastGoodRead0, __RLSReadBuf0
+2	5692	75		jmp __RLSBDone0
+2	5694	77		mov __RLSReadBuf0, __RLSLastGoodRead0
+2	5696	79		arrsize __RLSBytesCount0, __RLSReadBuf0
+2	5698	82		subret ____ReadLSBytes0_return
+3	5747	0	#pragma macro 25
+3	5747	0		acquire __CLSWMutex2
+3	5747	1		set __CLSWArgs2.Port, 2
+3	5747	4		mov __CLSWArgs2.ReturnLen, __RLSBytesCount2
+3	5747	6		mov __CLSWArgs2.Buffer, __RLSReadBuf2
+3	5747	8		syscall 21, __CLSWArgs2
+3	5747	11		mov __RLSBResult2, __CLSWArgs2.Result
+3	5747	13		release __CLSWMutex2
+3	5747	14	#line 5747 "NXTDefs.h"
+3	5748	14		brtst 4, __RLSBReturn2, __RLSBytesCount2
+3	5749	17		arrinit __RLSReadBuf2, __constVal0, __RLSBytesCount2
+3	5750	21		brtst 5, __RLSBError2, __RLSBResult2
+3	5751	24		set __RLSBIterations2, 4
+3	5753	27	#pragma macro 23
+3	5753	27		acquire __CLSCSMutex2
+3	5753	28		set __CLSCSArgs2.Port, 2
+3	5753	31		syscall 23, __CLSCSArgs2
+3	5753	34		mov __RLSBytesCount2, __CLSCSArgs2.BytesReady
+3	5753	36		mov __RLSBResult2, __CLSCSArgs2.Result
+3	5753	38		release __CLSCSMutex2
+3	5753	39	#line 5753 "NXTDefs.h"
+3	5754	39		sub __RLSBIterations2, __RLSBIterations2, __constVal1
+3	5755	43		brtst 2, __RLSBError2, __RLSBIterations2
+3	5756	46		brtst 0, __RLSBError2, __RLSBResult2
+3	5757	49		brtst 4, __RLSBReadyToRead2, __RLSBResult2
+3	5759	52		wait 15
+3	5760	54		jmp __RLSBDoCheckStatus2
+3	5763	56	#pragma macro 25
+3	5763	56		acquire __CLSRMutex2
+3	5763	57		set __CLSRArgs2.Port, 2
+3	5763	60		mov __CLSRArgs2.BufferLen, __RLSBytesCount2
+3	5763	62		syscall 22, __CLSRArgs2
+3	5763	65		mov __RLSReadBuf2, __CLSRArgs2.Buffer
+3	5763	67		mov __RLSBResult2, __CLSRArgs2.Result
+3	5763	69		release __CLSRMutex2
+3	5763	70	#line 5763 "NXTDefs.h"
+3	5764	70		brtst 5, __RLSBError2, __RLSBResult2
+3	5765	73		mov __RLSLastGoodRead2, __RLSReadBuf2
+3	5766	75		jmp __RLSBDone2
+3	5768	77		mov __RLSReadBuf2, __RLSLastGoodRead2
+3	5770	79		arrsize __RLSBytesCount2, __RLSReadBuf2
+3	5772	82		subret ____ReadLSBytes2_return
+4	5821	0	#pragma macro 25
+4	5821	0		acquire __CLSWMutex0
+4	5821	1		acquire __CLSWMutex1
+4	5821	2		acquire __CLSWMutex2
+4	5821	3		acquire __CLSWMutex3
+4	5821	4		mov __CLSWArgs0.Port, __RLSReadPort
+4	5821	6		mov __CLSWArgs0.ReturnLen, __RLSBytesCountVar
+4	5821	8		mov __CLSWArgs0.Buffer, __RLSReadBufVar
+4	5821	10		syscall 21, __CLSWArgs0
+4	5821	13		mov __RLSBResultVar, __CLSWArgs0.Result
+4	5821	15		release __CLSWMutex0
+4	5821	16		release __CLSWMutex1
+4	5821	17		release __CLSWMutex2
+4	5821	18		release __CLSWMutex3
+4	5821	19	#line 5821 "NXTDefs.h"
+4	5822	19		brtst 4, __RLSBReturnVar, __RLSBytesCountVar
+4	5823	22		arrinit __RLSReadBufVar, __constVal0, __RLSBytesCountVar
+4	5824	26		brtst 5, __RLSBErrorVar, __RLSBResultVar
+4	5825	29		set __RLSBIterationsVar, 4
+4	5827	32	#pragma macro 23
+4	5827	32		acquire __CLSCSMutex0
+4	5827	33		acquire __CLSCSMutex1
+4	5827	34		acquire __CLSCSMutex2
+4	5827	35		acquire __CLSCSMutex3
+4	5827	36		mov __CLSCSArgs0.Port, __RLSReadPort
+4	5827	38		syscall 23, __CLSCSArgs0
+4	5827	41		mov __RLSBytesCountVar, __CLSCSArgs0.BytesReady
+4	5827	43		mov __RLSBResultVar, __CLSCSArgs0.Result
+4	5827	45		release __CLSCSMutex0
+4	5827	46		release __CLSCSMutex1
+4	5827	47		release __CLSCSMutex2
+4	5827	48		release __CLSCSMutex3
+4	5827	49	#line 5827 "NXTDefs.h"
+4	5828	49		sub __RLSBIterationsVar, __RLSBIterationsVar, __constVal1
+4	5829	53		brtst 2, __RLSBErrorVar, __RLSBIterationsVar
+4	5830	56		brtst 0, __RLSBErrorVar, __RLSBResultVar
+4	5831	59		brtst 4, __RLSBReadyToReadVar, __RLSBResultVar
+4	5833	62		wait 15
+4	5834	64		jmp __RLSBDoCheckStatusVar
+4	5837	66	#pragma macro 25
+4	5837	66		acquire __CLSRMutex0
+4	5837	67		acquire __CLSRMutex1
+4	5837	68		acquire __CLSRMutex2
+4	5837	69		acquire __CLSRMutex3
+4	5837	70		mov __CLSRArgs0.Port, __RLSReadPort
+4	5837	72		mov __CLSRArgs0.BufferLen, __RLSBytesCountVar
+4	5837	74		syscall 22, __CLSRArgs0
+4	5837	77		mov __RLSReadBufVar, __CLSRArgs0.Buffer
+4	5837	79		mov __RLSBResultVar, __CLSRArgs0.Result
+4	5837	81		release __CLSRMutex0
+4	5837	82		release __CLSRMutex1
+4	5837	83		release __CLSRMutex2
+4	5837	84		release __CLSRMutex3
+4	5837	85	#line 5837 "NXTDefs.h"
+4	5838	85		brtst 5, __RLSBErrorVar, __RLSBResultVar
+4	5839	88		mov __RLSLastGoodReadVar, __RLSReadBufVar
+4	5840	90		jmp __RLSBDoneVar
+4	5842	92		mov __RLSReadBufVar, __RLSLastGoodReadVar
+4	5844	94		arrsize __RLSBytesCountVar, __RLSReadBufVar
+4	5846	97		subret ____ReadLSBytesVar_return
+5	50	0	#line 50 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	51	0		arrinit __GetI2CByte_7qG2_inbuf_7qG2_000, __constVal0, __constVal2
+5	50	4	#line 50 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	50	4	#line 50 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	51	4	#line 51 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	52	4		set __signed_stack_001GetI2CByte, 0
+5	51	7	#line 51 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	52	7	#line 52 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	53	7		mov __DU0GetI2CByte, __GetI2CByte_7qG2_add_7qG2_000
+5	52	9	#line 52 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	53	9		replace __GetI2CByte_7qG2_inbuf_7qG2_000, __GetI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001GetI2CByte, __DU0GetI2CByte
+5	52	14	#line 52 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	52	14	#line 52 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	53	14		set __signed_stack_001GetI2CByte, 1
+5	52	17	#line 52 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	53	17	#line 53 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	17		mov __DU0GetI2CByte, __GetI2CByte_7qG2_reg_7qG2_000
+5	53	19	#line 53 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	19		replace __GetI2CByte_7qG2_inbuf_7qG2_000, __GetI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001GetI2CByte, __DU0GetI2CByte
+5	53	24	#line 53 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	24	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	24		set __GetI2CByte_7qG2_count_7qG2_000, 1
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	27	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	27	#pragma macro 23
+5	55	27		acquire __CLSCSMutex0
+5	55	28		acquire __CLSCSMutex1
+5	55	29		acquire __CLSCSMutex2
+5	55	30		acquire __CLSCSMutex3
+5	55	31		mov __CLSCSArgs0.Port, __GetI2CByte_7qG2_port_7qG2_000
+5	55	33		syscall 23, __CLSCSArgs0
+5	55	36		mov __D0GetI2CByte, __CLSCSArgs0.Result
+5	55	39		release __CLSCSMutex0
+5	55	40		release __CLSCSMutex1
+5	55	41		release __CLSCSMutex2
+5	55	42		release __CLSCSMutex3
+5	7958	43	#line 7958 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	54	43	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	43		mov __signed_stack_001GetI2CByte, __D0GetI2CByte
+5	54	45	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	45		set __D0GetI2CByte, 32
+5	54	48	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	48		cmp 4, __zfGetI2CByte, __signed_stack_001GetI2CByte, __D0GetI2CByte
+5	54	52	#line 54 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	52		mov __D0GetI2CByte, __zfGetI2CByte
+5	55	54	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	56	54		brtst 4, __NXC_Label_629, __zfGetI2CByte
+5	55	57	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	57	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	56	57		jmp __NXC_Label_628
+5	55	59	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	59	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	56	59	#pragma macro 28
+5	56	59		acquire __RLSBmutex0
+5	56	60		acquire __RLSBmutex1
+5	56	61		acquire __RLSBmutex2
+5	56	62		acquire __RLSBmutex3
+5	56	63		mov __RLSReadPort, __GetI2CByte_7qG2_port_7qG2_000
+5	56	65		mov __RLSReadBufVar, __GetI2CByte_7qG2_inbuf_7qG2_000
+5	56	67		mov __RLSBytesCountVar, __GetI2CByte_7qG2_count_7qG2_000
+5	56	69		subcall __ReadLSBytesVar, ____ReadLSBytesVar_return
+5	56	71		tst 4, __D0GetI2CByte, __RLSBResultVar
+5	56	74		mov __GetI2CByte_7qG2_count_7qG2_000, __RLSBytesCountVar
+5	56	76		mov __GetI2CByte_7qG2_outbuf_7qG2_000, __RLSReadBufVar
+5	56	78		release __RLSBmutex0
+5	56	79		release __RLSBmutex1
+5	56	80		release __RLSBmutex2
+5	56	81		release __RLSBmutex3
+5	7977	82	#line 7977 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	82	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	55	82	#line 55 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	56	82	#line 56 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	57	82		set __signed_stack_001GetI2CByte, 0
+5	56	85	#line 56 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	56	85	#line 56 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	57	85		index __ArrHelper__GetI2CByte_98_0, __GetI2CByte_7qG2_outbuf_7qG2_000, __signed_stack_001GetI2CByte
+5	56	89	#line 56 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	57	89	#line 57 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	57	89	#line 57 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	58	89	#line 58 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	59	89		mov __DU0GetI2CByte, __ArrHelper__GetI2CByte_98_0
+5	58	91	#line 58 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	59	91		subret __GetI2CByte_return
+5	58	93	#line 58 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	60	93	#line 60 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+5	61	93		subret __GetI2CByte_return
+6	80	0	#line 80 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	81	0		arrinit __WriteI2CByte_7qG2_inbuf_7qG2_000, __constVal0, __constVal3
+6	80	4	#line 80 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	80	4	#line 80 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	81	4	#line 81 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	82	4		set __signed_stack_001WriteI2CByte, 0
+6	81	7	#line 81 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	82	7	#line 82 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	83	7		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_add_7qG2_000
+6	82	9	#line 82 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	83	9		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	82	14	#line 82 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	82	14	#line 82 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	83	14		set __signed_stack_001WriteI2CByte, 1
+6	82	17	#line 82 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	83	17	#line 83 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	17		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_reg_7qG2_000
+6	83	19	#line 83 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	19		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	83	24	#line 83 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	83	24	#line 83 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	24		set __signed_stack_001WriteI2CByte, 2
+6	83	27	#line 83 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	27	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	27		mov __DU0WriteI2CByte, __WriteI2CByte_7qG2_data_7qG2_000
+6	84	29	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	29		replace __WriteI2CByte_7qG2_inbuf_7qG2_000, __WriteI2CByte_7qG2_inbuf_7qG2_000, __signed_stack_001WriteI2CByte, __DU0WriteI2CByte
+6	84	34	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	34	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	34	#pragma macro 23
+6	85	34		acquire __CLSCSMutex0
+6	85	35		acquire __CLSCSMutex1
+6	85	36		acquire __CLSCSMutex2
+6	85	37		acquire __CLSCSMutex3
+6	85	38		mov __CLSCSArgs0.Port, __WriteI2CByte_7qG2_port_7qG2_000
+6	85	40		syscall 23, __CLSCSArgs0
+6	85	43		mov __D0WriteI2CByte, __CLSCSArgs0.Result
+6	85	46		release __CLSCSMutex0
+6	85	47		release __CLSCSMutex1
+6	85	48		release __CLSCSMutex2
+6	85	49		release __CLSCSMutex3
+6	8279	50	#line 8279 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	84	50	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	50		mov __signed_stack_001WriteI2CByte, __D0WriteI2CByte
+6	84	52	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	52		set __D0WriteI2CByte, 32
+6	84	55	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	55		cmp 4, __zfWriteI2CByte, __signed_stack_001WriteI2CByte, __D0WriteI2CByte
+6	84	59	#line 84 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	59		mov __D0WriteI2CByte, __zfWriteI2CByte
+6	85	61	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	86	61		brtst 4, __NXC_Label_688, __zfWriteI2CByte
+6	85	64	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	64	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	86	64		jmp __NXC_Label_687
+6	85	66	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	66	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	86	66	#pragma macro 25
+6	86	66		acquire __CLSWMutex0
+6	86	67		acquire __CLSWMutex1
+6	86	68		acquire __CLSWMutex2
+6	86	69		acquire __CLSWMutex3
+6	86	70		mov __CLSWArgs0.Port, __WriteI2CByte_7qG2_port_7qG2_000
+6	86	72		mov __CLSWArgs0.ReturnLen, __constVal0
+6	86	74		mov __CLSWArgs0.Buffer, __WriteI2CByte_7qG2_inbuf_7qG2_000
+6	86	76		syscall 21, __CLSWArgs0
+6	86	79		mov __D0WriteI2CByte, __CLSWArgs0.Result
+6	86	82		release __CLSWMutex0
+6	86	83		release __CLSWMutex1
+6	86	84		release __CLSWMutex2
+6	86	85		release __CLSWMutex3
+6	8298	86	#line 8298 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	86	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	86	86		subret __WriteI2CByte_return
+6	85	88	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	85	88	#line 85 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	92	88	#line 92 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+6	93	88		subret __WriteI2CByte_return
+7	114	0	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	115	0		mov __WriteI2CByte_7qG2_port_7qG2_000, __RFIDDummy_7qG2_port_7qG2_000
+7	114	2	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	114	2	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	115	2		set __WriteI2CByte_7qG2_add_7qG2_000, 4
+7	114	5	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	114	5	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	115	5		set __WriteI2CByte_7qG2_reg_7qG2_000, 0
+7	114	8	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	114	8	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	115	8		set __WriteI2CByte_7qG2_data_7qG2_000, 0
+7	114	11	#line 114 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	115	11	#line 115 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	116	11		subcall WriteI2CByte, __WriteI2CByte_return
+7	115	13	#line 115 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	116	13		mov __D0RFIDDummy, __D0WriteI2CByte
+7	115	15	#line 115 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	116	15		subret __RFIDDummy_return
+7	115	17	#line 115 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	117	17	#line 117 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+7	118	17		subret __RFIDDummy_return
+8	119	0	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	120	0		mov __WriteI2CByte_7qG2_port_7qG2_000, __RFIDCommand_7qG2_port_7qG2_000
+8	119	2	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	119	2	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	120	2		set __WriteI2CByte_7qG2_add_7qG2_000, 4
+8	119	5	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	119	5	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	120	5		set __WriteI2CByte_7qG2_reg_7qG2_000, 65
+8	119	8	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	119	8	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	120	8		mov __WriteI2CByte_7qG2_data_7qG2_000, __RFIDCommand_7qG2_command_7qG2_000
+8	119	10	#line 119 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	120	10	#line 120 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	121	10		subcall WriteI2CByte, __WriteI2CByte_return
+8	120	12	#line 120 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	121	12		mov __D0RFIDCommand, __D0WriteI2CByte
+8	120	14	#line 120 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	121	14		subret __RFIDCommand_return
+8	120	16	#line 120 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	122	16	#line 122 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+8	123	16		subret __RFIDCommand_return
+9	130	0	#line 130 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	131	0		mov __RFIDDummy_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	130	2	#line 130 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	131	2	#line 131 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	132	2		subcall RFIDDummy, __RFIDDummy_return
+9	131	4	#line 131 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	132	4		mov __D0GetRFIDArray, __D0RFIDDummy
+9	131	6	#line 131 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	132	6	#line 132 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	133	6		mov __DU0GetRFIDArray, __GetRFIDArray_7qG2_continuous_7qG2_000
+9	133	8	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	8		tst 5, __zfGetRFIDArray, __DU0GetRFIDArray
+9	133	11	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	11		brtst 4, __NXC_Label_736, __zfGetRFIDArray
+9	133	14	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	14		mov __RFIDCommand_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	133	16	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	133	16	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	16		set __RFIDCommand_7qG2_command_7qG2_000, 2
+9	133	19	#line 133 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	19	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	19		subcall RFIDCommand, __RFIDCommand_return
+9	134	21	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	21		mov __D0GetRFIDArray, __D0RFIDCommand
+9	134	23	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	23	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	23		mov __GetI2CByte_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	134	25	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	25	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	25		set __GetI2CByte_7qG2_add_7qG2_000, 4
+9	134	28	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	134	28	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	28		set __GetI2CByte_7qG2_reg_7qG2_000, 50
+9	134	31	#line 134 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	31	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	31		subcall GetI2CByte, __GetI2CByte_return
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	33	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	33		mov __unsigned_stack_001GetRFIDArray, __DU0GetI2CByte
+9	135	35	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	135	35	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	35		set __D0GetRFIDArray, 0
+9	135	38	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	38		cmp 4, __zfGetRFIDArray, __unsigned_stack_001GetRFIDArray, __D0GetRFIDArray
+9	135	42	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	42		mov __D0GetRFIDArray, __zfGetRFIDArray
+9	135	44	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	44		brtst 4, __NXC_Label_751, __zfGetRFIDArray
+9	135	47	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	136	47		set __Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray, 250
+9	135	50	#line 135 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	7921	50	#line 7921 "NXCDefs.h"
+9	7922	50		wait 250
+9	7921	52	#line 7921 "NXCDefs.h"
+9	136	52	#line 136 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	137	52	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	52		set __GetRFIDArray_7qG2_i_7qG2_001, 0
+9	137	55	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	137	55	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	55		mov __signed_stack_001GetRFIDArray, __GetRFIDArray_7qG2_i_7qG2_001
+9	137	57	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	137	57	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	57		set __D0GetRFIDArray, 5
+9	137	60	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	60		cmp 0, __zfGetRFIDArray, __signed_stack_001GetRFIDArray, __D0GetRFIDArray
+9	137	64	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	64		mov __D0GetRFIDArray, __zfGetRFIDArray
+9	137	66	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	66		brtst 4, __NXC_Label_755, __zfGetRFIDArray
+9	137	69	#line 137 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	138	69		jmp __NXC_Label_756
+9	138	71	#line 138 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	71		add __GetRFIDArray_7qG2_i_7qG2_001, __GetRFIDArray_7qG2_i_7qG2_001, __constVal1
+9	139	75	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	75		jmp __NXC_Label_754
+9	139	77	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	77		mov __signed_stack_001GetRFIDArray, __GetRFIDArray_7qG2_i_7qG2_001
+9	139	79	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	79	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	79		mov __GetI2CByte_7qG2_port_7qG2_000, __GetRFIDArray_7qG2_port_7qG2_000
+9	139	81	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	81	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	81		set __GetI2CByte_7qG2_add_7qG2_000, 4
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	139	84	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	84		add __GetI2CByte_7qG2_reg_7qG2_000, __constVal66, __GetRFIDArray_7qG2_i_7qG2_001
+9	139	88	#line 139 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	140	88	#line 140 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	141	88		subcall GetI2CByte, __GetI2CByte_return
+9	140	90	#line 140 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	141	90		mov __DU0GetRFIDArray, __DU0GetI2CByte
+9	140	92	#line 140 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	141	92		replace __GetRFIDArray_7qG2_d_7qG2_000, __GetRFIDArray_7qG2_d_7qG2_000, __signed_stack_001GetRFIDArray, __DU0GetRFIDArray
+9	140	97	#line 140 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	141	97	#line 141 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	142	97		jmp __NXC_Label_757
+9	141	99	#line 141 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	141	99	#line 141 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	142	99		set __Wait_7qG2_ms_7qG2_000_inline_GetRFIDArray, 200
+9	141	102	#line 141 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	7921	102	#line 7921 "NXCDefs.h"
+9	7922	102		wait 200
+9	7921	104	#line 7921 "NXCDefs.h"
+9	142	104	#line 142 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	144	104	#line 144 "C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc"
+9	145	104		subret __GetRFIDArray_return
+10	84	0	#line 84 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	85	0	#pragma macro 25
+10	85	0		acquire __CLSWMutex0
+10	85	1		set __CLSWArgs0.Port, 0
+10	85	4		mov __CLSWArgs0.ReturnLen, __constVal65
+10	85	6		mov __CLSWArgs0.Buffer, __constVal0
+10	85	8		syscall 21, __CLSWArgs0
+10	85	11		mov __D0TASK_sonarSensor, __CLSWArgs0.Result
+10	85	14		release __CLSWMutex0
+10	9123	15	#line 9123 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	84	15	#line 84 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	84	15	#line 84 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	86	15	#line 86 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	87	15		set __D0TASK_sonarSensor, 1
+10	88	18	#line 88 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	89	18		tst 5, __zfTASK_sonarSensor, __D0TASK_sonarSensor
+10	88	21	#line 88 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	89	21		brtst 4, __NXC_Label_831, __zfTASK_sonarSensor
+10	88	24	#line 88 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	89	24	#pragma macro 25
+10	89	24		acquire __CLSWMutex0
+10	89	25		set __CLSWArgs0.Port, 0
+10	89	28		mov __CLSWArgs0.ReturnLen, __constVal65
+10	89	30		mov __CLSWArgs0.Buffer, __constVal3
+10	89	32		syscall 21, __CLSWArgs0
+10	89	35		mov __D0TASK_sonarSensor, __CLSWArgs0.Result
+10	89	38		release __CLSWMutex0
+10	9136	39	#line 9136 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	88	39	#line 88 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	88	39	#line 88 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	89	39	#line 89 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	90	39	#pragma macro 26
+10	90	39		acquire __RLSBmutex0
+10	90	40		mov __RLSReadBuf0, __RLSBbufLSWrite1
+10	90	42		set __RLSBytesCount0, 1
+10	90	45		wait 15
+10	90	47		subcall __ReadLSBytes0, ____ReadLSBytes0_return
+10	90	49		index __D0TASK_sonarSensor, __RLSReadBuf0, 65535
+10	90	53		release __RLSBmutex0
+10	9144	54	#line 9144 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	89	54	#line 89 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	90	54	#line 90 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	90	54	#line 90 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	7921	54	#line 7921 "NXCDefs.h"
+10	7922	54		wait 50
+10	7921	56	#line 7921 "NXCDefs.h"
+10	91	56	#line 91 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	91	56	#line 91 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	92	56	#pragma macro 25
+10	92	56		acquire __CLSWMutex0
+10	92	57		set __CLSWArgs0.Port, 0
+10	92	60		mov __CLSWArgs0.ReturnLen, __constVal65
+10	92	62		mov __CLSWArgs0.Buffer, __constVal0
+10	92	64		syscall 21, __CLSWArgs0
+10	92	67		mov __D0TASK_sonarSensor, __CLSWArgs0.Result
+10	92	70		release __CLSWMutex0
+10	9164	71	#line 9164 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	91	71	#line 91 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	91	71	#line 91 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	98	71	#line 98 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	99	71		acquire gStrategyMutex
+10	98	72	#line 98 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	99	72	#line 99 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	100	72		release gStrategyMutex
+10	99	73	#line 99 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	106	73	#line 106 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	107	73		jmp __NXC_Label_830
+10	106	75	#line 106 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+10	107	75		exit -1, -1
+11	108	0	#line 108 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	109	0		set __RFIDDummy_7qG2_port_7qG2_000, 3
+11	108	3	#line 108 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	110	3	#line 110 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	111	3		subcall RFIDDummy, __RFIDDummy_return
+11	110	5	#line 110 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	111	5		mov __D0TASK_rfidSensor, __D0RFIDDummy
+11	110	7	#line 110 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	111	7	#line 111 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	112	7		arrinit __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __constVal0, __constVal5
+11	111	11	#line 111 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	112	11		set __D0TASK_rfidSensor, 1
+11	112	14	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	113	14		tst 5, __zfTASK_rfidSensor, __D0TASK_rfidSensor
+11	112	17	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	113	17		brtst 4, __NXC_Label_841, __zfTASK_rfidSensor
+11	112	20	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	113	20		set __GetRFIDArray_7qG2_port_7qG2_000, 3
+11	112	23	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	112	23	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	113	23		mov __GetRFIDArray_7qG2_d_7qG2_000, __TASK_rfidSensor_7qG2_rfidData_7qG2_000
+11	112	25	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	113	25		set __GetRFIDArray_7qG2_continuous_7qG2_000, 1
+11	112	28	#line 112 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	114	28	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	28		subcall GetRFIDArray, __GetRFIDArray_return
+11	114	30	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	30		mov __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __GetRFIDArray_7qG2_d_7qG2_000
+11	114	32	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	114	32	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	32		set __signed_stack_001TASK_rfidSensor, 0
+11	114	35	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	114	35	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	35		index __ArrHelper__TASK_rfidSensor_98_0, __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __signed_stack_001TASK_rfidSensor
+11	114	39	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	39		mov __unsigned_stack_001TASK_rfidSensor, __ArrHelper__TASK_rfidSensor_98_0
+11	114	41	#line 114 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	41	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	41		set __signed_stack_002TASK_rfidSensor, 1
+11	115	44	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	44	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	44		index __ArrHelper__TASK_rfidSensor_98_0, __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_rfidSensor
+11	115	48	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	115	48	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	48		add __unsigned_stack_001TASK_rfidSensor, __unsigned_stack_001TASK_rfidSensor, __ArrHelper__TASK_rfidSensor_98_0
+11	115	52	#line 115 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	52	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	52		set __signed_stack_002TASK_rfidSensor, 2
+11	116	55	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	55	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	55		index __ArrHelper__TASK_rfidSensor_98_0, __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_rfidSensor
+11	116	59	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	116	59	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	59		add __unsigned_stack_001TASK_rfidSensor, __unsigned_stack_001TASK_rfidSensor, __ArrHelper__TASK_rfidSensor_98_0
+11	116	63	#line 116 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	63	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	118	63		set __signed_stack_002TASK_rfidSensor, 3
+11	117	66	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	66	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	118	66		index __ArrHelper__TASK_rfidSensor_98_0, __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_rfidSensor
+11	117	70	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	117	70	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	118	70		add __unsigned_stack_001TASK_rfidSensor, __unsigned_stack_001TASK_rfidSensor, __ArrHelper__TASK_rfidSensor_98_0
+11	117	74	#line 117 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	119	74	#line 119 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	120	74		set __signed_stack_002TASK_rfidSensor, 4
+11	119	77	#line 119 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	119	77	#line 119 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	120	77		index __ArrHelper__TASK_rfidSensor_98_0, __TASK_rfidSensor_7qG2_rfidData_7qG2_000, __signed_stack_002TASK_rfidSensor
+11	119	81	#line 119 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	120	81	#line 120 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	121	81		add __TASK_rfidSensor_7qG2_dataSum_7qG2_001, __unsigned_stack_001TASK_rfidSensor, __ArrHelper__TASK_rfidSensor_98_0
+11	120	85	#line 120 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	120	85	#line 120 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	120	85	#line 120 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	7921	85	#line 7921 "NXCDefs.h"
+11	7922	85		wait 50
+11	7921	87	#line 7921 "NXCDefs.h"
+11	122	87	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	122	87	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	123	87		mov __signed_stack_001TASK_rfidSensor, __TASK_rfidSensor_7qG2_dataSum_7qG2_001
+11	122	89	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	122	89	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	123	89		set __D0TASK_rfidSensor, 0
+11	122	92	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	123	92		cmp 1, __zfTASK_rfidSensor, __signed_stack_001TASK_rfidSensor, __D0TASK_rfidSensor
+11	122	96	#line 122 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	123	96		mov __D0TASK_rfidSensor, __zfTASK_rfidSensor
+11	123	98	#line 123 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	124	98		brtst 4, __NXC_Label_864, __zfTASK_rfidSensor
+11	124	101	#line 124 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	101		acquire gScoreMutex
+11	124	102	#line 124 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	102	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	126	102		add gFoodCount, gFoodCount, __constVal1
+11	125	106	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	106	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	126	106		set __signed_stack_001TASK_rfidSensor, 220
+11	125	109	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	109	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	126	109		set __signed_stack_002TASK_rfidSensor, 250
+11	125	112	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	112	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	126	112		set __signed_stack_003TASK_rfidSensor, 4
+11	125	115	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	125	115	#line 125 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	126	115		set __D0TASK_rfidSensor, 0
+11	126	118	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	118		acquire __SPTArgsMutex
+11	126	119	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	119		mov __SPTArgs.Frequency, __signed_stack_001TASK_rfidSensor
+11	126	122	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	122		mov __SPTArgs.Duration, __signed_stack_002TASK_rfidSensor
+11	126	125	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	125		mov __SPTArgs.Volume, __signed_stack_003TASK_rfidSensor
+11	126	128	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	128		mov __SPTArgs.Loop, __D0TASK_rfidSensor
+11	126	131	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	131		syscall 10, __SPTArgs
+11	126	134	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	134		mov __D0TASK_rfidSensor, __SPTArgs.Result
+11	126	137	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	137		release __SPTArgsMutex
+11	126	138	#line 126 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	127	138	#line 127 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	128	138		release gScoreMutex
+11	127	139	#line 127 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	129	139	#line 129 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	135	139	#line 135 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	136	139		jmp __NXC_Label_840
+11	135	141	#line 135 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+11	136	141		exit -1, -1
+12	137	0	#line 137 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	138	0		set __D0TASK_colorSensor, 1
+12	143	3	#line 143 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	144	3		tst 5, __zfTASK_colorSensor, __D0TASK_colorSensor
+12	143	6	#line 143 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	144	6		brtst 4, __NXC_Label_874, __zfTASK_colorSensor
+12	148	9	#line 148 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	149	9	#pragma macro 32
+12	149	9		acquire __RLSBmutex2
+12	149	10		mov __RLSReadBuf2, __RLSBbufLSWrite1
+12	149	12		set __RLSBytesCount2, 4
+12	149	15		subcall __ReadLSBytes2, ____ReadLSBytes2_return
+12	149	17		tst 4, __D0TASK_colorSensor, __RLSBResult2
+12	149	20		index __TASK_colorSensor_7qG2_colorNum_7qG2_001, __RLSReadBuf2, 65535
+12	149	24		index __TASK_colorSensor_7qG2_blue_7qG2_001, __RLSReadBuf2, __constVal3
+12	149	28		release __RLSBmutex2
+12	9414	29	#line 9414 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	148	29	#line 148 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	149	29	#line 149 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	149	29	#line 149 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	7921	29	#line 7921 "NXCDefs.h"
+12	7922	29		wait 50
+12	7921	31	#line 7921 "NXCDefs.h"
+12	151	31	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	151	31	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	152	31		mov __unsigned_stack_001TASK_colorSensor, __TASK_colorSensor_7qG2_colorNum_7qG2_001
+12	151	33	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	151	33	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	152	33		set __D0TASK_colorSensor, 0
+12	151	36	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	152	36		cmp 1, __zfTASK_colorSensor, __unsigned_stack_001TASK_colorSensor, __D0TASK_colorSensor
+12	151	40	#line 151 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	152	40		mov __D0TASK_colorSensor, __zfTASK_colorSensor
+12	153	42	#line 153 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	154	42		brtst 4, __NXC_Label_883, __zfTASK_colorSensor
+12	6069	45	#line 6069 "NXCDefs.h"
+12	6070	45	#pragma macro 6
+12	6070	45		acquire __PointOutMutex
+12	6070	46		mov __PointOutArgs.Location.X, __constVal200
+12	6070	48		mov __PointOutArgs.Location.Y, __constVal200
+12	6070	50		mov __PointOutArgs.Options, __constVal1
+12	6070	52		syscall 14, __PointOutArgs
+12	6070	55		release __PointOutMutex
+12	9448	56	#line 9448 "NXCDefs.h"
+12	6069	56	#line 6069 "NXCDefs.h"
+12	154	56	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	154	56	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	155	56		set __signed_stack_001TASK_colorSensor, 4
+12	154	59	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	154	59	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	155	59		set __signed_stack_002TASK_colorSensor, 48
+12	154	62	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	154	62	#line 154 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	155	62		mov __DU0TASK_colorSensor, __TASK_colorSensor_7qG2_blue_7qG2_001
+12	157	64	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	64		acquire __TextOutMutex
+12	157	65	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	65		mov __TextOutArgs.Location.X, __signed_stack_001TASK_colorSensor
+12	157	68	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	68		mov __TextOutArgs.Location.Y, __signed_stack_002TASK_colorSensor
+12	157	71	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	71		set __TextOutArgs.Options, 0
+12	157	74	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	74		numtostr __TextOutArgs.Text, __DU0TASK_colorSensor
+12	157	77	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	77		syscall 13, __TextOutArgs
+12	157	80	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	80		mov __D0TASK_colorSensor, __TextOutArgs.Result
+12	157	83	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	83		release __TextOutMutex
+12	157	84	#line 157 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	158	84	#line 158 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	84		acquire gScoreMutex
+12	158	85	#line 158 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	85	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	160	85		add gFoodCount, gFoodCount, __constVal1
+12	159	89	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	89	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	160	89		set __signed_stack_001TASK_colorSensor, 880
+12	159	92	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	92	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	160	92		set __signed_stack_002TASK_colorSensor, 100
+12	159	95	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	95	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	160	95		set __signed_stack_003TASK_colorSensor, 4
+12	159	98	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	159	98	#line 159 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	160	98		set __D0TASK_colorSensor, 0
+12	160	101	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	101		acquire __SPTArgsMutex
+12	160	102	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	102		mov __SPTArgs.Frequency, __signed_stack_001TASK_colorSensor
+12	160	104	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	104		mov __SPTArgs.Duration, __signed_stack_002TASK_colorSensor
+12	160	106	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	106		mov __SPTArgs.Volume, __signed_stack_003TASK_colorSensor
+12	160	109	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	109		mov __SPTArgs.Loop, __D0TASK_colorSensor
+12	160	112	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	112		syscall 10, __SPTArgs
+12	160	115	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	115		mov __D0TASK_colorSensor, __SPTArgs.Result
+12	160	118	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	161	118		release __SPTArgsMutex
+12	160	119	#line 160 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	162	119	#line 162 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	163	119		release gScoreMutex
+12	162	120	#line 162 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	164	120	#line 164 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	175	120	#line 175 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	176	120		jmp __NXC_Label_873
+12	175	122	#line 175 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+12	176	122		exit -1, -1
+13	178	0	#line 178 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	179	0		set __TASK_movement_7qG2_cruiseSpeed_7qG2_000, 100
+13	178	3	#line 178 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	179	3	#line 179 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	180	3		mov __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __constVal100
+13	179	5	#line 179 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	181	5	#line 181 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	182	5		mov __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+13	181	7	#line 181 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	181	7	#line 181 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	182	7		set __D0TASK_movement, 1
+13	182	10	#line 182 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	183	10		tst 5, __zfTASK_movement, __D0TASK_movement
+13	182	13	#line 182 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	183	13		brtst 4, __NXC_Label_905, __zfTASK_movement
+13	184	16	#line 184 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	185	16		acquire gStrategyMutex
+13	184	17	#line 184 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	186	17	#line 186 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	186	17	#line 186 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	186	17	#line 186 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	186	17	#line 186 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	187	17		mov __D0TASK_movement, __constVal666
+13	190	19		brcmp 4, __NXC_Label_913, __constVal0, __D0TASK_movement
+13	191	23		jmp __NXC_Label_922
+13	192	25		jmp __NXC_Label_912
+13	188	27	#line 188 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	189	27	#line 189 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	190	27		mov __TASK_movement_7qG2_rightWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+13	189	29	#line 189 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	189	29	#line 189 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	190	29	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	191	29		mov __TASK_movement_7qG2_leftWheelSpeed_7qG2_000, __TASK_movement_7qG2_cruiseSpeed_7qG2_000
+13	190	31	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	190	31	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	190	31	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	191	31		mov __signed_stack_001TASK_movement, __TASK_movement_7qG2_rightWheelSpeed_7qG2_000
+13	190	33	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	190	33	#line 190 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	191	33		set __D0TASK_movement, 2
+13	191	36	#line 191 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	192	36	#pragma macro 7
+13	192	36		setout __OUT_AC, 2, __signed_stack_001TASK_movement, 1, __constVal7, 8, __D0TASK_movement, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+13	9624	59	#line 9624 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	191	59	#line 191 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	192	59	#line 192 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	193	59		jmp __NXC_Label_912
+13	192	61	#line 192 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	193	61	#line 193 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	194	61	#line 194 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	194	61	#line 194 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	196	61	#line 196 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	197	61	#line 197 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	198	61		release gStrategyMutex
+13	197	62	#line 197 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	197	62	#line 197 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	197	62	#line 197 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	7921	62	#line 7921 "NXCDefs.h"
+13	7922	62		wait 10
+13	7921	64	#line 7921 "NXCDefs.h"
+13	198	64	#line 198 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	203	64	#line 203 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	204	64		jmp __NXC_Label_904
+13	203	66	#line 203 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+13	204	66		exit -1, -1
+14	227	0	#line 227 "C:\Users\student\Desktop\Lab04\Lab04.nxc"
+14	228	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\student\Desktop\Lab04\Lab04.nxc
+1	__ResetSensorSubroutine	134	NXTDefs.h
+2	__ReadLSBytes0	147	NXTDefs.h
+3	__ReadLSBytes2	231	NXTDefs.h
+4	__ReadLSBytesVar	315	NXTDefs.h
+5	GetI2CByte	414	C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc
+6	WriteI2CByte	509	C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc
+7	RFIDDummy	599	C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc
+8	RFIDCommand	618	C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc
+9	GetRFIDArray	636	C:\Users\student\Desktop\Lab04\.\RFIDlib.nxc
+10	TASK_sonarSensor	742	C:\Users\student\Desktop\Lab04\Lab04.nxc
+11	TASK_rfidSensor	820	C:\Users\student\Desktop\Lab04\Lab04.nxc
+12	TASK_colorSensor	964	C:\Users\student\Desktop\Lab04\Lab04.nxc
+13	TASK_movement	1089	C:\Users\student\Desktop\Lab04\Lab04.nxc
+14	__initialize_global_data	1158	C:\Users\student\Desktop\Lab04\Lab04.nxc

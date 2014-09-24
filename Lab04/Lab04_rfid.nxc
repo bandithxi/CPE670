@@ -1,0 +1,27 @@
+/**
+ *
+ */
+task TASK_rfidSensor() {
+   // send dummy command to wake up sensor
+   RFIDDummy(RFID_SENSOR);
+
+   byte rfidData[5];
+   while (true) {
+      GetRFIDArray(RFID_SENSOR, rfidData, true);
+
+      int dataSum = rfidData[0] +
+                    rfidData[1] +
+                    rfidData[2] +
+                    rfidData[3] +
+                    rfidData[4]
+      ;
+      Wait(MS_50);
+      
+      if (dataSum > 0) {
+         Acquire(gScoreMutex);
+         gFoodCount++;
+         PlayTone(TONE_A3, MS_250);
+         Release(gScoreMutex);
+      }
+   }
+}
