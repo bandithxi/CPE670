@@ -1,3 +1,13 @@
+#ifndef __LAB04_SONAR_NXC__
+#define __LAB04_SONAR_NXC__
+
+
+#define RIGHT_SONAR IN_1
+#define LEFT_SONAR 666
+
+#define NO_OBSTACLE 255
+
+
 /**
  * Creates a thread that will be responsible for detecting when the
  * touch sensors are activated and determining the appropriate
@@ -22,3 +32,5 @@ task TASK_sonarSensor() {
           Release(gStrategyMutex);
     }
 }
+
+#endif //__LAB04_SONAR_NXC__

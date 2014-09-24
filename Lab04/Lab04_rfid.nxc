@@ -1,27 +1,55 @@
+#ifndef __LAB04_RFID_NXC__
+#define __LAB04_RFID_NXC__
+
+#include "RFIDlib.nxc"
+
+#define RFID_SENSOR IN_4
+
+
+#define NO_RFID_DATA -1
+mutex gRfidReadingLock;
+int gRfidReading = NO_RFID_DATA;
+
+task TASK_rfidSensor();
+void updateRfidReading();
+
 /**
  *
  */
 task TASK_rfidSensor() {
-   // send dummy command to wake up sensor
-   RFIDDummy(RFID_SENSOR);
+  // send dummy command to wake up sensor
+  RFIDDummy(RFID_SENSOR);
 
-   byte rfidData[5];
-   while (true) {
-      GetRFIDArray(RFID_SENSOR, rfidData, true);
-
-      int dataSum = rfidData[0] +
-                    rfidData[1] +
-                    rfidData[2] +
-                    rfidData[3] +
-                    rfidData[4]
-      ;
-      Wait(MS_50);
-      
-      if (dataSum > 0) {
-         Acquire(gScoreMutex);
-         gFoodCount++;
-         PlayTone(TONE_A3, MS_250);
-         Release(gScoreMutex);
-      }
-   }
+  while (true) {
+    updateRfidReading();
+  }
 }
+
+
+/**
+ *
+ */
+void updateRfidReading() {
+  byte rfidData[5];
+  
+  GetRFIDArray(RFID_SENSOR, rfidData, true);
+  int dataSum = rfidData[0] +
+                rfidData[1] +
+                rfidData[2] +
+                rfidData[3] +
+                rfidData[4]
+  ;
+  Wait(MS_50);
+
+  Acquire(gRfidReadingLock);
+  if (dataSum > 0) {
+    gRfidReading = dataSum;
+    PlayTone(TONE_A3, MS_250);
+
+  } else {
+    gRfidReading = NO_RFID_DATA;
+  }
+  Release(gRfidReadingLock);
+}
+
+#endif //__LAB04_RFID_NXC__
