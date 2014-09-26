@@ -2,54 +2,48 @@
 #define __LAB04_COLOR_NXC__
 
 
-
-
 #define COLOR_SENSOR IN_3
 
+#define HOME_BLACK 4
+#define FEILD_WHITE 13
 
+
+// we might be able to use RGB values to somehow compensate for poor
+// color number results
 typedef struct {
+  byte colorNum;
   byte red;
   byte green;
   byte blue;
-} RGBval;
+} ColorVal;
+
+
+mutex gColorMutex;
+ColorVal gColorReading;
+
 
 /**
  *
  */
 task TASK_colorSensor() {
 
-   while (true) {
-    // int x = SensorHTColorNum(COLOR_SENSOR);
-      
-      
-    // we might be able to use RGB values to somehow compensate for ppor
-    // color number results
-    byte colorNum;
-    byte red;
-    byte green;
-    byte blue;
-      
+  while (true) {
+    Acquire(gColorMutex);
+
     bool readSuccess = ReadSensorHTColor(
       COLOR_SENSOR,
-      colorNum,
-      red,
-      green,
-      blue
+      gColorReading.colorNum,
+      gColorReading.red,
+      gColorReading.green,
+      gColorReading.blue
     );
     Wait(MS_50);
-      
-    if (colorNum > 0) {
 
-      ClearScreen();
-      NumOut(4, LCD_LINE2, blue);
-
-
-      Acquire(gScoreMutex);
-      gFoodCount++;
-      PlayTone(TONE_A5, MS_100);
-      Release(gScoreMutex);
-
+    if (gColorReading.colorNum != HOME_BLACK && gColorReading.colorNum != FEILD_WHITE) {
+      PlayTone(TONE_A5, MS_250);
     }
+
+    Release(gColorMutex);
   }
 }
 

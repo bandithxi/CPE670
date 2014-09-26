@@ -1,19 +1,6 @@
 #ifndef __LAB04_CONTROLLER_NXC__
 #define __LAB04_CONTROLLER_NXC__
 
-/**
- *  Configurations
- */
-
-
-
-
-
-
-
-
-#define CLOSE_RANGE 12 // in cm(ish)
-
 
 /**
  * An enumeration of control strategy values.
@@ -26,15 +13,6 @@
 
 #define GATHER 0
 #define EGRESS 1
-
-
-/**
- * Constants for convenient use of the blockingMove() type methods.
- */
-
-
-
-
 
 
 /**
@@ -56,11 +34,32 @@ int gFoodCount = 0;
 
 
 
+task main();
+task TASK_controller();
+void gatherFood();
+void goHome();
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+     Precedes(
+              TASK_controller,
+              TASK_sonarSensor,
+              TASK_rfidSensor,
+              TASK_colorSensor
+     );
+
+     SetSensorUltrasonic(RIGHT_SONAR);
+     SetSensorLowspeed(RFID_SENSOR);
+     SetSensorLowspeed(COLOR_SENSOR);
+}
 
 
 
 void gatherFood() {
-
+  int turnMagnitude = 
 }
 
 void goHome() {
@@ -73,56 +72,20 @@ void goHome() {
  * detects an obstacle. The thread waits until other tasks are
  * finished using the wheel motors before resuming forward movement.
  */
-task TASK_movement() {
-     int cruiseSpeed = FULL_SPEED;
+task TASK_controller() {
+  while (!timeToGoHome) {
+    gatherFood();
+  }
 
-     int rightWheelSpeed = cruiseSpeed;
-     int leftWheelSpeed = cruiseSpeed;
-
-     while (true) {
-           Acquire(gStrategyMutex);
-
-           gStrategy = 666;
-
-           switch(gStrategy) {
-                case PROCEED:
-                     rightWheelSpeed = cruiseSpeed;
-                     leftWheelSpeed = cruiseSpeed;
-                     OnFwdReg(BOTH_WHEELS, rightWheelSpeed, OUT_REGMODE_SYNC);
-                     break;
-                default:
-                     break;
-           }
-           
-           Release(gStrategyMutex);
-           Wait(MS_10);
-    }
+  goHome();
 }
 
 
 
-task TASK_contestTimer() {
-    Wait(MIN_1);
-    PlayTone(1000, MS_250);
-}
 
 
-/**
- * Creates the thread responsible for initializing the robot.
- */
-task main() {
-     Precedes(
-              TASK_movement,
-              TASK_sonarSensor,
-              TASK_rfidSensor,
-              TASK_colorSensor
-     );
-     
 
-     SetSensorUltrasonic(RIGHT_SONAR);
-     SetSensorLowspeed(RFID_SENSOR);
-     SetSensorLowspeed(COLOR_SENSOR);
-}
+
 
 
 #endif //__LAB04_CONTROLLER_NXC__

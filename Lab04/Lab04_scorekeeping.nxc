@@ -1,0 +1,12 @@
+#ifndef __LAB04_SCOREKEEPING_NXC__
+#define __LAB04_SCOREKEEPING_NXC__
+
+int gColorFoodCount;
+int gRfFoodCount;
+
+task TASK_scoreKeeping() {
+    Wait(MIN_1);
+    PlayTone(1000, MS_250);
+}
+
+#endif //__LAB04_SCOREKEEPING_NXC__

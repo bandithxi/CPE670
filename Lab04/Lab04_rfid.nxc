@@ -44,7 +44,7 @@ void updateRfidReading() {
   Acquire(gRfidReadingLock);
   if (dataSum > 0) {
     gRfidReading = dataSum;
-    PlayTone(TONE_A3, MS_250);
+    PlayTone(TONE_C5, MS_250);
 
   } else {
     gRfidReading = NO_RFID_DATA;
