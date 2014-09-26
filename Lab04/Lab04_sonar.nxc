@@ -5,8 +5,20 @@
 #define RIGHT_SONAR IN_1
 #define LEFT_SONAR 666
 
-#define NO_OBSTACLE 255
+#define NEAR_THRESHOLD 9 // in cm (ish)
 
+#define OBJECT_ON_RIGHT 0
+#define OBJECT_ON_LEFT 1
+#define NO_OBJECT 255
+
+
+mutex gSonarMutex;
+bool gObstacleOnRight = false;
+bool gObstacleOnLeft = false;
+
+
+task TASK_sonarSensor();
+int readSonarSensor();
 
 /**
  * Creates a thread that will be responsible for detecting when the
@@ -16,21 +28,30 @@
 task TASK_sonarSensor() {
     // start with sensors de-activated for good measure
     I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+    I2CWrite(LEFT_SONAR, 0x41, 0x00);
      
     while (true) {
-          // turn on, read from the sensor, turn off
-          I2CWrite(RIGHT_SONAR, 0x41, 0x03);
-          int rightBuffer = SensorUS(RIGHT_SONAR);
-          Wait(MS_50);
-          I2CWrite(RIGHT_SONAR, 0x41, 0x00);
-          
-          
-          Acquire(gStrategyMutex);
+      byte rightReading = readSonarSensor(RIGHT_SONAR);
+      byte leftReading = readSonarSensor(LEFT_SONAR);
 
-
-
-          Release(gStrategyMutex);
+      Acquire(gSonarMutex);
+      gObstacleOnRight = rightReading <= NEAR_THRESHOLD;
+      gObstacleOnLeft = leftReading <= NEAR_THRESHOLD;
+      Release(gSonarMutex);    
     }
+}
+
+
+byte readSonarSensor(byte pSensorPort) {
+  I2CWrite(pSensorPort, 0x41, 0x00);
+  I2CWrite(RIGHT_SONAR, 0x41, 0x03);
+
+  byte reading = SensorUS(pSensorPort);
+  Wait(MS_50);
+  
+  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+
+  return reading;
 }
 
 #endif //__LAB04_SONAR_NXC__

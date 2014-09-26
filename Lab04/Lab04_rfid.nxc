@@ -5,8 +5,8 @@
 
 #define RFID_SENSOR IN_4
 
-
 #define NO_RFID_DATA -1
+
 mutex gRfidReadingLock;
 int gRfidReading = NO_RFID_DATA;
 

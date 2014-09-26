@@ -20,7 +20,7 @@
 #define MODERATE_SPEED 75
 #define SLOW_SPEED 50
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT MS_200
+#define TIME_PER_UNIT MS_200 // time to move half of a "car length"
 
 
 void setWheelMotion(bool pDirection) {
@@ -92,7 +92,6 @@ void stationaryTurn(bool pDirection, int pTurnMagnitude) {
 
 	Off(BOTH_WHEELS);
 }
-
 
 
 #endif //__TEAM_1_MOVEMENTLIB_NXC__

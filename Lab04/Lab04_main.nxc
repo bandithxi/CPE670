@@ -38,6 +38,7 @@ task main();
 task TASK_controller();
 void gatherFood();
 void goHome();
+void playVictorySong();
 
 
 /**
@@ -57,16 +58,6 @@ task main() {
 }
 
 
-
-void gatherFood() {
-  int turnMagnitude = 
-}
-
-void goHome() {
-  
-}
-
-
 /**
  * Creates a thread that simply makes the robot move until a sensor
  * detects an obstacle. The thread waits until other tasks are
@@ -80,6 +71,37 @@ task TASK_controller() {
   goHome();
 }
 
+
+void gatherFood() {
+
+}
+
+
+void goHome() {
+  bool atHome = false;
+
+  while (!atHome) {
+    Acquire(gColorMutex);
+
+
+
+    Release(gColorMutex);
+  }
+
+  stopWheels();
+
+  playVictorySong();
+}
+
+
+
+
+void playVictorySong() {
+  PlayTone(TONE_A4, MS_100);
+  PlayTone(TONE_B4, MS_100);
+  PlayTone(TONE_C4, MS_100);
+  PlayTone(TONE_D4, MS_500);
+}
 
 
 
