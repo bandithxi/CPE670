@@ -1,0 +1,71 @@
+#ifndef __LAB04_COLOR_NXC__
+#define __LAB04_COLOR_NXC__
+
+#define COLOR_SENSOR IN_3
+
+#define HOME_BLACK 0
+#define FEILD_WHITE 13
+
+// we might be able to use RGB values to somehow compensate for poor
+// color number results
+typedef struct {
+  byte colorNum;
+  byte red;
+  byte green;
+  byte blue;
+} ColorVal;
+
+mutex gColorMutex;
+ColorVal gColorReading;
+
+bool readingIsNotErroneous(const ColorVal& pNewReading);
+
+
+/**
+ *
+ */
+task TASK_colorSensor() {
+  while (true) {
+    Acquire(gColorMutex);
+    bool readSuccess = ReadSensorHTColor(
+      COLOR_SENSOR,
+      gColorReading.colorNum,
+      gColorReading.red,
+      gColorReading.green,
+      gColorReading.blue
+    );
+    Wait(MS_50);
+
+    if (gColorReading.colorNum > HOME_BLACK &&
+        gColorReading.colorNum < FEILD_WHITE &&
+        readingIsNotErroneous(gColorReading)) {
+      PlayTone(TONE_A7, MS_500);
+    }
+    Release(gColorMutex);
+
+//         ClearScreen();
+//         NumOut(2, LCD_LINE2, gColorReading.colorNum);
+//         NumOut(4, LCD_LINE3, gColorReading.red);
+//         NumOut(4, LCD_LINE4, gColorReading.green);
+//         NumOut(4, LCD_LINE5, gColorReading.blue);
+//         Wait(MS_250);
+    
+  }
+}
+
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
+bool readingIsNotErroneous(const ColorVal& pNewReading) {
+  if (pNewReading.colorNum == 4) {
+     if (pNewReading.red >= 7) {
+         return false;
+     }
+  }
+  
+  return true;
+}
+
+#endif //__LAB04_COLOR_NXC__

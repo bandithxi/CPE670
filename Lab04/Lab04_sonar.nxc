@@ -2,10 +2,10 @@
 #define __LAB04_SONAR_NXC__
 
 
-#define RIGHT_SONAR IN_1
-#define LEFT_SONAR 666
+#define RIGHT_SONAR IN_2
+#define LEFT_SONAR IN_1
 
-#define NEAR_THRESHOLD 9 // in cm (ish)
+#define NEAR_THRESHOLD 17 // in cm (ish)
 
 #define OBJECT_ON_RIGHT 0
 #define OBJECT_ON_LEFT 1
@@ -18,7 +18,7 @@ bool gObstacleOnLeft = false;
 
 
 task TASK_sonarSensor();
-int readSonarSensor();
+byte readSonarSensor(byte pSensorPort);
 
 /**
  * Creates a thread that will be responsible for detecting when the
@@ -37,7 +37,20 @@ task TASK_sonarSensor() {
       Acquire(gSonarMutex);
       gObstacleOnRight = rightReading <= NEAR_THRESHOLD;
       gObstacleOnLeft = leftReading <= NEAR_THRESHOLD;
-      Release(gSonarMutex);    
+      Release(gSonarMutex);
+      
+      ClearScreen();
+      if (gObstacleOnRight) {
+         TextOut(2, LCD_LINE2, "OBSTACLE ON RIGHT!");
+      } else {
+        NumOut(2, LCD_LINE2, rightReading);
+      }
+      if (gObstacleOnLeft) {
+         TextOut(2, LCD_LINE4, "OBSTACLE ON LEFT!");
+     } else {
+        NumOut(2, LCD_LINE4, leftReading);
+      }
+      Wait(MS_100);
     }
 }
 

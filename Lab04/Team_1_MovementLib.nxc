@@ -11,16 +11,25 @@
 #define RIGHT true
 #define LEFT false
 
-#define TURN_45_TIME MS_200
+#define TURN_45_TIME (MS_200)
 #define TURN_45 45
-#define TURN_90 90
+#define TURN_90 85
 #define TURN_180 180
 
 #define FULL_SPEED 100
 #define MODERATE_SPEED 75
 #define SLOW_SPEED 50
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT MS_200 // time to move half of a "car length"
+#define TIME_PER_UNIT (MS_300 + 25) // time to move half of a "car length"
+
+
+void setWheelMotion(bool pDirection);
+void stopWheels();
+void moveSetDistance(bool pDirection, int pUnitsToMove);
+void setSway(bool pSide);
+void hardTurn(bool pDirection, int pTurnMagnitude);
+void stationaryTurn(bool pDirection, int pTurnMagnitude);
+
 
 
 void setWheelMotion(bool pDirection) {
@@ -62,16 +71,14 @@ void setSway(bool pSide) {
 	for (int i = 0; i < 5; i++) {
 		Off(dragWheel);
 		Wait(MS_10);
-		OnFwd(dragWheel);
+		OnFwd(dragWheel, FULL_SPEED / 2);
 	}
 
 	OnFwd(dragWheel, FULL_SPEED * 0.8);
 }
 
 
-void stationaryTurn(bool pDirection, int pTurnMagnitude) {
-	stopWheels(BOTH_WHEELS);
-
+void hardTurn(bool pDirection, int pTurnMagnitude) {
 	byte dragWheel;
 	byte drivingWheel;
 
@@ -83,12 +90,19 @@ void stationaryTurn(bool pDirection, int pTurnMagnitude) {
 		drivingWheel = RIGHT_WHEEL;
 	}
 
-	int factor = pTurnMagnitude / 45;
-	
+	float factor = pTurnMagnitude / 45;
+
 	OnFwd(drivingWheel, SLOW_SPEED);
 	OnRev(dragWheel, SLOW_SPEED);
 
 	Wait(factor * TURN_45_TIME);
+}
+
+
+void stationaryTurn(bool pDirection, int pTurnMagnitude) {
+	stopWheels();
+
+  hardTurn(pDirection, pTurnMagnitude);
 
 	Off(BOTH_WHEELS);
 }

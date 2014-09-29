@@ -1,18 +1,25 @@
 #ifndef __LAB04_CONTROLLER_NXC__
 #define __LAB04_CONTROLLER_NXC__
 
+#include "Team_1_MovementLib.nxc"
+#include "Lab04_sonar.nxc"
+#include "Lab04_rfid.nxc"
+#include "Lab04_color.nxc"
 
 /**
  * An enumeration of control strategy values.
  */
-#define PROCEED 0
-#define ENDZONE 1
-#define TURN_RIGHT 2
-#define TURN_LEFT 3
-#define COMPLETE_TURN 4
-
-#define GATHER 0
-#define EGRESS 1
+enum Strategies {
+  NO_STRATEGY,
+  PROCEED,
+  HARD_RIGHT,
+  HARD_LEFT,
+  SOFT_RIGHT,
+  SOFT_LEFT,
+  BACK_AWAY,
+  U_TURN,
+  AT_HOME = 777
+};
 
 
 /**
@@ -21,23 +28,22 @@
  * and that only one task is reading or writing to the avoidance
  * strategy variable.
  */
-mutex gStrategyMutex;   // wasn't sure how atomic operations can be with NXC
 mutex gScoreMutex;
 
 /**
  * Global variables to allow for inter-process communication for determining
  * which strategies to use.
  */
-int gStrategy = PROCEED;
-int gSeekMode = false;
-int gFoodCount = 0;
 
+ bool gGoHome = false;
 
 
 task main();
 task TASK_controller();
 void gatherFood();
+int determineGatheringStrategy();
 void goHome();
+int determineHomeFindingStrategy();
 void playVictorySong();
 
 
@@ -52,9 +58,42 @@ task main() {
               TASK_colorSensor
      );
 
+
+//     moveSetDistance(FORWARD, 2);
+//     Wait(MS_500);
+//     moveSetDistance(REVERSE, 2);
+//     Wait(MS_500);
+     
+//     stationaryTurn(RIGHT, TURN_45);
+//     Wait(MS_500);
+//     stationaryTurn(RIGHT, TURN_90);
+//     Wait(MS_500);
+//     stationaryTurn(RIGHT, TURN_45);
+//     Wait(MS_500);
+//     stationaryTurn(LEFT, TURN_180);
+
+//     Wait(MS_500);
+//     setWheelMotion(FORWARD);
+//     Wait(SEC_1);
+//     setSway(RIGHT);
+//     Wait(SEC_2);
+//     stopWheels();
+
      SetSensorUltrasonic(RIGHT_SONAR);
+     SetSensorUltrasonic(LEFT_SONAR);
      SetSensorLowspeed(RFID_SENSOR);
      SetSensorLowspeed(COLOR_SENSOR);
+}
+
+
+task TASK_waitForHome() {
+  Acquire(gScoreMutex);
+  gGoHome = false;
+  Release(gScoreMutex);
+  Wait(MIN_1);
+  Acquire(gScoreMutex);
+  gGoHome = true;
+  Release(gScoreMutex);
 }
 
 
@@ -64,28 +103,113 @@ task main() {
  * finished using the wheel motors before resuming forward movement.
  */
 task TASK_controller() {
-  while (!timeToGoHome) {
-    gatherFood();
-  }
+//  Acquire(gScoreMutex);
+//  while (!gGoHome) {
+//  Release(gScoreMutex);
+//    gatherFood();
+//    Acquire(gScoreMutex);
+//  }
 
   goHome();
 }
 
 
 void gatherFood() {
-
+  int strategy = determineGatheringStrategy();
+  
+  switch (strategy) {
+    case HARD_RIGHT:
+      hardTurn(RIGHT, TURN_45);
+      break;
+    case HARD_LEFT:
+      hardTurn(LEFT, TURN_45);
+      break;
+    case BACK_AWAY:
+      stopWheels();
+      setWheelMotion(REVERSE);
+      Wait(SEC_1);
+      stationaryTurn(RIGHT, TURN_90 + TURN_45);
+      break;
+    case SOFT_RIGHT:
+      setSway(RIGHT);
+      Wait(MS_200);
+      break;
+    case SOFT_LEFT:
+      setSway(LEFT);
+      Wait(MS_200);
+      break;
+    case PROCEED:
+    default:
+      setWheelMotion(FORWARD);
+      Wait(MS_50);
+      break;
+  }
 }
 
+
+int determineGatheringStrategy() {
+  int strategy = NO_STRATEGY;
+  
+  Acquire(gSonarMutex);
+  if (gObstacleOnRight || gObstacleOnLeft) {
+    if (!gObstacleOnRight) {
+      strategy = HARD_RIGHT;
+    } else if (!gObstacleOnLeft) {
+      strategy = HARD_LEFT;
+    } else {
+      strategy = BACK_AWAY;
+    }
+  }
+  Release(gSonarMutex);
+
+  if (strategy != NO_STRATEGY) {
+    return strategy;
+  }
+
+  int randomNumber = Random(3);
+  switch (randomNumber) {
+    case 0:
+      strategy = SOFT_RIGHT;
+      break;
+    case 1:
+      strategy = SOFT_LEFT;
+      break;
+    case 2:
+    default:
+      strategy = PROCEED;
+      break;
+  }
+
+  return strategy;
+}
 
 void goHome() {
   bool atHome = false;
 
   while (!atHome) {
-    Acquire(gColorMutex);
-
-
-
-    Release(gColorMutex);
+    int strategy = determineHomeFindingStrategy();
+    
+    switch (strategy) {
+      case AT_HOME:
+        atHome = true;
+        break;
+      case HARD_RIGHT:
+        hardTurn(RIGHT, TURN_45);
+        break;
+      case HARD_LEFT:
+        hardTurn(LEFT, TURN_45);
+        break;
+      case BACK_AWAY:
+        stopWheels();
+        setWheelMotion(REVERSE);
+        Wait(SEC_1);
+        stationaryTurn(RIGHT, TURN_90);
+        break;
+      case PROCEED:
+      default:
+        setWheelMotion(FORWARD);
+        break;
+    }
   }
 
   stopWheels();
@@ -94,20 +218,47 @@ void goHome() {
 }
 
 
+int determineHomeFindingStrategy() {
+  int strategy = PROCEED;
 
-
-void playVictorySong() {
-  PlayTone(TONE_A4, MS_100);
-  PlayTone(TONE_B4, MS_100);
-  PlayTone(TONE_C4, MS_100);
-  PlayTone(TONE_D4, MS_500);
+  Acquire(gSonarMutex);
+  if (gObstacleOnRight || gObstacleOnLeft) {
+    if (!gObstacleOnRight) {
+      strategy = HARD_RIGHT;
+    } else if (!gObstacleOnLeft) {
+      strategy = HARD_LEFT;
+    } else {
+      strategy = BACK_AWAY;
+    }
+  }
+  Release(gSonarMutex);
+  
+  if (strategy != PROCEED) {
+    return strategy;
+  }
+  
+  Acquire(gColorMutex);
+  if (gColorReading.colorNum == HOME_BLACK) {
+    strategy = AT_HOME;
+  }
+  Release(gColorMutex);
+  
+  return strategy;
 }
 
 
-
-
-
-
+void playVictorySong() {
+  for (int i = 0; i < 5; i++) {
+    PlayTone(TONE_A4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_B4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_C4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_D4, MS_300);
+    Wait(MS_300);
+  }
+}
 
 
 #endif //__LAB04_CONTROLLER_NXC__
