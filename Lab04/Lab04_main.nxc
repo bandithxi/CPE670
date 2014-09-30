@@ -39,6 +39,7 @@ mutex gScoreMutex;
 
 
 task main();
+task TASK_waitForHome();
 task TASK_controller();
 void gatherFood();
 int determineGatheringStrategy();
@@ -55,29 +56,9 @@ task main() {
               TASK_controller,
               TASK_sonarSensor,
               TASK_rfidSensor,
-              TASK_colorSensor
+              TASK_colorSensor,
+              TASK_waitForHome
      );
-
-
-//     moveSetDistance(FORWARD, 2);
-//     Wait(MS_500);
-//     moveSetDistance(REVERSE, 2);
-//     Wait(MS_500);
-     
-//     stationaryTurn(RIGHT, TURN_45);
-//     Wait(MS_500);
-//     stationaryTurn(RIGHT, TURN_90);
-//     Wait(MS_500);
-//     stationaryTurn(RIGHT, TURN_45);
-//     Wait(MS_500);
-//     stationaryTurn(LEFT, TURN_180);
-
-//     Wait(MS_500);
-//     setWheelMotion(FORWARD);
-//     Wait(SEC_1);
-//     setSway(RIGHT);
-//     Wait(SEC_2);
-//     stopWheels();
 
      SetSensorUltrasonic(RIGHT_SONAR);
      SetSensorUltrasonic(LEFT_SONAR);
@@ -103,12 +84,12 @@ task TASK_waitForHome() {
  * finished using the wheel motors before resuming forward movement.
  */
 task TASK_controller() {
-//  Acquire(gScoreMutex);
-//  while (!gGoHome) {
-//  Release(gScoreMutex);
-//    gatherFood();
-//    Acquire(gScoreMutex);
-//  }
+  Acquire(gScoreMutex);
+  while (!gGoHome) {
+    Release(gScoreMutex);
+    gatherFood();
+    Acquire(gScoreMutex);
+  }
 
   goHome();
 }

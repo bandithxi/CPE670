@@ -39,7 +39,7 @@ task TASK_sonarSensor() {
       gObstacleOnLeft = leftReading <= NEAR_THRESHOLD;
       Release(gSonarMutex);
       
-      ClearScreen();
+/*      ClearScreen();
       if (gObstacleOnRight) {
          TextOut(2, LCD_LINE2, "OBSTACLE ON RIGHT!");
       } else {
@@ -52,6 +52,7 @@ task TASK_sonarSensor() {
       }
       Wait(MS_100);
     }
+*/
 }
 
 

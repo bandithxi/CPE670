@@ -30,7 +30,27 @@ void setSway(bool pSide);
 void hardTurn(bool pDirection, int pTurnMagnitude);
 void stationaryTurn(bool pDirection, int pTurnMagnitude);
 
+//void testMotionLib() {
+//     moveSetDistance(FORWARD, 2);
+//     Wait(MS_500);
+//     moveSetDistance(REVERSE, 2);
+//     Wait(MS_500);
 
+//     stationaryTurn(RIGHT, TURN_45);
+//     Wait(MS_500);
+//     stationaryTurn(RIGHT, TURN_90);
+//     Wait(MS_500);
+//     stationaryTurn(RIGHT, TURN_45);
+//     Wait(MS_500);
+//     stationaryTurn(LEFT, TURN_180);
+
+//     Wait(MS_500);
+//     setWheelMotion(FORWARD);
+//     Wait(SEC_1);
+//     setSway(RIGHT);
+//     Wait(SEC_2);
+//     stopWheels();
+//}
 
 void setWheelMotion(bool pDirection) {
 	if (pDirection == FORWARD) {
