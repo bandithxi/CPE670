@@ -33,6 +33,10 @@ task TASK_rfidSensor() {
   // send dummy command to wake up sensor
   RFIDDummy(RFID_SENSOR);
 
+  for (int i = 0; i < 2; i++) {
+    updateRfidReading();
+  }
+
   while (gUseRfidSensor) {
     updateRfidReading();
   }
@@ -56,7 +60,6 @@ void updateRfidReading() {
 
   if (dataSum > 20) {
     gRfidReading = dataSum;
-    PlayTone(TONE_E7, MS_500);
   } else {
     gRfidReading = NO_RFID_DATA;
   }

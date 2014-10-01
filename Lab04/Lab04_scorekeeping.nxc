@@ -21,7 +21,6 @@ task TASK_scoreKeeping() {
   Wait(MIN_1);
   
   gGoHome = true;
-  gUseColorSensor = false;
   gUseRfidSensor = false;
   playGoHomeSong();
 }

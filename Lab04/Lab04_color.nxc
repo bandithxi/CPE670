@@ -40,12 +40,6 @@ task TASK_colorSensor() {
     );
     Wait(MS_20 + MS_5);
 
-    if (gColorReading.colorNum > HOME_BLACK &&
-        gColorReading.colorNum < FEILD_WHITE &&
-        readingIsNotErroneous(gColorReading)) {
-      PlayTone(TONE_G7, MS_500);
-    }
-
 //    debugOutputColor(gColorReading);
   }
 }

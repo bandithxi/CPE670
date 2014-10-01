@@ -76,6 +76,17 @@ task TASK_controller() {
  *  Manages food gathering behavior.
  */
 void gatherFood() {
+
+  if (gColorReading.colorNum > HOME_BLACK &&
+    gColorReading.colorNum < FEILD_WHITE &&
+    readingIsNotErroneous(gColorReading)) {
+    PlayTone(TONE_G7, MS_500);
+  }
+    
+  if (gRfidReading > 20) {
+    PlayTone(TONE_E7, MS_500);
+  }
+
   int strategy = determineGatheringStrategy();
   
   switch (strategy) {
@@ -193,6 +204,10 @@ void goHome() {
 int determineHomeFindingStrategy() {
   int strategy = PROCEED;
 
+  if (gColorReading.colorNum == HOME_BLACK) {
+    return AT_HOME;
+  }
+
   if (gObstacleOnRight || gObstacleOnLeft) {
     if (!gObstacleOnRight) {
       strategy = HARD_RIGHT;
@@ -201,14 +216,6 @@ int determineHomeFindingStrategy() {
     } else {
       strategy = BACK_AWAY;
     }
-  }
-  
-  if (strategy != PROCEED) {
-    return strategy;
-  }
-  
-  if (gColorReading.colorNum == HOME_BLACK) {
-    strategy = AT_HOME;
   }
   
   return strategy;
