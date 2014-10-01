@@ -15,18 +15,22 @@ typedef struct {
   byte blue;
 } ColorVal;
 
+
 mutex gColorMutex;
+bool gUseColorSensor = true;
 ColorVal gColorReading;
+void debugOutputColor(const ColorVal& pColorReading);
 
 bool readingIsNotErroneous(const ColorVal& pNewReading);
 
 
 /**
- *
+ *  This thread continually reads the color sensor value
  */
 task TASK_colorSensor() {
-  while (true) {
-    Acquire(gColorMutex);
+  SetSensorLowspeed(COLOR_SENSOR);
+
+  while (gUseColorSensor) {
     bool readSuccess = ReadSensorHTColor(
       COLOR_SENSOR,
       gColorReading.colorNum,
@@ -34,22 +38,15 @@ task TASK_colorSensor() {
       gColorReading.green,
       gColorReading.blue
     );
-    Wait(MS_50);
+    Wait(MS_20 + MS_5);
 
     if (gColorReading.colorNum > HOME_BLACK &&
         gColorReading.colorNum < FEILD_WHITE &&
         readingIsNotErroneous(gColorReading)) {
-      PlayTone(TONE_A7, MS_500);
+      PlayTone(TONE_G7, MS_500);
     }
-    Release(gColorMutex);
 
-//         ClearScreen();
-//         NumOut(2, LCD_LINE2, gColorReading.colorNum);
-//         NumOut(4, LCD_LINE3, gColorReading.red);
-//         NumOut(4, LCD_LINE4, gColorReading.green);
-//         NumOut(4, LCD_LINE5, gColorReading.blue);
-//         Wait(MS_250);
-    
+//    debugOutputColor(gColorReading);
   }
 }
 
@@ -60,12 +57,23 @@ task TASK_colorSensor() {
  */
 bool readingIsNotErroneous(const ColorVal& pNewReading) {
   if (pNewReading.colorNum == 4) {
-     if (pNewReading.red >= 7) {
+     if (pNewReading.red >= 5) {
          return false;
      }
   }
   
   return true;
+}
+
+
+void debugOutputColor(const ColorVal& pColorReading) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Color Reading:");
+  NumOut(2, LCD_LINE2, pColorReading.colorNum);
+  NumOut(4, LCD_LINE3, pColorReading.red);
+  NumOut(4, LCD_LINE4, pColorReading.green);
+  NumOut(4, LCD_LINE5, pColorReading.blue);
+  Wait(MS_100);
 }
 
 #endif //__LAB04_COLOR_NXC__

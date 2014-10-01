@@ -5,6 +5,14 @@
 #include "Lab04_sonar.nxc"
 #include "Lab04_rfid.nxc"
 #include "Lab04_color.nxc"
+#include "Lab04_scoreKeeping.nxc"
+
+
+/**
+ * Configuration constants
+ */
+#define GATHER_TIME MIN_1
+
 
 /**
  * An enumeration of control strategy values.
@@ -22,22 +30,6 @@ enum Strategies {
 };
 
 
-/**
- * These mutexes are used to prevent ciritical section violations.
- * They ensure that only one task has access to the wheels at a time,
- * and that only one task is reading or writing to the avoidance
- * strategy variable.
- */
-mutex gScoreMutex;
-
-/**
- * Global variables to allow for inter-process communication for determining
- * which strategies to use.
- */
-
- bool gGoHome = false;
-
-
 task main();
 task TASK_waitForHome();
 task TASK_controller();
@@ -52,29 +44,17 @@ void playVictorySong();
  * Creates the thread responsible for initializing the robot.
  */
 task main() {
-     Precedes(
-              TASK_controller,
-              TASK_sonarSensor,
-              TASK_rfidSensor,
-              TASK_colorSensor,
-              TASK_waitForHome
-     );
+  Precedes(
+    TASK_controller,
+    TASK_sonarSensor,
+    TASK_colorSensor,
+    TASK_rfidSensor,
+    TASK_scoreKeeping
+  );
 
-     SetSensorUltrasonic(RIGHT_SONAR);
-     SetSensorUltrasonic(LEFT_SONAR);
-     SetSensorLowspeed(RFID_SENSOR);
-     SetSensorLowspeed(COLOR_SENSOR);
-}
-
-
-task TASK_waitForHome() {
-  Acquire(gScoreMutex);
-  gGoHome = false;
-  Release(gScoreMutex);
-  Wait(MIN_1);
-  Acquire(gScoreMutex);
-  gGoHome = true;
-  Release(gScoreMutex);
+  gUseSonar = true;
+  gUseColorSensor = true;
+  gUseRfidSensor = true;
 }
 
 
@@ -84,75 +64,76 @@ task TASK_waitForHome() {
  * finished using the wheel motors before resuming forward movement.
  */
 task TASK_controller() {
-  Acquire(gScoreMutex);
   while (!gGoHome) {
-    Release(gScoreMutex);
     gatherFood();
-    Acquire(gScoreMutex);
   }
 
   goHome();
 }
 
 
+/**
+ *  Manages food gathering behavior.
+ */
 void gatherFood() {
   int strategy = determineGatheringStrategy();
   
   switch (strategy) {
     case HARD_RIGHT:
-      hardTurn(RIGHT, TURN_45);
+      stationaryTurn(RIGHT, TURN_90);
       break;
     case HARD_LEFT:
-      hardTurn(LEFT, TURN_45);
+      stationaryTurn(LEFT, TURN_90);
       break;
-    case BACK_AWAY:
+    case U_TURN:
       stopWheels();
-      setWheelMotion(REVERSE);
-      Wait(SEC_1);
-      stationaryTurn(RIGHT, TURN_90 + TURN_45);
+      moveSetDistance(REVERSE, 2);
+      stationaryTurn(RIGHT, TURN_180);
       break;
     case SOFT_RIGHT:
       setSway(RIGHT);
-      Wait(MS_200);
+      Wait(MS_50);
       break;
     case SOFT_LEFT:
       setSway(LEFT);
-      Wait(MS_200);
+      Wait(MS_50);
       break;
     case PROCEED:
     default:
       setWheelMotion(FORWARD);
-      Wait(MS_50);
       break;
   }
 }
 
 
+/**
+ *  Reads available sensor data to produce the best gathering strategy.
+ */
 int determineGatheringStrategy() {
   int strategy = NO_STRATEGY;
   
-  Acquire(gSonarMutex);
   if (gObstacleOnRight || gObstacleOnLeft) {
     if (!gObstacleOnRight) {
       strategy = HARD_RIGHT;
     } else if (!gObstacleOnLeft) {
       strategy = HARD_LEFT;
     } else {
-      strategy = BACK_AWAY;
+      strategy = U_TURN;
     }
   }
-  Release(gSonarMutex);
 
   if (strategy != NO_STRATEGY) {
     return strategy;
   }
 
-  int randomNumber = Random(3);
+  int randomNumber = Random(5);
   switch (randomNumber) {
     case 0:
+    case 3:
       strategy = SOFT_RIGHT;
       break;
     case 1:
+    case 4:
       strategy = SOFT_LEFT;
       break;
     case 2:
@@ -164,27 +145,30 @@ int determineGatheringStrategy() {
   return strategy;
 }
 
+
+/**
+ *  Manages egress behavior.
+ */
 void goHome() {
   bool atHome = false;
 
   while (!atHome) {
     int strategy = determineHomeFindingStrategy();
-    
+
     switch (strategy) {
       case AT_HOME:
         atHome = true;
         break;
       case HARD_RIGHT:
-        hardTurn(RIGHT, TURN_45);
+        hardTurn(RIGHT, TURN_45 / 2);
         break;
       case HARD_LEFT:
         hardTurn(LEFT, TURN_45);
         break;
       case BACK_AWAY:
         stopWheels();
-        setWheelMotion(REVERSE);
-        Wait(SEC_1);
-        stationaryTurn(RIGHT, TURN_90);
+        moveSetDistance(REVERSE, 1);
+        stationaryTurn(RIGHT, TURN_45);
         break;
       case PROCEED:
       default:
@@ -194,15 +178,21 @@ void goHome() {
   }
 
   stopWheels();
+  
+  moveSetDistance(FORWARD, 1);
 
   playVictorySong();
+  
+  StopAllTasks();
 }
 
 
+/**
+ *  Reads available sensor data to produce the best egress strategy.
+ */
 int determineHomeFindingStrategy() {
   int strategy = PROCEED;
 
-  Acquire(gSonarMutex);
   if (gObstacleOnRight || gObstacleOnLeft) {
     if (!gObstacleOnRight) {
       strategy = HARD_RIGHT;
@@ -212,22 +202,22 @@ int determineHomeFindingStrategy() {
       strategy = BACK_AWAY;
     }
   }
-  Release(gSonarMutex);
   
   if (strategy != PROCEED) {
     return strategy;
   }
   
-  Acquire(gColorMutex);
   if (gColorReading.colorNum == HOME_BLACK) {
     strategy = AT_HOME;
   }
-  Release(gColorMutex);
   
   return strategy;
 }
 
 
+/**
+ *  Plays a delightful victory tune.
+ */
 void playVictorySong() {
   for (int i = 0; i < 5; i++) {
     PlayTone(TONE_A4, MS_100);

@@ -13,7 +13,7 @@
 
 #define TURN_45_TIME (MS_200)
 #define TURN_45 45
-#define TURN_90 85
+#define TURN_90 90
 #define TURN_180 180
 
 #define FULL_SPEED 100
@@ -29,28 +29,8 @@ void moveSetDistance(bool pDirection, int pUnitsToMove);
 void setSway(bool pSide);
 void hardTurn(bool pDirection, int pTurnMagnitude);
 void stationaryTurn(bool pDirection, int pTurnMagnitude);
+void testMovementLib();
 
-//void testMotionLib() {
-//     moveSetDistance(FORWARD, 2);
-//     Wait(MS_500);
-//     moveSetDistance(REVERSE, 2);
-//     Wait(MS_500);
-
-//     stationaryTurn(RIGHT, TURN_45);
-//     Wait(MS_500);
-//     stationaryTurn(RIGHT, TURN_90);
-//     Wait(MS_500);
-//     stationaryTurn(RIGHT, TURN_45);
-//     Wait(MS_500);
-//     stationaryTurn(LEFT, TURN_180);
-
-//     Wait(MS_500);
-//     setWheelMotion(FORWARD);
-//     Wait(SEC_1);
-//     setSway(RIGHT);
-//     Wait(SEC_2);
-//     stopWheels();
-//}
 
 void setWheelMotion(bool pDirection) {
 	if (pDirection == FORWARD) {
@@ -63,7 +43,7 @@ void setWheelMotion(bool pDirection) {
 
 void stopWheels() {
  	Float(BOTH_WHEELS);
- 	Wait(MS_100);
+ 	Wait(MS_50);
  	Off(BOTH_WHEELS);
 }
 
@@ -110,7 +90,7 @@ void hardTurn(bool pDirection, int pTurnMagnitude) {
 		drivingWheel = RIGHT_WHEEL;
 	}
 
-	float factor = pTurnMagnitude / 45;
+	float factor = pTurnMagnitude / 45.0;
 
 	OnFwd(drivingWheel, SLOW_SPEED);
 	OnRev(dragWheel, SLOW_SPEED);
@@ -124,8 +104,30 @@ void stationaryTurn(bool pDirection, int pTurnMagnitude) {
 
   hardTurn(pDirection, pTurnMagnitude);
 
-	Off(BOTH_WHEELS);
+	stopWheels();
 }
 
+
+void testMovementLib() {
+  moveSetDistance(FORWARD, 2);
+  Wait(MS_500);
+  moveSetDistance(REVERSE, 2);
+  Wait(MS_500);
+
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_90);
+  Wait(MS_500);
+  stationaryTurn(RIGHT, TURN_45);
+  Wait(MS_500);
+  stationaryTurn(LEFT, TURN_180);
+
+  Wait(MS_500);
+  setWheelMotion(FORWARD);
+  Wait(SEC_1);
+  setSway(RIGHT);
+  Wait(SEC_2);
+  stopWheels();
+}
 
 #endif //__TEAM_1_MOVEMENTLIB_NXC__

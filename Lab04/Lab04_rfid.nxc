@@ -5,54 +5,75 @@
 
 #define RFID_SENSOR IN_4
 
-#define NO_RFID_DATA -1
+#define NO_RFID_DATA 0
+
+
+typedef struct {
+  byte rfidData[5];
+  int sum;
+} RfidReading;
+
 
 mutex gRfidReadingLock;
+bool gUseRfidSensor = true;
 int gRfidReading = NO_RFID_DATA;
+
 
 task TASK_rfidSensor();
 void updateRfidReading();
+void debugOutputRfid(byte pRfidData[]);
+
 
 /**
- *
+ *  This task continually reads from the RFID sensor
  */
 task TASK_rfidSensor() {
+  SetSensorLowspeed(RFID_SENSOR);
+
   // send dummy command to wake up sensor
   RFIDDummy(RFID_SENSOR);
 
-  while (true) {
+  while (gUseRfidSensor) {
     updateRfidReading();
   }
 }
 
 
 /**
- *
+ *  Handles the publishing of the rfid sum global variable
  */
 void updateRfidReading() {
   byte rfidData[5];
   
   GetRFIDArray(RFID_SENSOR, rfidData, true);
+  Wait(MS_20 + MS_5);
   int dataSum = rfidData[0] +
                 rfidData[1] +
                 rfidData[2] +
                 rfidData[3] +
                 rfidData[4]
   ;
-  Wait(MS_50);
 
-  Acquire(gRfidReadingLock);
-  if (dataSum > 0) {
+  if (dataSum > 20) {
     gRfidReading = dataSum;
-    PlayTone(TONE_C7, MS_500);
+    PlayTone(TONE_E7, MS_500);
   } else {
     gRfidReading = NO_RFID_DATA;
   }
-  Release(gRfidReadingLock);
-  
-//  ClearScreen();
-//  NumOut(20, LCD_LINE5, dataSum);
-//  Wait(MS_250);
 }
+
+
+void debugOutputRfid(byte pRfidData[]) {
+  ClearScreen();
+  int dataSum = pRfidData[0] +
+                pRfidData[1] +
+                pRfidData[2] +
+                pRfidData[3] +
+                pRfidData[4]
+  ;
+  NumOut(5, LCD_LINE5, dataSum);
+  Wait(MS_100);
+}
+
 
 #endif //__LAB04_RFID_NXC__
