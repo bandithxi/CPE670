@@ -1,0 +1,106 @@
+#ifndef __LAB04_CONTROLLER_NXC__
+#define __LAB04_CONTROLLER_NXC__
+
+#include "Team_1_MovementLib.nxc"
+#include "SonarSensorTask.nxc"
+#include "ColorSensorTask.nxc"
+
+
+/**
+ * Configuration constants
+ */
+
+
+
+/**
+ * An enumeration of control strategy values.
+ */
+enum Strategies {
+  AT_HOME = 777
+};
+
+
+task main();
+task TASK_controller();
+void findLine();
+void followLine();
+void findHome();
+void playVictorySong();
+
+
+/**
+ * Creates the thread responsible for initializing the robot.
+ */
+task main() {
+  Precedes(
+    TASK_controller,
+    TASK_sonarSendsor
+    TASK_soundSensor,
+    TASK_colorSensor,
+    TASK_lightSensor,
+  );
+
+  gUseSonarSensing = true;
+  gUseSoundSensing = true;
+  gUseLightSensing = true;
+  gUseColorSensing = true;
+}
+
+
+/**
+ * Creates a thread that simply makes the robot move until a sensor
+ * detects an obstacle. The thread waits until other tasks are
+ * finished using the wheel motors before resuming forward movement.
+ */
+task TASK_controller() {
+  findLine();
+
+  followLine();
+
+  goHome();
+}
+
+
+/**
+ *
+ */
+void findLine() {
+
+
+}
+
+
+/**
+ *
+ */
+void followLine() {
+
+}
+
+
+/**
+ *
+ */
+void findHome() {
+  
+}
+
+
+/**
+ *  Plays a delightful victory tune.
+ */
+void playVictorySong() {
+  for (int i = 0; i < 5; i++) {
+    PlayTone(TONE_A4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_B4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_C4, MS_100);
+    Wait(MS_100);
+    PlayTone(TONE_D4, MS_300);
+    Wait(MS_300);
+  }
+}
+
+
+#endif //__LAB04_CONTROLLER_NXC__
