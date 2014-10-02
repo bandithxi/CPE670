@@ -8,6 +8,12 @@
 #include "SoundSensing.nxc"
 
 
+typedef struct {
+  bool rightLightIsOnLine;
+  bool leftLightIsOnLine;
+  bool colorReadingIsLine;
+} LineFollowingState;
+
 /**
  * Configuration constants
  */

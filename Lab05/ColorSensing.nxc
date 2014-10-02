@@ -8,6 +8,7 @@
 #define END_OF_LINE_COLOR 7
 #define FEILD_COLOR 13
 
+
 // we might be able to use RGB values to somehow compensate for poor
 // color number results
 typedef struct {
@@ -16,7 +17,6 @@ typedef struct {
   byte green;
   byte blue;
 } ColorVal;
-
 
 
 typedef struct {
