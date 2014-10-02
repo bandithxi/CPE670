@@ -1,5 +1,5 @@
-#ifndef __LAB04_SONAR_NXC__
-#define __LAB04_SONAR_NXC__
+#ifndef __SONARSENSING_NXC__
+#define __SONARSENSING_NXC__
 
 
 #define RIGHT_SONAR IN_2
@@ -13,18 +13,17 @@
 
 
 typedef struct {
-  byte right;
-  byte left;
+  byte rightDistance;
+  byte leftDistance;
+  mutex ownership;
+  bool readingIsValid;
 } SonarReading;
 
 
-mutex gSonarMutex;
 bool gUseSonar = true;
-bool gObstacleOnRight = false;
-bool gObstacleOnLeft = false;
+SonarReading gSonarReading;
 
-
-task TASK_sonarSensor();
+task TASK_sonarSensing();
 byte readSonarSensor(byte pSensorPort);
 void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading);
 
@@ -33,21 +32,23 @@ void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading);
  * touch sensors are activated and determining the appropriate
  * avoidance strategy.
  */
-task TASK_sonarSensor() {
+task TASK_sonarSensing() {
   SetSensorUltrasonic(RIGHT_SONAR);
   SetSensorUltrasonic(LEFT_SONAR);
+
+  gSonarReading.readingIsValid = false;
 
   // start with sensors de-activated for good measure
   I2CWrite(RIGHT_SONAR, 0x41, 0x00);
   I2CWrite(LEFT_SONAR, 0x41, 0x00);
      
   while (gUseSonar) {
-    byte rightReading = readSonarSensor(RIGHT_SONAR);
-    byte leftReading = readSonarSensor(LEFT_SONAR);
-
-    gObstacleOnRight = rightReading <= NEAR_THRESHOLD;
-    gObstacleOnLeft = leftReading <= NEAR_THRESHOLD;
+    gSonarReading.rightDistance = readSonarSensor(RIGHT_SONAR);
+    gSonarReading.leftDistance = readSonarSensor(LEFT_SONAR);
+    gSonarReading.readingIsValid = true;
   }
+
+  gSonarReading.readingIsValid = false;
   
   I2CWrite(RIGHT_SONAR, 0x41, 0x00);
   I2CWrite(LEFT_SONAR, 0x41, 0x00);
@@ -83,4 +84,4 @@ void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading) {
 }
 
 
-#endif //__LAB04_SONAR_NXC__
+#endif //__SONARSENSING_NXC__

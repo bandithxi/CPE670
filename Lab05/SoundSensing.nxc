@@ -1,0 +1,43 @@
+#ifndef __SOUNDSENSING_NXC__
+#define __SOUNDSENSING_NXC__
+
+#define SOUND_SENSOR
+
+typedef struct {
+  int value;
+  mutex ownership;
+  bool readingIsValid;
+} SoundReading;
+
+
+bool gUseSoundSensing = true;
+SoundReading gSoundReading;
+
+task TASK_soundSensing();
+void debugOutputSound(const ColorVal& pColorVal);
+
+
+task TASK_soundSensing() {
+  SetSensorSound(SOUND_SENSOR);
+
+  gSoundReading.readingIsValid = false;
+
+  while (gUseSoundSensing) {
+    gSoundReading.value = Sensor(SOUND_SENSOR);
+    Wait(MS_20);
+    gSoundReading.readingIsValid = true;
+  }
+
+  gSoundReading.readingIsValid = false;
+}
+
+
+void debugOutputSound(const int pSoundVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Sound Reading:");
+  NumOut(4, LCD_LINE2, pSoundVal);
+  Wait(MS_100);
+}
+
+
+#endif //__SOUNDSENSING_NXC__
