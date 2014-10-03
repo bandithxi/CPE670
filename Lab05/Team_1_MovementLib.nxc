@@ -11,16 +11,19 @@
 #define RIGHT true
 #define LEFT false
 
-#define TURN_45_TIME (MS_200)
+#define TURN_15_TIME (MS_50)
+#define TURN_15 15
+#define TURN_30 30
 #define TURN_45 45
 #define TURN_90 90
 #define TURN_180 180
+#define MIN_TURN TURN_15
 
 #define FULL_SPEED 100
 #define MODERATE_SPEED 75
 #define SLOW_SPEED 50
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT (MS_300 + 25) // time to move half of a "car length"
+#define TIME_PER_UNIT (MS_150) // time to move 1/4 of a "car length"
 
 
 void setWheelMotion(bool pDirection);
@@ -90,7 +93,7 @@ void hardTurn(bool pDirection, int pTurnMagnitude) {
 		drivingWheel = RIGHT_WHEEL;
 	}
 
-	float factor = pTurnMagnitude / 45.0;
+	float factor = pTurnMagnitude / MIN_TURN;
 
 	OnFwd(drivingWheel, SLOW_SPEED);
 	OnRev(dragWheel, SLOW_SPEED);
