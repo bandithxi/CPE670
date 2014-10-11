@@ -1,8 +1,8 @@
 #ifndef __LIGHTSENSING_NXC__
 #define __LIGHTSENSING_NXC__
 
-#define RIGHT_LIGHT
-#define LEFT_LIGHT
+#define RIGHT_LIGHT IN_4
+#define LEFT_LIGHT IN_2
 
 typedef struct {
   int rightSensorValue;
@@ -17,11 +17,12 @@ LightReading gLightReading;
 
 
 task TASK_LightSensing();
-void debugOutputLight(const ColorVal& pColorVal);
+void debugOutputLight(const int pRightLightVal, const int pLeftLightVal);
 
 
 task TASK_LightSensing() {
-  SetSensorLight(LIGHT_SENSOR);
+  SetSensorLight(RIGHT_LIGHT);
+  SetSensorLight(LEFT_LIGHT);
 
   gLightReading.readingIsValid = false;
 
@@ -31,6 +32,8 @@ task TASK_LightSensing() {
     gLightReading.leftSensorValue = Sensor(LEFT_LIGHT);
     Wait(MS_20);
     gLightReading.readingIsValid = true;
+    
+//    debugOutputLight(gLightReading.rightSensorValue, gLightReading.leftSensorValue);
   }
 
   gLightReading.readingIsValid = false;
