@@ -20,7 +20,7 @@ typedef struct {
 } SonarReading;
 
 
-bool gUseSonar = true;
+bool gUseSonarSensing = true;
 SonarReading gSonarReading;
 
 task TASK_sonarSensing();
@@ -42,7 +42,7 @@ task TASK_sonarSensing() {
   I2CWrite(RIGHT_SONAR, 0x41, 0x00);
   I2CWrite(LEFT_SONAR, 0x41, 0x00);
      
-  while (gUseSonar) {
+  while (gUseSonarSensing) {
     gSonarReading.rightDistance = readSonarSensor(RIGHT_SONAR);
     gSonarReading.leftDistance = readSonarSensor(LEFT_SONAR);
     gSonarReading.readingIsValid = true;

@@ -1,12 +1,9 @@
 #ifndef __COLORSENSING_NXC__
 #define __COLORSENSING_NXC__
 
-#define COLOR_SENSOR IN_3
+#define COLOR_DEBUG 0
 
-#define HOME_COLOR 0
-#define LINE_COLOR 0
-#define END_OF_LINE_COLOR 7
-#define FEILD_COLOR 13
+#define COLOR_SENSOR IN_3 // msensor_S1_1
 
 
 // we might be able to use RGB values to somehow compensate for poor
@@ -39,17 +36,27 @@ bool readingIsValid(const ColorVal& pColorVal);
  */
 task TASK_colorSensing() {
   SetSensorLowspeed(COLOR_SENSOR);
+//  SetSensor(S1, SENSOR_LOWSPEED);
+  
 
   gColorReading.readingIsValid = false;
 
-  while (gUseColorSensor) {
+  while (true) {
+  until (gUseColorSensing);
+  while (gUseColorSensing) {
+
+  //    bool smuxReadSensorHTColor(
     bool readSuccess = ReadSensorHTColor(
       COLOR_SENSOR,
-      gColorReading.colorNum,
-      gColorReading.red,
-      gColorReading.green,
-      gColorReading.blue
+      gColorReading.value.colorNum,
+      gColorReading.value.red,
+      gColorReading.value.green,
+      gColorReading.value.blue
     );
+
+
+
+
     Wait(MS_20 + MS_5);
 
     if (readSuccess) {
@@ -57,9 +64,14 @@ task TASK_colorSensing() {
     } else {
       gColorReading.readingIsValid = false;
     }
+#if COLOR_DEBUG
+    debugOutputColor(gColorReading.value);
+#endif //COLOR_DEBUG
   }
 
   gColorReading.readingIsValid = false;
+  }
+
 }
 
 
@@ -68,12 +80,6 @@ task TASK_colorSensing() {
  *  sensor it is used with. This is to weed out garbage readings.
  */
 bool readingIsValid(const ColorVal& pColorVal) {
-  if (pColorVal.colorNum == 4) {
-     if (pColorVal.red >= 5) {
-         return false;
-     }
-  }
-  
   return true;
 }
 
@@ -82,10 +88,11 @@ void debugOutputColor(const ColorVal& pColorVal) {
   ClearScreen();
   TextOut(1, LCD_LINE1, "Color Reading:");
   NumOut(2, LCD_LINE2, pColorVal.colorNum);
-  NumOut(4, LCD_LINE3, pColorVal.red);
-  NumOut(4, LCD_LINE4, pColorVal.green);
-  NumOut(4, LCD_LINE5, pColorVal.blue);
+  NumOut(2, LCD_LINE3, pColorVal.red);
+  NumOut(2, LCD_LINE4, pColorVal.green);
+  NumOut(2, LCD_LINE5, pColorVal.blue);
   Wait(MS_100);
+
 }
 
 #endif //__COLORSENSING_NXC__

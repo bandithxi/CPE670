@@ -11,19 +11,19 @@
 #define RIGHT true
 #define LEFT false
 
-#define TURN_15_TIME (MS_50)
+#define MIN_TURN_TIME (MS_100 + MS_20)
 #define TURN_15 15
 #define TURN_30 30
 #define TURN_45 45
 #define TURN_90 90
 #define TURN_180 180
-#define MIN_TURN TURN_15
+#define MIN_TURN 15
 
-#define FULL_SPEED 100
-#define MODERATE_SPEED 75
+#define FULL_SPEED 80
+#define MODERATE_SPEED 60
 #define SLOW_SPEED 50
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT (MS_150) // time to move 1/4 of a "car length"
+#define TIME_PER_UNIT (MS_150 + MS_20) // time to move 1/4 of a "car length"
 
 
 void setWheelMotion(bool pDirection);
@@ -98,7 +98,7 @@ void hardTurn(bool pDirection, int pTurnMagnitude) {
 	OnFwd(drivingWheel, SLOW_SPEED);
 	OnRev(dragWheel, SLOW_SPEED);
 
-	Wait(factor * TURN_45_TIME);
+	Wait((factor * MIN_TURN_TIME) - factor);
 }
 
 
@@ -112,11 +112,19 @@ void stationaryTurn(bool pDirection, int pTurnMagnitude) {
 
 
 void testMovementLib() {
-  moveSetDistance(FORWARD, 2);
+  for (int i = 0; i < 4; i++) {
+    moveSetDistance(FORWARD, 1);
+  }
   Wait(MS_500);
-  moveSetDistance(REVERSE, 2);
+  for (int i = 0; i < 2; i++) {
+    moveSetDistance(REVERSE, 2);
+  }
   Wait(MS_500);
 
+  for (int i = 0; i < 3; i++) {
+    stationaryTurn(LEFT, TURN_15);
+  }
+  Wait(MS_500);
   stationaryTurn(RIGHT, TURN_45);
   Wait(MS_500);
   stationaryTurn(RIGHT, TURN_90);
