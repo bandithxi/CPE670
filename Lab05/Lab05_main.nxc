@@ -19,7 +19,11 @@ typedef struct {
  * Configuration constants
  */
 #define OBSTACLE_RADIUS 15 // cm(ish)
+<<<<<<< HEAD
 #define LOUD_SOUND_PRESENT 60  // units: ??? (0 - 100)
+=======
+#define LOUD_SOUND_PRESENT 75  // units: ??? (0 - 100)
+>>>>>>> origin/master
 #define WHITE_LOWER_LIGHT_THRESHOLD 55 // units: ??? (0 - 75 apparently)
 #define BLACK_UPPER_LIGHT_THRESHOLD 45 // units: ???(0 - 75 apparently)
 
@@ -65,7 +69,11 @@ void playVictorySong();
 task main() {
   Precedes(
     TASK_controller,
+<<<<<<< HEAD
 //    TASK_sonarSensin,
+=======
+//    TASK_sonarSensing,
+>>>>>>> origin/master
     TASK_colorSensing,
     TASK_LightSensing,
     TASK_soundSensing
@@ -84,16 +92,20 @@ task main() {
  * finished using the wheel motors before resuming forward movement.
  */
 task TASK_controller() {
+<<<<<<< HEAD
   Wait(SEC_1); // let things like MUX initialize
 //testMovementLib();
 
+=======
+Wait(SEC_2);
+>>>>>>> origin/master
   findLine();
 
   followLine();
 
-  findHome();
+//  findHome();
 
-  StopAllTasks();
+//  StopAllTasks();
 }
 
 
@@ -143,6 +155,15 @@ int determineLineFindingStrategy() {
 
   if (colorVal.colorNum == LINE_COLOR) {
     return ON_THE_LINE;
+<<<<<<< HEAD
+=======
+  } else if (rightLight < BLACK_UPPER_LIGHT_THRESHOLD &&
+             colorVal.colorNum != LINE_COLOR) {
+    return LINE_ON_RIGHT;
+  } else if (leftLight < BLACK_UPPER_LIGHT_THRESHOLD &&
+             colorVal.colorNum != LINE_COLOR) {
+    return LINE_ON_LEFT;
+>>>>>>> origin/master
   } else /* the line hasn't been found */ {
     return PROCEED;
   }
@@ -163,10 +184,16 @@ void followLine() {
   gUseLightSensing = true;
 
   bool onTheLine = true;
+<<<<<<< HEAD
   int turnCounter = 0;
   
   while (onTheLine){  //gColorReading.value.colorNum != END_OF_LINE_COLOR) {
     int strategy = determineLineFollowingStrategy(turnCounter);
+=======
+
+  while (onTheLine){  //gColorReading.value.colorNum != END_OF_LINE_COLOR) {
+    int strategy = determineLineFollowingStrategy();
+>>>>>>> origin/master
 
     switch (strategy) {
       case END_OF_THE_LINE:
@@ -174,12 +201,19 @@ void followLine() {
         onTheLine = false;
         break;
       case LINE_ON_RIGHT:
+<<<<<<< HEAD
         hardTurn(RIGHT, TURN_30);
         turnCounter++;
         break;
       case LINE_ON_LEFT:
         hardTurn(LEFT, TURN_30);
         turnCounter++;
+=======
+        hardTurn(RIGHT);
+        break;
+      case LINE_ON_LEFT:
+        hardTurn(LEFT);
+>>>>>>> origin/master
         break;
       case FREAK_OUT:
         turnCounter = 0;
@@ -202,12 +236,17 @@ void followLine() {
 
 int determineLineFollowingStrategy(int pTurnCounter) {
   LineFollowingState state = getCurrentLineFollowingState();
+<<<<<<< HEAD
   
   if (gColorReading.value.colorNum == END_OF_LINE_COLOR) {
     return END_OF_THE_LINE;
   } else if (pTurnCounter > 10) {
     return FREAK_OUT;
   } else if (!state.rightLightIsOnLine &&
+=======
+
+  if (!state.rightLightIsOnLine &&
+>>>>>>> origin/master
       !state.leftLightIsOnLine) {
     return PROCEED;
   } else if (state.rightLightIsOnLine) {
@@ -227,8 +266,12 @@ int determineLineFollowingStrategy(int pTurnCounter) {
 void findHome() {
   // playFileEx(filename (*.rso), volume (0-4), loop (T/F))
 
+<<<<<<< HEAD
   gUseColorSensing = true;
   gUseSoundSensing = true;
+=======
+//  gUseSoundSensing = true;
+>>>>>>> origin/master
 
   bool notHome = true;
   bool lastTurnDirection = RIGHT;
@@ -249,8 +292,13 @@ void findHome() {
         break;
       case TURN_AND_WAIT:
       default:
+<<<<<<< HEAD
         stationaryTurn(lastTurnDirection, TURN_30);
         Wait(MS_250);
+=======
+        stationaryTurn(RIGHT, TURN_30);
+        Wait(MS_100);
+>>>>>>> origin/master
         break;
     }
 
@@ -262,10 +310,16 @@ void findHome() {
 
 
 int determineHomeFindingStrategy() {
-  if (gColorReading.value.colorNum == HOME_COLOR) {
+  if ( true ){ //gColorReading.value.colorNum == HOME_COLOR) {
     return AT_HOME;
   } else if (gSoundReading.value >= LOUD_SOUND_PRESENT) {
     return PROCEED;
+<<<<<<< HEAD
+=======
+//  } else if (gSonarReading.rightDistance <= OBSTACLE_RADIUS &&
+//    gSonarReading.leftDistance <= OBSTACLE_RADIUS) {
+//    return U_TURN;
+>>>>>>> origin/master
   } else {
     return TURN_AND_WAIT;
   }
@@ -286,7 +340,7 @@ LineFollowingState getCurrentLineFollowingState() {
   LineFollowingState currentState;
   currentState.rightLightIsOnLine = isOnTheLine(gLightReading.rightSensorValue);
   currentState.leftLightIsOnLine = isOnTheLine(gLightReading.leftSensorValue);
-  currentState.colorReadingIsLine = gColorReading.value.colorNum == LINE_COLOR;
+  currentState.colorReadingIsLine = false; //gColorReading.value.colorNum == LINE_COLOR;
 
   return currentState;
 }

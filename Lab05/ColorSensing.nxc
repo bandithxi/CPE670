@@ -64,6 +64,7 @@ task TASK_colorSensing() {
     } else {
       gColorReading.readingIsValid = false;
     }
+    
 #if COLOR_DEBUG
     debugOutputColor(gColorReading.value);
 #endif //COLOR_DEBUG
