@@ -140,6 +140,15 @@ int determineLineFindingStrategy() {
 
   if (colorVal.colorNum == LINE_COLOR) {
     return ON_THE_LINE;
+<<<<<<< HEAD
+=======
+  } else if (rightLight < BLACK_UPPER_LIGHT_THRESHOLD &&
+             colorVal.colorNum != LINE_COLOR) {
+    return LINE_ON_RIGHT;
+  } else if (leftLight < BLACK_UPPER_LIGHT_THRESHOLD &&
+             colorVal.colorNum != LINE_COLOR) {
+    return LINE_ON_LEFT;
+>>>>>>> origin/master
   } else /* the line hasn't been found */ {
     return PROCEED;
   }
@@ -162,7 +171,7 @@ void followLine() {
   bool onTheLine = true;
   int turnCounter = 0;
   
-  while (onTheLine) {
+  while (onTheLine){  //gColorReading.value.colorNum != END_OF_LINE_COLOR) {
     int strategy = determineLineFollowingStrategy(turnCounter);
 
     switch (strategy) {
