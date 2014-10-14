@@ -1,7 +1,6 @@
 #ifndef __LAB04_CONTROLLER_NXC__
 #define __LAB04_CONTROLLER_NXC__
 
-#include "HTSMUX-driver.h"
 #include "Team_1_MovementLib.nxc"
 #include "SonarSensing.nxc"
 #include "ColorSensing.nxc"
@@ -19,14 +18,8 @@ typedef struct {
  * Configuration constants
  */
 #define OBSTACLE_RADIUS 15 // cm(ish)
-#define LOUD_SOUND_PRESENT 60  // units: ??? (0 - 100)
-#define WHITE_LOWER_LIGHT_THRESHOLD 55 // units: ??? (0 - 75 apparently)
-#define BLACK_UPPER_LIGHT_THRESHOLD 45 // units: ???(0 - 75 apparently)
-
-#define HOME_COLOR 0
-#define LINE_COLOR 0
-#define END_OF_LINE_COLOR 5
-#define FIELD_COLOR 13
+#define SOUND_PRESENT 40  // units: ???
+#define LIGHT_THRESHOLD 40 // units: ???
 
 
 /**
@@ -37,7 +30,6 @@ enum Strategies {
   ON_THE_LINE,
   LINE_ON_RIGHT,
   LINE_ON_LEFT,
-  END_OF_THE_LINE,
   TURN_AND_WAIT,
   U_TURN,
   AT_HOME = 777,  // for funsies!
@@ -50,7 +42,7 @@ task TASK_controller();
 void findLine();
 int determineLineFindingStrategy();
 void followLine();
-int determineLineFollowingStrategy(int pTurnCounter);
+int determineLineFollowingStrategy();
 void findHome();
 int determineHomeFindingStrategy();
 bool isOnTheLine(int pLightSensorValue);
@@ -65,11 +57,13 @@ void playVictorySong();
 task main() {
   Precedes(
     TASK_controller,
+    TASK_sonarSensing,
+    TASK_soundSensing,
     TASK_colorSensing,
-    TASK_LightSensing,
-    TASK_soundSensing
+    TASK_lightSensing
   );
 
+  gUseSonarSensing = true;
   gUseSoundSensing = true;
   gUseLightSensing = true;
   gUseColorSensing = true;
@@ -82,8 +76,6 @@ task main() {
  * finished using the wheel motors before resuming forward movement.
  */
 task TASK_controller() {
-  Wait(SEC_1); // let things like MUX initialize
-
   findLine();
 
   followLine();
@@ -102,15 +94,13 @@ void findLine() {
   gUseColorSensing = true;
 
   bool notOnLine = true;
-  setWheelMotion(FORWARD);
 
   while (notOnLine) {
     int strategy = determineLineFindingStrategy();
-    
+
     switch (strategy) {
-      case  ON_THE_LINE:
+      case ON_THE_LINE:
         notOnLine = false;
-        stopWheels();
         break;
       case LINE_ON_RIGHT:
         setSway(RIGHT);
@@ -120,13 +110,10 @@ void findLine() {
         break;
       case PROCEED:
       default:
-        setWheelMotion(FORWARD);
+        moveSetDistance(FORWARD, 1);
         break;
     }
   }
-
-  PlayTone(TONE_A3, MS_250);
-  stationaryTurn(LEFT, TURN_30);
 
   gUseLightSensing = false;
   gUseColorSensing = false;
@@ -134,21 +121,18 @@ void findLine() {
 
 
 int determineLineFindingStrategy() {
-  ColorVal colorVal = gColorReading.value;
+  ColorVal colorVal = gUseColorSensing.value;
   int rightLight = gLightReading.rightSensorValue;
   int leftLight = gLightReading.leftSensorValue;
 
   if (colorVal.colorNum == LINE_COLOR) {
     return ON_THE_LINE;
-<<<<<<< HEAD
-=======
-  } else if (rightLight < BLACK_UPPER_LIGHT_THRESHOLD &&
-             colorVal.colorNum != LINE_COLOR) {
+  } else if (rightLight > LIGHT_THRESHOLD &&
+             colorNum != LINE_COLOR) {
     return LINE_ON_RIGHT;
-  } else if (leftLight < BLACK_UPPER_LIGHT_THRESHOLD &&
-             colorVal.colorNum != LINE_COLOR) {
+  } else if (lefttLight > LIGHT_THRESHOLD &&
+             colorNum != LINE_COLOR) {
     return LINE_ON_LEFT;
->>>>>>> origin/master
   } else /* the line hasn't been found */ {
     return PROCEED;
   }
@@ -160,7 +144,7 @@ int determineLineFindingStrategy() {
 void followLine() {
 
   /**
-   *  Hopefully, the sensors are not so fidgety that we need
+   *  Hopefully, the sensors are not so faulty that we need
    *  to track multiple reading states to improve perception
    *  of the current state.
    */
@@ -168,52 +152,37 @@ void followLine() {
   gUseColorSensing = true;
   gUseLightSensing = true;
 
-  bool onTheLine = true;
-  int turnCounter = 0;
-  
-  while (onTheLine){  //gColorReading.value.colorNum != END_OF_LINE_COLOR) {
-    int strategy = determineLineFollowingStrategy(turnCounter);
+  while (gColorReading.value.colorNum != END_OF_LINE_COLOR) {
+    int strategy = determineLineFollowingStrategy();
 
     switch (strategy) {
-      case END_OF_THE_LINE:
-        stopWheels();
-        onTheLine = false;
-        break;
       case LINE_ON_RIGHT:
-        hardTurn(RIGHT, TURN_30);
-        turnCounter++;
+        setSway(RIGHT)
         break;
       case LINE_ON_LEFT:
-        hardTurn(LEFT, TURN_30);
-        turnCounter++;
+        setSway(LEFT);
         break;
       case FREAK_OUT:
-        turnCounter = 0;
-        moveSetDistance(FORWARD, 1);
+        // currently does nothing
         break;
       case PROCEED:
       default:
-        turnCounter = 0;
-        setWheelMotion(FORWARD);
+        moveSetDistance(FORWARD, 1);
         break;
     }
   }
-
-  PlayTone(TONE_A3, MS_250);
 
   gUseLightSensing = false;
   gUseColorSensing = false;
 }
 
 
-int determineLineFollowingStrategy(int pTurnCounter) {
+int determineLineFollowingStrategy() {
   LineFollowingState state = getCurrentLineFollowingState();
-  
-  if (gColorReading.value.colorNum == END_OF_LINE_COLOR) {
-    return END_OF_THE_LINE;
-  } else if (pTurnCounter > 10) {
-    return FREAK_OUT;
-  } else if (!state.rightLightIsOnLine && !state.leftLightIsOnLine) {
+
+  if (!state.rightLightIsOnLine &&
+      state.colorReadingIsLine &&
+      !state.leftLightIsOnLine) {
     return PROCEED;
   } else if (state.rightLightIsOnLine) {
     return LINE_ON_RIGHT;
@@ -235,8 +204,7 @@ void findHome() {
   gUseSoundSensing = true;
 
   bool notHome = true;
-  bool lastTurnDirection = RIGHT;
-  
+
   while (notHome) {
     int strategy = determineHomeFindingStrategy();
 
@@ -248,25 +216,27 @@ void findHome() {
         break;
       case PROCEED:
         moveSetDistance(FORWARD, 4);
-        lastTurnDirection = !lastTurnDirection;
-        Wait(MS_250);
         break;
       case TURN_AND_WAIT:
       default:
-        stationaryTurn(lastTurnDirection, TURN_30);
-        Wait(MS_100);
+        stationaryTurn(RIGHT, TURN_90);
+        Wait(MS_250);
         break;
     }
 
   }
 
-  gUseSoundSensing = false;
 }
 
 
 int determineHomeFindingStrategy() {
-  if (gSoundReading.value >= LOUD_SOUND_PRESENT) {
+  if (gColorReading.value.colorNum == HOME_COLOR) {
+    return AT_HOME;
+  } else if (gSoundReading.value >= SOUND_PRESENT) {
     return PROCEED;
+  } else if (gSonarReading.rightDistance <= OBSTACLE_RADIUS &&
+    gSonarReading.leftDistance <= OBSTACLE_RADIUS) {
+    return U_TURN;
   } else {
     return TURN_AND_WAIT;
   }
@@ -274,7 +244,7 @@ int determineHomeFindingStrategy() {
 
 
 bool isOnTheLine(int pLightSensorValue) {
-  return pLightSensorValue < BLACK_UPPER_LIGHT_THRESHOLD;
+  return pLightSensorValue > LIGHT_THRESHOLD;
 }
 
 

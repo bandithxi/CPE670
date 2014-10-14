@@ -19,7 +19,6 @@ void debugOutputSound(const int pSoundVal);
 
 task TASK_soundSensing() {
 //  SetSensorSound(SOUND_SENSOR);
-//  bool smuxSetSensorLegoSound(const byte muxport, const bool dba);
   SetSensor(S1, SENSOR_LOWSPEED);
   
   // Tell the SMUX to start scanning its ports.
@@ -28,7 +27,6 @@ task TASK_soundSensing() {
   if (!success) {
     // Scan failed, handle the error
     TextOut(0, LCD_LINE1, "Scan failed!");
-<<<<<<< HEAD
     Wait(MS_600);
   }
 
@@ -45,24 +43,6 @@ task TASK_soundSensing() {
 //      debugOutputSound(gSoundReading.value);
     }
   }
-=======
-    Wait(1000);
-  }
-
-while (true) {
-  gSoundReading.readingIsValid = false;
-
-  until (gUseSoundSensing);
-  while (gUseSoundSensing) {
-    gSoundReading.value = //Sensor(SOUND_SENSOR);
-      smuxSensorLegoSoundNorm(msensor_S1_1);
-    Wait(MS_20);
-    gSoundReading.readingIsValid = true;
-    
-//    debugOutputSound(gSoundReading.value);
-  }
-}
->>>>>>> origin/master
 }
 
 
@@ -70,11 +50,7 @@ void debugOutputSound(const int pSoundVal) {
   ClearScreen();
   TextOut(2, LCD_LINE1, "Sound Reading:");
   NumOut(4, LCD_LINE2, pSoundVal);
-<<<<<<< HEAD
   NumOut(6, LCD_LINE4, Random(777));
-=======
->>>>>>> origin/master
-  
   Wait(MS_300);
 }
 
