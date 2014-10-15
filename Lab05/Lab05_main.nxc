@@ -238,17 +238,14 @@ void findHome() {
         playVictorySong();
         break;
       case PROCEED:
-        moveSetDistance(FORWARD, 4);
+        setWheelMotion(FORWARD);
         lastTurnDirection = !lastTurnDirection;
-        Wait(MS_250);
         break;
       case TURN_AND_WAIT:
       default:
         stationaryTurn(lastTurnDirection, TURN_30);
-        Wait(MS_100);
         break;
     }
-
   }
 
   gUseSoundSensing = false;

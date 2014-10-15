@@ -27,7 +27,7 @@ task TASK_soundSensing() {
   if (!success) {
     // Scan failed, handle the error
     TextOut(0, LCD_LINE1, "Scan failed!");
-    Wait(MS_600);
+    Wait(MS_700);
   }
 
   while (true) {
@@ -51,7 +51,7 @@ void debugOutputSound(const int pSoundVal) {
   TextOut(2, LCD_LINE1, "Sound Reading:");
   NumOut(4, LCD_LINE2, pSoundVal);
   NumOut(6, LCD_LINE4, Random(777));
-  Wait(MS_300);
+  Wait(MS_100);
 }
 
 

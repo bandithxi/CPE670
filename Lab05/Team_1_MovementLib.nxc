@@ -19,7 +19,7 @@
 #define TURN_180 180
 #define MIN_TURN 15
 
-#define FULL_SPEED 80
+#define FULL_SPEED 75
 #define MODERATE_SPEED 60
 #define SLOW_SPEED 50
 #define SPEED_INCREMENT 4
