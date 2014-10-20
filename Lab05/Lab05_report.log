@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.5)  19 OCT 2014 20:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.5)  19 OCT 2014 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -442,7 +442,7 @@ Package pdftex.def Info: bad_robot_mux.png used on input line 66.
 (pdftex.def)             Requested size: 187.89914pt x 262.05077pt.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3 <./bad_robot_front_view.png>] [4 <./bad_robot_mux.png>] [5] [6] [7]
 (./Lab05_report.aux) ) 
@@ -463,7 +463,7 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Lab05_report.pdf (7 pages, 31935130 bytes).
+Output written on Lab05_report.pdf (7 pages, 31935377 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream
