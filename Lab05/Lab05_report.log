@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.5)  19 OCT 2014 17:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.5)  19 OCT 2014 20:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -299,7 +299,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen112
 \Gm@dimlist=\toks17
 )
-No file Lab05_report.aux.
+(./Lab05_report.aux)
 \openout1 = `Lab05_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -314,6 +314,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
@@ -413,55 +414,59 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 29.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 29.
 <bad_robot.png, id=11, 2815.51875pt x 2937.97626pt>
 File: bad_robot.png Graphic file (type png)
  <use bad_robot.png>
-Package pdftex.def Info: bad_robot.png used on input line 28.
+Package pdftex.def Info: bad_robot.png used on input line 35.
 (pdftex.def)             Requested size: 187.89914pt x 196.04092pt.
 
-<bad_robot_front_view.png, id=12, 2999.205pt x 5331.92pt>
+<bad_robot_front_view.png, id=12, 2943.99875pt x 2970.09625pt>
 File: bad_robot_front_view.png Graphic file (type png)
 
 <use bad_robot_front_view.png>
-Package pdftex.def Info: bad_robot_front_view.png used on input line 36.
-(pdftex.def)             Requested size: 187.89914pt x 333.97641pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<bad_robot_mux.png, id=13, 2999.205pt x 5331.92pt>
+Package pdftex.def Info: bad_robot_front_view.png used on input line 53.
+(pdftex.def)             Requested size: 187.89914pt x 189.52808pt.
+ [2 <./bad_robot.png (PNG copy)>]
+<bad_robot_mux.png, id=20, 2999.205pt x 4183.63pt>
 File: bad_robot_mux.png Graphic file (type png)
  <use bad_robot_mux.png>
-Package pdftex.def Info: bad_robot_mux.png used on input line 45.
-(pdftex.def)             Requested size: 187.89914pt x 333.97641pt.
+Package pdftex.def Info: bad_robot_mux.png used on input line 66.
+(pdftex.def)             Requested size: 187.89914pt x 262.05077pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2 <./bad_robot.png (PNG copy)>] [3 <./bad_robot_front_view.png (PNG copy)>]
-[4 <./bad_robot_mux.png (PNG copy)>] (./Lab05_report.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[3 <./bad_robot_front_view.png>] [4 <./bad_robot_mux.png>] [5] [6] [7]
+(./Lab05_report.aux) ) 
 Here is how much of TeX's memory you used:
- 2186 strings out of 495028
- 30422 string characters out of 6181497
- 90421 words of memory out of 5000000
- 5379 multiletter control sequences out of 15000+600000
- 8194 words of font info for 29 fonts, out of 8000000 for 9000
+ 2194 strings out of 495028
+ 30526 string characters out of 6181497
+ 93445 words of memory out of 5000000
+ 5383 multiletter control sequences out of 15000+600000
+ 8848 words of font info for 31 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,6n,23p,264b,221s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on Lab05_report.pdf (4 pages, 29692426 bytes).
+ 38i,6n,23p,672b,221s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Lab05_report.pdf (7 pages, 31935130 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
