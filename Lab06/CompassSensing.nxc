@@ -1,0 +1,70 @@
+#ifndef __COMPASSSENSING_NXC__
+#define __COMPASSSENSING_NXC__
+
+#define COMPASS_DEBUG 0
+
+#define COMPASS_SENSOR IN_3 // msensor_S1_1
+
+
+typedef struct {
+  int value;
+  mutex ownership;
+  bool readingIsValid;
+} CompassReading;
+
+
+bool gUseCompassSensing = true;
+CompassReading gCompassReading;
+
+task TASK_CompassSensing();
+void debugOutputCompass(const CompassVal& pCompassVal);
+bool readingIsValid(const CompassVal& pCompassVal);
+
+
+/**
+ *  This thread continually reads the Compass sensor value
+ */
+task TASK_CompassSensing() {
+  SetSensorLowspeed(Compass_SENSOR);
+
+  gCompassReading.readingIsValid = false;
+
+  while (true) {
+    until (gUseCompassSensing);
+    while (gUseCompassSensing) {
+      bool readSuccess = ReadSensorHTCompass(
+        Compass_SENSOR,
+        gCompassReading.value.CompassNum,
+        gCompassReading.value.red,
+        gCompassReading.value.green,
+        gCompassReading.value.blue
+      );
+
+      Wait(MS_20 + MS_5);
+
+      if (readSuccess) {
+        gCompassReading.readingIsValid = true;
+      } else {
+        gCompassReading.readingIsValid = false;
+      }
+      
+#if COMPASS_DEBUG
+      debugOutputCompass(gCompassReading.value);
+#endif //COMPASS_DEBUG
+    }
+
+    gCompassReading.readingIsValid = false;
+  }
+
+}
+
+
+void debugOutputCompass(const int pCompassVal) {
+  ClearScreen();
+  TextOut(1, LCD_LINE1, "Compass Reading:");
+  NumOut(2, LCD_LINE2, pCompassVal);
+  Wait(MS_100);
+
+}
+
+#endif //__COMPASSSENSING_NXC__

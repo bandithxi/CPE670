@@ -1,6 +1,8 @@
 #ifndef __LIGHTSENSING_NXC__
 #define __LIGHTSENSING_NXC__
 
+#define REFLECTANCE_DEBUG 0
+
 #define RIGHT_LIGHT IN_4
 #define LEFT_LIGHT IN_2
 
@@ -32,8 +34,10 @@ task TASK_LightSensing() {
     gLightReading.leftSensorValue = Sensor(LEFT_LIGHT);
     Wait(MS_20);
     gLightReading.readingIsValid = true;
-    
-//    debugOutputLight(gLightReading.rightSensorValue, gLightReading.leftSensorValue);
+
+#if REFLECTANCE_DEBUG
+    debugOutputLight(gLightReading.rightSensorValue, gLightReading.leftSensorValue);
+#endif // REFLECTANCE_DEBUG
   }
 
   gLightReading.readingIsValid = false;

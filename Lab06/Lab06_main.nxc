@@ -1,87 +1,63 @@
-#ifndef __LAB04_CONTROLLER_NXC__
-#define __LAB04_CONTROLLER_NXC__
+#ifndef __LAB06_CONTROLLER_NXC__
+#define __LAB06_CONTROLLER_NXC__
+
+#include "ControllerConfigurations.nxc"
 
 #include "HTSMUX-driver.h"
-#include "WheelAPI.nxc"
+#include "DrivingAPI.nxc"
 #include "SonarSensing.nxc"
 #include "ColorSensing.nxc"
 #include "LightSensing.nxc"
 #include "SoundSensing.nxc"
 
 
-typedef struct {
-  bool rightLightIsOnLine;
-  bool leftLightIsOnLine;
-  bool colorReadingIsLine;
-} LineFollowingState;
-
-/**
- * Configuration constants
- */
-#define OBSTACLE_RADIUS 15 // cm(ish)
-#define LOUD_SOUND_PRESENT 60  // units: ??? (0 - 100)
-#define WHITE_LOWER_LIGHT_THRESHOLD 55 // units: ??? (0 - 75 apparently)
-#define BLACK_UPPER_LIGHT_THRESHOLD 45 // units: ???(0 - 75 apparently)
-
-#define HOME_COLOR 0
-#define LINE_COLOR 0
-#define END_OF_LINE_COLOR 5
-#define FIELD_COLOR 13
-
-
 /**
  * An enumeration of control strategy values.
  */
 enum Strategies {
-
+  PROCEED,
+  U_TURN,
+  FIND_ENDZONE,
+  ALIGN_SELF,
+  CREEP_UP_TO_BALL,
+  DUMP_BALL
 };
 
 
 task main();
 task TASK_controller();
 
-void playVictorySong();
+
 
 
 /**
- * Creates the thread responsible for initializing the robot.
+ * Spawns the thread responsible for initializing the robot.
  */
 task main() {
   Precedes(
     TASK_controller
   );
 
+  // configure sensors
+
+
+  initializeClaw();
+  // Wait(SEC_1); // let things like MUX initialize
 }
 
 
 /**
- * Creates a thread that simply makes the robot move until a sensor
- * detects an obstacle. The thread waits until other tasks are
- * finished using the wheel motors before resuming forward movement.
+ * 
  */
 task TASK_controller() {
-  Wait(SEC_1); // let things like MUX initialize
+
 
 
   StopAllTasks();
 }
 
 
-/**
- *  Plays a delightful victory tune.
- */
-void playVictorySong() {
-  for (int i = 0; i < 5; i++) {
-    PlayTone(TONE_A4, MS_100);
-    Wait(MS_100);
-    PlayTone(TONE_B4, MS_100);
-    Wait(MS_100);
-    PlayTone(TONE_C4, MS_100);
-    Wait(MS_100);
-    PlayTone(TONE_D4, MS_300);
-    Wait(MS_300);
-  }
-}
 
 
-#endif //__LAB04_CONTROLLER_NXC__
+
+#endif //__LAB06_CONTROLLER_NXC__

@@ -1,5 +1,5 @@
-#ifndef __WHEELAPI_NXC__
-#define __WHEELAPI_NXC__
+#ifndef __DRIVINGAPI_NXC__
+#define __DRIVINGAPI_NXC__
 
 
 #define RIGHT_WHEEL OUT_C
@@ -141,4 +141,4 @@ void testMovementLib() {
   stopWheels();
 }
 
-#endif //__WHEELAPI_NXC__
+#endif //__DRIVINGAPI_NXC__
