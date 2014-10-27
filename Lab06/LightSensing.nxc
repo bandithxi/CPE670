@@ -7,8 +7,8 @@
 #define LEFT_LIGHT IN_2
 
 typedef struct {
-  int rightSensorValue;
-  int leftSensorValue;
+  int rightValue;
+  int leftValue;
   mutex ownership;
   bool readingIsValid;
 } LightReading;
@@ -29,14 +29,14 @@ task TASK_LightSensing() {
   gLightReading.readingIsValid = false;
 
   while (gUseLightSensing) {
-    gLightReading.rightSensorValue = Sensor(RIGHT_LIGHT);
+    gLightReading.rightValue = Sensor(RIGHT_LIGHT);
     Wait(MS_20);
-    gLightReading.leftSensorValue = Sensor(LEFT_LIGHT);
+    gLightReading.leftValue = Sensor(LEFT_LIGHT);
     Wait(MS_20);
     gLightReading.readingIsValid = true;
 
 #if REFLECTANCE_DEBUG
-    debugOutputLight(gLightReading.rightSensorValue, gLightReading.leftSensorValue);
+    debugOutputLight(gLightReading.rightValue, gLightReading.leftValue);
 #endif // REFLECTANCE_DEBUG
   }
 

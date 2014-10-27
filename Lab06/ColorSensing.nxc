@@ -2,12 +2,16 @@
 #define __COLORSENSING_NXC__
 
 #define COLOR_DEBUG 0
+#define COLOR_MUXED 0
 
 #define COLOR_SENSOR IN_3 // msensor_S1_1
 
-
-// we might be able to use RGB values to somehow compensate for poor
-// color number results
+/**
+ * This struct bundles all data relevant to a color sensor reading.
+ * It should be noted that the RGB values can sometimes be used to
+ * differentiate between colors that produce the same color
+ * number.
+ */
 typedef struct {
   byte colorNum;
   byte red;
@@ -28,19 +32,21 @@ ColorReading gColorReading;
 
 task TASK_colorSensing();
 void debugOutputColor(const ColorVal& pColorVal);
+
+/**
+ *  This method includes logic that must be tailored to the particular
+ *  sensor it is used with. This is to weed out garbage readings.
+ */
 bool readingIsValid(const ColorVal& pColorVal);
 
 
 /**
- *  This thread continually reads the color sensor value
+ *  Spawns the thread that publishes color sensor readings.
  */
 task TASK_colorSensing() {
   SetSensorLowspeed(COLOR_SENSOR);
 //  SetSensor(S1, SENSOR_LOWSPEED);
   
-
-  gColorReading.readingIsValid = false;
-
   while (true) {
     until (gUseColorSensing);
     while (gUseColorSensing) {
@@ -51,34 +57,18 @@ task TASK_colorSensing() {
         gColorReading.value.green,
         gColorReading.value.blue
       );
-
       Wait(MS_20 + MS_5);
 
-      if (readSuccess) {
-        gColorReading.readingIsValid = true;
-      } else {
-        gColorReading.readingIsValid = false;
-      }
-      
-#if COLOR_DEBUG
-      debugOutputColor(gColorReading.value);
-#endif //COLOR_DEBUG
+      #if COLOR_DEBUG
+        debugOutputColor(gColorReading.value);
+      #endif //COLOR_DEBUG
     }
-
-    gColorReading.readingIsValid = false;
   }
-
 }
 
-
-/**
- *  This method includes logic that must be tailored to the particular
- *  sensor it is used with. This is to weed out garbage readings.
- */
 bool readingIsValid(const ColorVal& pColorVal) {
   return true;
 }
-
 
 void debugOutputColor(const ColorVal& pColorVal) {
   ClearScreen();

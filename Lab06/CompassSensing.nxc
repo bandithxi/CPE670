@@ -2,6 +2,7 @@
 #define __COMPASSSENSING_NXC__
 
 #define COMPASS_DEBUG 0
+#define COMPASS_MUXED 0
 
 #define COMPASS_SENSOR IN_3 // msensor_S1_1
 
@@ -16,44 +17,36 @@ typedef struct {
 bool gUseCompassSensing = true;
 CompassReading gCompassReading;
 
+
 task TASK_CompassSensing();
 void debugOutputCompass(const CompassVal& pCompassVal);
 bool readingIsValid(const CompassVal& pCompassVal);
 
 
 /**
- *  This thread continually reads the Compass sensor value
+ *  Spawns the thread responsible for publishing the compass readings
  */
 task TASK_CompassSensing() {
-  SetSensorLowspeed(Compass_SENSOR);
+  #if COMPASS_MUXED
 
-  gCompassReading.readingIsValid = false;
+  #else
+    SetSensorLowspeed(Compass_SENSOR);
+  #endif //COMPASS_MUXED
 
   while (true) {
     until (gUseCompassSensing);
     while (gUseCompassSensing) {
-      bool readSuccess = ReadSensorHTCompass(
-        Compass_SENSOR,
-        gCompassReading.value.CompassNum,
-        gCompassReading.value.red,
-        gCompassReading.value.green,
-        gCompassReading.value.blue
-      );
+      #if COMPASS_MUXED
 
-      Wait(MS_20 + MS_5);
+      #else
+        gCompassReading.value = SensorHTCompass(COMPASS_SENSOR);
+        Wait(MS_10);
+      #endif //COMPASS_MUXED
 
-      if (readSuccess) {
-        gCompassReading.readingIsValid = true;
-      } else {
-        gCompassReading.readingIsValid = false;
-      }
-      
-#if COMPASS_DEBUG
-      debugOutputCompass(gCompassReading.value);
-#endif //COMPASS_DEBUG
+      #if COMPASS_DEBUG
+        debugOutputCompass(gCompassReading.value);
+      #endif //COMPASS_DEBUG
     }
-
-    gCompassReading.readingIsValid = false;
   }
 
 }
@@ -61,10 +54,9 @@ task TASK_CompassSensing() {
 
 void debugOutputCompass(const int pCompassVal) {
   ClearScreen();
-  TextOut(1, LCD_LINE1, "Compass Reading:");
-  NumOut(2, LCD_LINE2, pCompassVal);
+  TextOut(2, LCD_LINE1, "Compass Reading:");
+  NumOut(4, LCD_LINE2, pCompassVal);
   Wait(MS_100);
-
 }
 
 #endif //__COMPASSSENSING_NXC__

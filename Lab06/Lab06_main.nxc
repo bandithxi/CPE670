@@ -24,15 +24,25 @@ enum Strategies {
 };
 
 
-task main();
-task TASK_controller();
-
-
-
-
 /**
  * Spawns the thread responsible for initializing the robot.
  */
+task main();
+
+/**
+ * 
+ */
+task TASK_controller();
+
+
+void goToBallAreaStartCorner();
+void alignForBallPickup();
+void findBall();
+void captureBall();
+void dumpBallInBallArea();
+void dumpBallInFarArea();
+
+
 task main() {
   Precedes(
     TASK_controller
@@ -45,10 +55,6 @@ task main() {
   // Wait(SEC_1); // let things like MUX initialize
 }
 
-
-/**
- * 
- */
 task TASK_controller() {
 
 
@@ -56,6 +62,8 @@ task TASK_controller() {
   StopAllTasks();
 }
 
+void goToBallAreaStartCorner() {
+}
 
 
 

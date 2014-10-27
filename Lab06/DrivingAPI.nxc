@@ -19,14 +19,16 @@
 #define TURN_180 180
 #define MIN_TURN 15
 
-#define FULL_SPEED 75
+#define FULL_SPEED 90
 #define MODERATE_SPEED 60
-#define SLOW_SPEED 50
+#define CRAWL_SPEED 50
 #define SPEED_INCREMENT 4
 #define TIME_PER_UNIT (MS_150 + MS_20) // time to move 1/4 of a "car length"
+                                       // at FULL_SPEED
 
 
 void setWheelMotion(bool pDirection);
+void startCrawling();
 void stopWheels();
 void moveSetDistance(bool pDirection, int pUnitsToMove);
 void setSway(bool pSide);
@@ -43,13 +45,15 @@ void setWheelMotion(bool pDirection) {
 	}
 }
 
+void startCrawling() {
+    OnFwdReg(BOTH_WHEELS, CRAWL_SPEED, OUT_REGMODE_SYNC);
+}
 
 void stopWheels() {
  	Float(BOTH_WHEELS);
- 	Wait(MS_50);
+ 	Wait(MS_20);
  	Off(BOTH_WHEELS);
 }
-
 
 void moveSetDistance(bool pDirection, int pUnitsToMove) {
 	setWheelMotion(pDirection);

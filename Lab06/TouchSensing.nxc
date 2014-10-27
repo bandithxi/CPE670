@@ -1,0 +1,65 @@
+#ifndef __TOUCHSENSING_NXC__
+#define __TOUCHSENSING_NXC__
+
+#define TOUCH_DEBUG 0
+#define TOUCH_MUXED 0
+
+#define TOUCH_SENSOR IN_3 // msensor_S1_1
+
+
+typedef struct {
+  byte value;
+  mutex ownership;
+  bool readingIsValid;
+} TouchReading;
+
+
+bool gUseTouchSensing = true;
+TouchReading gTouchReading;
+
+
+task TASK_TouchSensing();
+void debugOutputTouch(const byte pTouchVal);
+
+
+/**
+ *  Spawns the thread responsible for publishing the touch sensor readings
+ */
+task TASK_TouchSensing() {
+  #if TOUCH_MUXED
+
+  #else
+  //#pragma config(Sensor, S4, sonarSensor, sensorSONAR)  maybe this helpful?
+    SetSensorLowspeed(TOUCH_SENSOR);
+  #endif //TOUCH_MUXED
+
+  while (true) {
+    until (gUseTouchSensing);
+    while (gUseTouchSensing) {
+      #if TOUCH_MUXED
+
+      #else
+        gTouchReading.value = SensorValue(TOUCH_SENSOR);
+        Wait(MS_10);
+      #endif //Touch_MUXED
+
+      #if TOUCH_DEBUG
+        debugOutputTouch(gTouchReading.value);
+      #endif //TOUCH_DEBUG
+    }
+  }
+}
+
+
+void debugOutputTouch(const byte pTouchVal) {
+  ClearScreen();
+  TextOut(2, LCD_LINE1, "Touch Reading:");
+  if (pTouchVal == 1) {
+    TextOut(4, LCD_LINE2, "OUCH! THAT HURT!");
+  } else {
+    TextOut(4, LCD_LINE2, "NO TOUCH!");
+  }
+  Wait(MS_100);
+}
+
+#endif //__TOUCHSENSING_NXC__

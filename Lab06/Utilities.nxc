@@ -2,6 +2,20 @@
 #define __UTILITIES_NXC__
 
 /**
+ * Initializes the MUX if it is being used
+ */
+bool initializeMUX(byte pSensorPort) {
+  SetSensor(pSensorPort, SENSOR_LOWSPEED);
+
+  if (!HTSMUXscanPorts(S1)) {
+    // TODO: playDoomSong();
+    return false; // scan failed, MUX not working
+  }
+
+  return true;
+}
+
+/**
  *  Plays a delightful victory tune.
  */
 void playVictorySong();
