@@ -8,8 +8,10 @@
 #include "SonarSensing.nxc"
 #include "ColorSensing.nxc"
 #include "LightSensing.nxc"
-#include "SoundSensing.nxc"
+#include "CompassSensing.nxc"
 
+
+#define MUX_PORT IN_1
 
 /**
  * An enumeration of control strategy values.
@@ -45,18 +47,22 @@ void dumpBallInFarArea();
 
 task main() {
   Precedes(
+    TASK_CompassSensing,
     TASK_controller
   );
 
   // configure sensors
-
+  initializeMUX(MUX_PORT);
 
   initializeClaw();
   // Wait(SEC_1); // let things like MUX initialize
 }
 
 task TASK_controller() {
+  bool testStuff = true;
+  while (testStuff) {
 
+  }
 
 
   StopAllTasks();
