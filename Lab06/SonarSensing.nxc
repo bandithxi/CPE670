@@ -2,14 +2,21 @@
 #define __SONARSENSING_NXC__
 
 #define SONAR_DEBUG 0
-#define SONAR_MUXED 0
+#define SONAR_MUXED 1
 
-#define RIGHT_SONAR IN_2
-#define LEFT_SONAR IN_1
+
+#if SONAR_MUXED
+  #define RIGHT_SONAR 4   // msensor_S1_4
+  #define LEFT_SONAR 0   // msensor_S1_1
+#else
+  #define RIGHT_SONAR IN_2
+  #define LEFT_SONAR IN_1
+#endif
+
 
 #define SONAR_CLEAR 255
 
-#define NEAR_THRESHOLD 17
+#define NEAR_THRESHOLD 20
 
 typedef struct {
   byte rightValue;
@@ -19,54 +26,59 @@ typedef struct {
 } SonarReading;
 
 
+//int smuxSensorLegoUS(const byte muxport);
+
 bool gUseSonarSensing = true;
 SonarReading gSonarReading;
 
-task TASK_sonarSensor();
+task TASK_SonarSensing();
 byte readSonarSensor(byte pSensorPort);
 void debugOutputSonar(byte pSonarOneReading, byte pSonarTwoReading);
 
 /**
  * Spawns a thread to publish sonar readings.
  */
-task TASK_sonarSensor() {
-  SetSensorUltrasonic(RIGHT_SONAR);
-  SetSensorUltrasonic(LEFT_SONAR);
+task TASK_SonarSensing() {
+  #if SONAR_MUXED
+  #else
+    SetSensorUltrasonic(RIGHT_SONAR);
+    SetSensorUltrasonic(LEFT_SONAR);
 
-  // start with sensors de-activated for good measure (0x00 - off, 0x03 - on)
-  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
-  I2CWrite(LEFT_SONAR, 0x41, 0x00);
+    // start with sensors de-activated for good measure (0x00 - off, 0x03 - on)
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+    I2CWrite(LEFT_SONAR, 0x41, 0x00);
+  #endif
 
 while (true) {
   until(gUseSonarSensing);
   while (gUseSonarSensing) {
-#if SONAR_MUXED
-
-#else
     gSonarReading.rightValue = readSonarSensor(RIGHT_SONAR);
     gSonarReading.leftValue = readSonarSensor(LEFT_SONAR);
-#endif //SONAR_MUXED
+    
+    #if SONAR_DEBUG
+      debugOutputSonar(gSonarReading.rightValue, gSonarReading.leftValue);
+    #endif //SONAR_DEBUG
   }
   
-  I2CWrite(RIGHT_SONAR, 0x41, 0x00);
-  I2CWrite(LEFT_SONAR, 0x41, 0x00);
-
-#if SONAR_DEBUG
-  debugOutputSonar();
-#endif //SONAR_DEBUG
-
+  #if SONAR_MUXED
+  #else
+    I2CWrite(RIGHT_SONAR, 0x41, 0x00);
+    I2CWrite(LEFT_SONAR, 0x41, 0x00);
+  #endif
   }
 }
 
 
 byte readSonarSensor(byte pSensorPort) {
-  #if SONAR_MUXED
+  byte reading = -250;
 
+  #if SONAR_MUXED
+    reading = smuxSensorLegoUS(pSensorPort);
   #else
     I2CWrite(pSensorPort, 0x41, 0x00);
     I2CWrite(pSensorPort, 0x41, 0x03);
 
-    byte reading = SensorUS(pSensorPort);
+    reading = SensorUS(pSensorPort);
     Wait(MS_20 + MS_5);
   
     I2CWrite(pSensorPort, 0x41, 0x00);

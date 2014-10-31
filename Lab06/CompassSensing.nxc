@@ -1,7 +1,7 @@
 #ifndef __COMPASSSENSING_NXC__
 #define __COMPASSSENSING_NXC__
 
-#define COMPASS_DEBUG 1
+#define COMPASS_DEBUG 0
 #define COMPASS_MUXED 0
 
 #define COMPASS_SENSOR IN_4 // msensor_S1_1

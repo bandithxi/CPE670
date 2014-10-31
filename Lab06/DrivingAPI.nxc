@@ -11,7 +11,7 @@
 #define RIGHT true
 #define LEFT false
 
-#define MIN_TURN_TIME (MS_100 + MS_20)
+#define MIN_TURN_TIME (MS_100 + MS_50)
 #define TURN_15 15
 #define TURN_30 30
 #define TURN_45 45
@@ -19,35 +19,30 @@
 #define TURN_180 180
 #define MIN_TURN 15
 
-#define FULL_SPEED 90
-#define MODERATE_SPEED 60
-#define CRAWL_SPEED 50
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT (MS_150 + MS_20) // time to move 1/4 of a "car length"
-                                       // at FULL_SPEED
+#define TIME_PER_UNIT (MS_150 + MS_50) // time to move 1/4 of a "car length"
+                                       // at FAST_SPEED
+
+enum DrivingSpeed {
+  CRAWL_SPEED = 42,
+  SLOW_SPEED = 45,
+  CRUISE_SPEED = 85,
+  FAST_SPEED = 95
+};
 
 
-void setWheelMotion(bool pDirection);
-void startCrawling();
 void stopWheels();
+
+void startDrivingStraight(bool pDirection, int pSpeed);
 void moveSetDistance(bool pDirection, int pUnitsToMove);
-void setSway(bool pSide);
+
+void startStationarySpin(bool pDirection);
 void hardTurn(bool pDirection, int pTurnMagnitude);
 void stationaryTurn(bool pDirection, int pTurnMagnitude);
+void setSway(bool pSide);
+
 void testMovementLib();
 
-
-void setWheelMotion(bool pDirection) {
-	if (pDirection == FORWARD) {
-		OnFwdReg(BOTH_WHEELS, FULL_SPEED, OUT_REGMODE_SYNC);
-	} else {
-		OnRevReg(BOTH_WHEELS, FULL_SPEED, OUT_REGMODE_SYNC);
-	}
-}
-
-void startCrawling() {
-    OnFwdReg(BOTH_WHEELS, CRAWL_SPEED, OUT_REGMODE_SYNC);
-}
 
 void stopWheels() {
  	Float(BOTH_WHEELS);
@@ -55,10 +50,61 @@ void stopWheels() {
  	Off(BOTH_WHEELS);
 }
 
+
+void startDrivingStraight(bool pDirection, int pSpeed) {
+  if (pDirection == FORWARD) {
+    OnFwdReg(BOTH_WHEELS, pSpeed, OUT_REGMODE_SYNC);
+  } else {
+    OnRevReg(BOTH_WHEELS, pSpeed, OUT_REGMODE_SYNC);
+  }
+}
+
+
 void moveSetDistance(bool pDirection, int pUnitsToMove) {
-	setWheelMotion(pDirection);
+	startDrivingStraight(pDirection, FAST_SPEED);
 	Wait(pUnitsToMove * TIME_PER_UNIT);
 	stopWheels();
+}
+
+
+void startStationarySpin(bool pDirection) {
+  if (pDirection == RIGHT) {
+    OnRev(RIGHT_WHEEL, CRAWL_SPEED);
+    OnFwd(LEFT_WHEEL, CRAWL_SPEED);
+  } else {
+    OnFwd(RIGHT_WHEEL, CRAWL_SPEED);  
+    OnRev(LEFT_WHEEL, CRAWL_SPEED);
+  }
+}
+
+
+void hardTurn(bool pDirection, int pTurnMagnitude) {
+  byte dragWheel;
+  byte drivingWheel;
+
+  if (pDirection == RIGHT) {
+    dragWheel = RIGHT_WHEEL;
+    drivingWheel = LEFT_WHEEL;
+  } else {
+    dragWheel = LEFT_WHEEL;
+    drivingWheel = RIGHT_WHEEL;
+  }
+
+  float factor = pTurnMagnitude / MIN_TURN;
+
+  OnFwd(drivingWheel, CRAWL_SPEED);
+  OnRev(dragWheel, CRAWL_SPEED);
+
+  Wait((factor * MIN_TURN_TIME) - factor);
+}
+
+
+void stationaryTurn(bool pDirection, int pTurnMagnitude) {
+  stopWheels();
+
+  hardTurn(pDirection, pTurnMagnitude);
+
+  stopWheels();
 }
 
 
@@ -74,44 +120,14 @@ void setSway(bool pSide) {
 		drivingWheel = RIGHT_WHEEL;
 	}
 
-	OnFwd(drivingWheel, FULL_SPEED);
+	OnFwd(drivingWheel, FAST_SPEED);
 	for (int i = 0; i < 5; i++) {
 		Off(dragWheel);
 		Wait(MS_10);
-		OnFwd(dragWheel, FULL_SPEED / 2);
+		OnFwd(dragWheel, FAST_SPEED / 2);
 	}
 
-	OnFwd(dragWheel, FULL_SPEED * 0.8);
-}
-
-
-void hardTurn(bool pDirection, int pTurnMagnitude) {
-	byte dragWheel;
-	byte drivingWheel;
-
-	if (pDirection == RIGHT) {
-		dragWheel = RIGHT_WHEEL;
-		drivingWheel = LEFT_WHEEL;
-	} else {
-		dragWheel = LEFT_WHEEL;
-		drivingWheel = RIGHT_WHEEL;
-	}
-
-	float factor = pTurnMagnitude / MIN_TURN;
-
-	OnFwd(drivingWheel, CRAWL_SPEED);
-	OnRev(dragWheel, CRAWL_SPEED);
-
-	Wait((factor * MIN_TURN_TIME) - factor);
-}
-
-
-void stationaryTurn(bool pDirection, int pTurnMagnitude) {
-	stopWheels();
-
-  hardTurn(pDirection, pTurnMagnitude);
-
-	stopWheels();
+  OnFwd(dragWheel, FAST_SPEED * 0.8);
 }
 
 
@@ -138,11 +154,96 @@ void testMovementLib() {
   stationaryTurn(LEFT, TURN_180);
 
   Wait(MS_500);
-  setWheelMotion(FORWARD);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
   Wait(SEC_1);
   setSway(RIGHT);
   Wait(SEC_2);
   stopWheels();
+}
+
+
+/**
+ * Claw Configurations
+ */
+#define CLAW_MOTOR OUT_B
+
+#define CLAW_POWER 35
+#define CLAW_INCREMENT_TIME (MS_150 + MS_20)
+
+enum ClawPosition {
+  CLAW_DOWN = 0, // on the ground
+  CLAW_LOW = 1,  //    |
+  CLAW_HIGH = 2, //    v
+  CLAW_UP = 3    // fully raised
+};
+
+
+/**
+ * Claw State variables
+ */
+int gClawPosition = 0;
+
+
+/**
+ * Simply lowers the claw all the way to the ground to establish an initial
+ * position, then raises it to prepare for action.
+ */
+void initializeClaw();
+
+/**
+ *
+ */
+void moveClawToPosition(int pPosition);
+
+/**
+ *
+ */
+void testClawAPI();
+
+
+void initializeClaw() {
+    // lower the claw ``past" what should be the bottom (DOWN) for good measure
+    OnRev(CLAW_MOTOR, CLAW_POWER);
+    for (int i = 0; i < 4; i++) {
+        Wait(CLAW_INCREMENT_TIME);
+    }
+    gClawPosition = 0;
+
+    moveClawToPosition(CLAW_UP);
+}
+
+
+void moveClawToPosition(int pPosition) {
+  if (pPosition < CLAW_DOWN || CLAW_UP < pPosition) {
+    pPosition = CLAW_UP;
+  }
+
+  int unitsToMove = pPosition - gClawPosition;
+
+  if (unitsToMove > 0) {
+    OnFwd(CLAW_MOTOR, CLAW_POWER);
+  } else if (unitsToMove < 0) {
+    unitsToMove *= -1;//^= 0x8000;  // 0b 1000 0000 0000 0000 to flip the sign
+    OnRev(CLAW_MOTOR, CLAW_POWER);
+  }
+
+  for(int i = 0; i < unitsToMove; i++) {
+    Wait(CLAW_INCREMENT_TIME);
+  }
+  Off(CLAW_MOTOR);
+  gClawPosition = pPosition;
+}
+
+
+void testClawAPI() {
+  initializeClaw();
+
+  for (int i = 0; i < 4; i++) {
+    moveClawToPosition(CLAW_DOWN);
+    Wait(MS_300);
+    moveClawToPosition(CLAW_UP);
+    Wait(MS_300);
+  }
 }
 
 #endif //__DRIVINGAPI_NXC__

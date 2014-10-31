@@ -2,9 +2,15 @@
 #define __LIGHTSENSING_NXC__
 
 #define REFLECTANCE_DEBUG 0
+#define REFLECTANCE_MUXED 0
 
-#define RIGHT_LIGHT IN_4
-#define LEFT_LIGHT IN_2
+#if REFLECTANCE_MUXED
+    #define RIGHT_LIGHT 2  // msensorS1_3
+    #define LEFT_LIGHT 2  // msensorS1_3
+#else
+    #define RIGHT_LIGHT IN_3
+    #define LEFT_LIGHT IN_3
+#endif
 
 typedef struct {
   int rightValue;
@@ -19,6 +25,7 @@ LightReading gLightReading;
 
 
 task TASK_LightSensing();
+int readReflectanceSensor(byte pPort);
 void debugOutputLight(const int pRightLightVal, const int pLeftLightVal);
 
 
@@ -29,9 +36,8 @@ task TASK_LightSensing() {
   gLightReading.readingIsValid = false;
 
   while (gUseLightSensing) {
-    gLightReading.rightValue = Sensor(RIGHT_LIGHT);
-    Wait(MS_20);
-    gLightReading.leftValue = Sensor(LEFT_LIGHT);
+    gLightReading.rightValue = readReflectanceSensor(RIGHT_LIGHT);
+    gLightReading.rightValue = readReflectanceSensor(LEFT_LIGHT);
     Wait(MS_20);
     gLightReading.readingIsValid = true;
 
@@ -43,6 +49,18 @@ task TASK_LightSensing() {
   gLightReading.readingIsValid = false;
 }
 
+int readReflectanceSensor(byte pPort) {
+    int reading = -666;
+    
+    #if REFLECTANCE_MUXED
+        reading = smuxSensorLegoLightNorm(pPort);
+    #else
+         reading = Sensor(pPort);
+         Wait(MS_20);
+    #endif
+    
+    return reading;
+}
 
 void debugOutputLight(const int pRightLightVal, const int pLeftLightVal) {
   ClearScreen();

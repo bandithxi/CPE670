@@ -1,22 +1,20 @@
 #ifndef __LAB06_CONTROLLER_NXC__
 #define __LAB06_CONTROLLER_NXC__
 
-//#include "ControllerConfigurations.nxc"
+#include "ControllerConfigurations.nxc"
 
-//#include "Utilities.nxc"
-//#include "DrivingAPI.nxc"
+#include "Utilities.nxc"
+#include "DrivingAPI.nxc"
 //#inlcude "ClawAPI.nxc"
-//#include "SonarSensing.nxc"
-//#include "ColorSensing.nxc"
-//#include "LightSensing.nxc"
+#include "SonarSensing.nxc"
+#include "ColorSensing.nxc"
+#include "LightSensing.nxc"
 #include "CompassSensing.nxc"
+#include "TouchSensing.nxc"
 
-//72
-//185 red
-//288
-//0   blue
 
-#define MUX_PORT IN_1
+#define ORIENTATION_TOLERANCE 5 // degrees(ish))
+#define WALL_PROXIMITY 20       // cm(ish)
 
 /**
  * An enumeration of control strategy values.
@@ -27,7 +25,8 @@ enum Strategies {
   FIND_ENDZONE,
   ALIGN_SELF,
   CREEP_UP_TO_BALL,
-  DUMP_BALL
+  DUMP_RED_BALL,
+  DUMP_BLUE_BALL
 };
 
 
@@ -43,40 +42,176 @@ task TASK_controller();
 
 
 void goToBallAreaStartCorner();
+void orientSelf(const int pHeading);
+void driveUpToWall();
 void alignForBallPickup();
 void findBall();
-void captureBall();
+int captureBall();
 void dumpBallInBallArea();
 void dumpBallInFarArea();
+void dumpBall();
 
 
 task main() {
   Precedes(
+    TASK_ColorSensing,
     TASK_CompassSensing,
+//    TASK_LightSensing,
+    TASK_SonarSensing,
+    TASK_TouchSensing,
     TASK_controller
   );
 
-  // configure sensors
-//  initializeMUX(MUX_PORT);
+  initializeMUX(MUX_PORT);
+  initializeClaw();
+  Wait(MS_500);
+  
+//  testMovementLib();
+//  testClawAPI();
 
-//  initializeClaw();
+
 }
 
 
 task TASK_controller() {
-  bool testStuff = true;
+  bool testStuff = false;
+  TextOut(2, LCD_LINE7, "TESTING SHIT");
+  gUseTouchSensing = true;
+  int i  = 0;
   while (testStuff) {
-
+    NumOut(6, LCD_LINE8, i++);
   }
+  gUseTouchSensing = false;
 
+  int strategy;
+
+  while (true) { // no stopping condition for contest given
+    goToBallAreaStartCorner();
+    alignForBallPickup();
+    findBall();
+    strategy = captureBall();
+
+    if (strategy == DUMP_RED_BALL) {
+      dumpBallInBallArea();
+   } else if (strategy == DUMP_BLUE_BALL) {
+      dumpBallInFarArea();
+   }
+      // TODO: otherwise go to middle? break?
+  }
 
   StopAllTasks();
 }
 
+
 void goToBallAreaStartCorner() {
+  TextOut(2, LCD_LINE3, "GOING TO CORNER");
+  Wait(MS_500);
+  
+  orientSelf(ARENA_NORTH);
+
+  driveUpToWall();
+  stationaryTurn(LEFT, TURN_90);
+
+  driveUpToWall();
+  stationaryTurn(LEFT, TURN_90);
+  
+  gUseCompassSensing = false;
 }
 
 
+void orientSelf(const int pHeading) {
+  gUseCompassSensing = true;
+  bool aboveThreshold = false;
+  bool belowThreshold = false;
+  startStationarySpin(RIGHT);
+
+  while (!(aboveThreshold && belowThreshold)) {
+    aboveThreshold =
+      (pHeading - ORIENTATION_TOLERANCE) <= gCompassReading.value;
+    belowThreshold =
+      gCompassReading.value <= (pHeading + ORIENTATION_TOLERANCE);
+  }
+  
+  stopWheels();
+  gUseCompassSensing = false;
+}
+
+
+void driveUpToWall() {
+  gUseSonarSensing = true;
+  Wait(MS_50);
+  
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(
+//    gSonarReading.rightValue <= WALL_PROXIMITY ||
+    gSonarReading.leftValue <= WALL_PROXIMITY
+  );
+  stopWheels();
+  
+  moveSetDistance(REVERSE, 2);
+  
+  gUseSonarSensing = false;
+}
+
+
+void alignForBallPickup() {
+  orientSelf(ARENA_SOUTH);
+}
+
+
+
+void findBall() {
+  gUseColorSensing = true;
+
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until(gColorReading.value.colorNum != 0);
+  
+  gUseColorSensing = false;
+}
+
+
+int captureBall() {
+  moveClawToPosition(CLAW_DOWN);
+   
+  gUseColorSensing = true;
+  Wait(MS_50);
+   
+  int strategy = DUMP_RED_BALL;
+  if (gColorReading.value.colorNum == BLUE_BALL_COLOR) {
+    strategy = DUMP_BLUE_BALL;
+  } else if (gColorReading.value.colorNum == RED_BALL_COLOR) {
+    strategy = DUMP_RED_BALL;
+  }
+   
+  return strategy;
+}
+
+
+void dumpBallInBallArea() {
+  orientSelf(ARENA_EAST);
+  dumpBall();
+}
+
+
+void dumpBallInFarArea() {
+  orientSelf(ARENA_WEST);
+  driveUpToWall();
+  dumpBall();
+}
+
+void dumpBall() {
+  gUseTouchSensing = true;
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until(gTouchReading.value == 1);
+
+  moveSetDistance(REVERSE, 1);
+  gUseTouchSensing = false;
+    
+  moveClawToPosition(CLAW_UP);
+  moveSetDistance(FORWARD, 4);
+  
+  moveSetDistance(REVERSE, 12);
+}
 
 
 #endif //__LAB06_CONTROLLER_NXC__

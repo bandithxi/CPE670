@@ -30,7 +30,7 @@ task TASK_TouchSensing() {
 
   #else
   //#pragma config(Sensor, S4, sonarSensor, sensorSONAR)  maybe this helpful?
-    SetSensorLowspeed(TOUCH_SENSOR);
+    SetSensorTouch(TOUCH_SENSOR);
   #endif //TOUCH_MUXED
 
   while (true) {

@@ -4,7 +4,7 @@
 /**
  * All-Around Usefuls
  */
-
+#define MUX_PORT IN_1
 
 /**
  * Distances
@@ -17,10 +17,10 @@
  */
 #define HOME_COLOR 0
 #define LINE_COLOR 0
-#define BLUE_BALL_COLOR 3
 #define END_OF_LINE_COLOR 5
-#define RED_BALL_COLOR 7
 #define FIELD_COLOR 13
+#define BLUE_BALL_COLOR 2
+#define RED_BALL_COLOR 9
 
 
 /**
@@ -33,7 +33,10 @@
 /**
  * Orientations
  */
-
+#define ARENA_NORTH 90
+#define ARENA_EAST 185 // red side
+#define ARENA_SOUTH 288
+#define ARENA_WEST 0 // blue side
 
 /**
  * Sounds

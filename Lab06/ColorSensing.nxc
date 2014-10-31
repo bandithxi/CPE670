@@ -1,10 +1,10 @@
 #ifndef __COLORSENSING_NXC__
 #define __COLORSENSING_NXC__
 
-#define COLOR_DEBUG 0
+#define COLOR_DEBUG 1
 #define COLOR_MUXED 0
 
-#define COLOR_SENSOR IN_3 // msensor_S1_1
+#define COLOR_SENSOR IN_2 // msensor_S1_1
 
 /**
  * This struct bundles all data relevant to a color sensor reading.
@@ -27,10 +27,10 @@ typedef struct {
 } ColorReading;
 
 
-bool gUseColorSensing = true;
+bool gUseColorSensing = false;
 ColorReading gColorReading;
 
-task TASK_colorSensing();
+task TASK_ColorSensing();
 void debugOutputColor(const ColorVal& pColorVal);
 
 /**
@@ -43,7 +43,7 @@ bool readingIsValid(const ColorVal& pColorVal);
 /**
  *  Spawns the thread that publishes color sensor readings.
  */
-task TASK_colorSensing() {
+task TASK_ColorSensing() {
   SetSensorLowspeed(COLOR_SENSOR);
 //  SetSensor(S1, SENSOR_LOWSPEED);
   
