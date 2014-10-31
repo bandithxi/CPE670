@@ -4,7 +4,7 @@
 /**
  * All-Around Usefuls
  */
-
+#define MUX_PORT IN_1
 
 /**
  * Distances
@@ -33,7 +33,10 @@
 /**
  * Orientations
  */
-
+#define CONTEST_NORTH 72
+#define CONTEST_EAST 185 // red side
+#define CONTEST_SOUTH 288
+#define CONTEST_WEST 0 // blue side
 
 /**
  * Sounds

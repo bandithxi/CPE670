@@ -11,12 +11,9 @@
 //#include "LightSensing.nxc"
 #include "CompassSensing.nxc"
 
-//72
-//185 red
-//288
-//0   blue
 
-#define MUX_PORT IN_1
+#define ORIENTATION_TOLERANCE 5 // degrees(ish))
+#define WALL_PROXIMITY 10       // cm(ish)
 
 /**
  * An enumeration of control strategy values.
@@ -27,7 +24,8 @@ enum Strategies {
   FIND_ENDZONE,
   ALIGN_SELF,
   CREEP_UP_TO_BALL,
-  DUMP_BALL
+  DUMP_RED_BALL,
+  DUMP_BLUE_BALL
 };
 
 
@@ -43,9 +41,10 @@ task TASK_controller();
 
 
 void goToBallAreaStartCorner();
+void driveUpToWall();
 void alignForBallPickup();
 void findBall();
-void captureBall();
+int captureBall();
 void dumpBallInBallArea();
 void dumpBallInFarArea();
 
@@ -69,14 +68,59 @@ task TASK_controller() {
 
   }
 
+  int strategy;
+
+  while (true) { // no stopping condition for contest given
+    goToBallAreaStartCorner();
+    alignForBallPickup();
+    findBall();
+    strategy = captureBall();
+
+    if (strategy == DUMP_RED_BALL) {
+      dumpBallInBallArea();
+    } else if (strategy == DUMP_BLUE_BALL) {
+      dumpBallInFarArea();
+    }
+      // TODO: otherwise go to middle? break?
+  }
 
   StopAllTasks();
 }
 
 void goToBallAreaStartCorner() {
+  bool aboveThreshold = false;
+  bool belowThreshold = false;
+
+  while (!(aboveThreshold && belowThreshold)) {
+    startStationarySpin(RIGHT);
+    aboveThreshold =
+      (COMPETITION_NORTH - ORIENTATION_TOLERANCE) <= gCompassReading.value;
+    belowThreshold =
+      gCompassReading.value <= (COMPETITION_NORTH + ORIENTATION_TOLERANCE);
+  }
+
+  driveUpToWall();
+  stationaryTurn(RIGHT, TURN_90);
+
+  driveUpToWall();
+  stationaryTurn(RIGHT, TURN_90);
 }
 
 
+void driveUpToWall() {
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(
+    gSonarReading.rightValue <= WALL_PROXIMITY ||
+    gSonarReading.leftValue <= WALL_PROXIMITY
+  );
+  stopWheels();
+}
+
+void alignForBallPickup() {}
+void findBall() {}
+int captureBall() {return 0;}
+void dumpBallInBallArea() {}
+void dumpBallInFarArea() {}
 
 
 #endif //__LAB06_CONTROLLER_NXC__
