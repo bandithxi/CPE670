@@ -55,13 +55,13 @@ void moveClawToPosition(int pPosition) {
   int unitsToMove = pPosition - gClawPosition;
   
   if (unitsToMove > 0) {
-    OnFwd(CLAW_MOTOR);
+    OnFwd(CLAW_MOTOR, CLAW_POWER);
   } else if (unitsToMove < 0) {
     unitsToMove ^= 0x8000;  // 0b 1000 0000 0000 0000 to flip the sign
-    OnRev(CLAW_MOTOR);
+    OnRev(CLAW_MOTOR, CLAW_POWER);
   }
 
-  for(int i = 0; i < unitsToMove) {
+  for(int i = 0; i < unitsToMove; i++) {
     Wait(CLAW_INCREMENT_TIME);
   }
   Off(CLAW_MOTOR);

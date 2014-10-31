@@ -4,7 +4,7 @@
 #define COMPASS_DEBUG 1
 #define COMPASS_MUXED 0
 
-#define COMPASS_SENSOR IN_2 // msensor_S1_1
+#define COMPASS_SENSOR IN_4 // msensor_S1_1
 
 
 typedef struct {
@@ -19,8 +19,7 @@ CompassReading gCompassReading;
 
 
 task TASK_CompassSensing();
-void debugOutputCompass(const CompassVal& pCompassVal);
-bool readingIsValid(const CompassVal& pCompassVal);
+void debugOutputCompass(const int pCompassVal);
 
 
 /**
@@ -30,7 +29,7 @@ task TASK_CompassSensing() {
   #if COMPASS_MUXED
 
   #else
-    SetSensorLowspeed(Compass_SENSOR);
+    SetSensorLowspeed(COMPASS_SENSOR);
   #endif //COMPASS_MUXED
 
   while (true) {

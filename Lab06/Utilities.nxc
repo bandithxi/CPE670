@@ -1,6 +1,8 @@
 #ifndef __UTILITIES_NXC__
 #define __UTILITIES_NXC__
 
+#include "HTSMUX-driver.h"
+
 /**
  * Initializes the MUX if it is being used
  */

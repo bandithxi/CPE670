@@ -9,6 +9,7 @@
 
 #define SONAR_CLEAR 255
 
+#define NEAR_THRESHOLD 17
 
 typedef struct {
   byte rightValue;
@@ -62,9 +63,6 @@ byte readSonarSensor(byte pSensorPort) {
   #if SONAR_MUXED
 
   #else
-    gSonarReading.rightValue = readSonarSensor(RIGHT_SONAR);
-    gSonarReading.leftValue = readSonarSensor(LEFT_SONAR);
-
     I2CWrite(pSensorPort, 0x41, 0x00);
     I2CWrite(pSensorPort, 0x41, 0x03);
 

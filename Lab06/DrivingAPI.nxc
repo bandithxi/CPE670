@@ -99,8 +99,8 @@ void hardTurn(bool pDirection, int pTurnMagnitude) {
 
 	float factor = pTurnMagnitude / MIN_TURN;
 
-	OnFwd(drivingWheel, SLOW_SPEED);
-	OnRev(dragWheel, SLOW_SPEED);
+	OnFwd(drivingWheel, CRAWL_SPEED);
+	OnRev(dragWheel, CRAWL_SPEED);
 
 	Wait((factor * MIN_TURN_TIME) - factor);
 }

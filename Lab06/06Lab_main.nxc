@@ -1,15 +1,20 @@
 #ifndef __LAB06_CONTROLLER_NXC__
 #define __LAB06_CONTROLLER_NXC__
 
-#include "ControllerConfigurations.nxc"
+//#include "ControllerConfigurations.nxc"
 
-#include "HTSMUX-driver.h"
-#include "DrivingAPI.nxc"
-#include "SonarSensing.nxc"
-#include "ColorSensing.nxc"
-#include "LightSensing.nxc"
+//#include "Utilities.nxc"
+//#include "DrivingAPI.nxc"
+//#inlcude "ClawAPI.nxc"
+//#include "SonarSensing.nxc"
+//#include "ColorSensing.nxc"
+//#include "LightSensing.nxc"
 #include "CompassSensing.nxc"
 
+//72
+//185 red
+//288
+//0   blue
 
 #define MUX_PORT IN_1
 
@@ -52,11 +57,11 @@ task main() {
   );
 
   // configure sensors
-  initializeMUX(MUX_PORT);
+//  initializeMUX(MUX_PORT);
 
-  initializeClaw();
-  // Wait(SEC_1); // let things like MUX initialize
+//  initializeClaw();
 }
+
 
 task TASK_controller() {
   bool testStuff = true;
