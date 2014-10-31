@@ -30,6 +30,13 @@ enum DrivingSpeed {
   FAST_SPEED = 95
 };
 
+enum DrivingSpeed {
+  CRAWL_SPEED = 20,
+  SLOW_SPEED = 45,
+  CRUISE_SPEED = 85,
+  FAST_SPEED = 95
+};
+
 
 void stopWheels();
 
