@@ -15,16 +15,20 @@
 
 #define ORIENTATION_TOLERANCE 2 // degrees(ish))
 #define WALL_PROXIMITY 22       // cm(ish)
+#define ENDZONE_WALL true
+#define NORMAL_WALL false
 
 /**
  * An enumeration of control strategy values.
  */
 enum Strategies {
   PROCEED,
+  GO_TO_ENDZONE,
   U_TURN,
-  FIND_ENDZONE,
-  ALIGN_SELF,
+  GO_TO_BALL_AREA,
   CREEP_UP_TO_BALL,
+  CAPTURE_BALL,
+  DUMP_BALL,
   DUMP_RED_BALL,
   DUMP_BLUE_BALL
 };
@@ -88,20 +92,40 @@ task TASK_controller() {
     gUseLightSensing = false;
   #endif
 
-  int strategy;
+  int strategy = GO_TO_WALL;
 
   while (true) { // we will stop the contest after 2 minutes
-    goToBallAreaStartCorner();
-    alignForBallPickup();
-    findBall();
-    strategy = captureBall();
-
-    if (strategy == DUMP_RED_BALL) {
-      dumpBallInBallArea();
-   } else if (strategy == DUMP_BLUE_BALL) {
-      dumpBallInFarArea();
-   }
-      // TODO: otherwise go to middle? break?
+    switch (strategy) {
+      case GO_TO_WALL:
+        strategy = driveTowardsWall(ARENA_NORTH, strategy);
+        break;
+      case GO_TO_BALL_AREA:
+        strategy = driveTowardsWall(ARENA_EAST, strategy);
+        break;
+      case TURN_TO_BALL_AREA:
+        backUpAndTurn(strategy);
+        break;
+      case ALIGN_FOR_BALL_PICKUP:
+        alignForBallPickup();
+        break;
+      case CREEP_UP_TO_BALL:
+        strategy = creepUpToBall();
+        break;
+      case CAPTURE_BALL:
+        strategy = captureBall();
+        break;
+      case DUMP_RED_BALL:
+        strategy = dumpBallInBallArea();
+        break;
+      case DUMP_BLUE_BALL:
+        strategy = dumpBallInFarArea();
+        break;
+      case GO_TO_MIDDLE:
+        backUpAndTurn(GO_TO_MIDDLE);
+      default:
+        break;
+    }
+    strategy = determineStrategy(strategy);
   }
 
   StopAllTasks();
@@ -109,56 +133,121 @@ task TASK_controller() {
 
 
 int determineStrategy(int pLastStrategy) {
+  int strategy;
 
+  if (pLastStrategy != DUMP_BLUE_BALL && != DUMP_RED_BALL) {
+    gUseSonarSensing = true;
+    gUseColorSensing = true;
+    gUseLightSensing = true;
+    Wait(MS_50);
+
+    bool ballPresent = ballObserved();
+    bool wallPresent = wallObserved();
+    bool onTheBlack = gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD;
+
+    gUseSonarSensing = false;
+    gUseColorSensing = false;
+    gUseLightSensing = false;
+
+    if (ballPresent) {
+      strategy = CAPTURE_BALL;
+    } else if (wallPresent) {
+      switch (pLastStrategy) {
+        case GO_TO_WALL:
+          strategy = TURN_TO_BALL_AREA;
+          break;
+        case GO_TO_BALL_AREA:
+          if (onTheBlack) {
+            strategy = ALIGN_FOR_BALL_PICKUP;
+          } else {
+            strategy = GO_TO_BALL_AREA;
+          }
+        default:
+          strategy = GO_TO_MIDDLE;
+          break;
+      }  
+  } else {
+    strategy = pLastStrategy;
+  }
+
+  return strategy;
 }
 
 
-void goToBallAreaStartCorner() {
-  orientSelf(ARENA_NORTH);
+int driveTowardsWall(const int pWallHeading, const int pLastStrategy) {
+  orientSelf(pWallHeading);
+  moveSetDistance(FORWARD, 4);
+  stopWheels();
 
-  driveUpToWall(false);
-  orientSelf(ARENA_EAST);
-
-  // get up in that corner
-  driveUpToWall(true);
-  orientSelf(ARENA_SE);
-  moveSetDistance(FORWARD, 2);
-  orientSelf(ARENA_SOUTH);
-  
+  return pLastStrategy;
 }
 
+int backUpAndTurn(const int pStrategy) {
+  moveSetDistance(REVERSE, 2);
+
+  int heading;
+  int strategy = pStrategy;
+  switch (pStrategy) {
+    case TURN_TO_BALL_AREA:
+      heading = ARENA_EAST;
+      strategy = GO_TO_BALL_AREA;
+      break;
+    case GO_TO_MIDDLE:
+    default:
+      heading = ARENA_NORTH;
+      strategy = GO_TO_MIDDLE;
+      break;
+  }
+  orientSelf(heading);
+
+  return strategy;
+} 
 
 void alignForBallPickup() {
+  // get up in that corner
+  orientSelf(ARENA_SE);
+  moveSetDistance(FORWARD, 2);
   orientSelf(ARENA_SOUTH - 5); // TODO: maybe refine this
 }
 
-
-
-void findBall() {
+int creepUpToBall() {
   gUseColorSensing = true;
+  gUseSonarSensing = true;
+
+  int strategy = CREEP_UP_TO_BALL;
 
   startDrivingStraight(FORWARD, CRAWL_SPEED);
-  until(gColorReading.value.colorNum != 0);
-  
-  gUseColorSensing = false;
-}
+  until (ballObserved() || wallObserved());      // TODO: reconsider using sonar
 
+  if (wallObserved()) {
+    strategy = GO_TO_MIDDLE;
+  } else {
+    strategy = CAPTURE_BALL;
+  }
+
+  gUseColorSensing = false;
+  gUseSonarSensing = false;
+
+  return strategy;
+}
 
 int captureBall() {
   moveClawToPosition(CLAW_DOWN);
 
+  gUseColorSensing = true;
+
   orientSelf(ARENA_SE);
   moveSetDistance(REVERSE, 4);
 
-  gUseColorSensing = true;
-  Wait(MS_50);
    
-  int strategy = DUMP_RED_BALL;
+  int strategy = GO_TO_MIDDLE;
   if (gColorReading.value.colorNum == BLUE_BALL_COLOR) {
     strategy = DUMP_BLUE_BALL;
   } else if (gColorReading.value.colorNum == RED_BALL_COLOR) {
     strategy = DUMP_RED_BALL;
   }
+
+  gUseColorSensing = false;
    
   return strategy;
 }
@@ -172,7 +261,17 @@ void dumpBallInBallArea() {
 
 void dumpBallInFarArea() {
   orientSelf(ARENA_WEST);
-  driveUpToWall(true);
+
+  gUseSonarSensing = true;
+  gUseLightSensing = true;
+  startDrivingStraight(CRUISE_SPEED);
+  until (
+    wallObserved() &&
+    gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD
+  );
+  gUseSonarSensing = false;
+  gUseLightSensing = false;
+
   dumpBall();
 }
 
@@ -191,6 +290,18 @@ void dumpBall(int pHeading) {
   moveSetDistance(FORWARD, 4);
   
   moveSetDistance(REVERSE, 10);
+}
+
+
+bool ballObserved() {
+  return (
+    gColorReading.value.colorNum == BLUE_BALL_COLOR || 
+    gColorReading.value.colorNum == RED_BALL_COLOR
+  );
+}
+
+bool wallObserved() {
+  return gSonarReading.leftValue <= WALL_PROXIMITY;
 }
 
 
@@ -220,36 +331,5 @@ void orientSelf(const int pHeading) {
   gUseCompassSensing = false;
 }
 
-
-void driveUpToWall(const bool pWallIsEndzone) {
-  gUseSonarSensing = true;
-  if (pWallIsEndzone) {
-    gUseLightSensing = true;
-  }
-  Wait(MS_50);
-  
-  bool stopDriving = false;
-  while (!stopDriving) {
-  startDrivingStraight(FORWARD, CRUISE_SPEED);
-    until(
-//      gSonarReading.rightValue <= WALL_PROXIMITY ||
-      gSonarReading.leftValue <= WALL_PROXIMITY
-    );
-    
-    if (gUseLightSensing) {
-      if (gLightReading.rightValue <= MUXED_BLACK_UPPER) {
-        stopDriving = true;
-      }
-    } else {
-      stopDriving = true;
-    }
-  }
-  stopWheels();
-  
-  moveSetDistance(REVERSE, 2);
-  
-  gUseSonarSensing = false;
-  gUseLightSensing = false;
-}
 
 #endif //__LAB06_CONTROLLER_NXC__
