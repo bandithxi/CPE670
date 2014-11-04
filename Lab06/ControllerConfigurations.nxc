@@ -36,9 +36,13 @@
  * Orientations
  */
 #define ARENA_NORTH 90
-#define ARENA_EAST 185 // red side
-#define ARENA_SOUTH 288
+#define ARENA_NE 135
+#define ARENA_EAST 180 // red side
+#define ARENA_SE 225
+#define ARENA_SOUTH 270
+#define ARENA_SW 315
 #define ARENA_WEST 0 // blue side
+#define ARENA_NW 45
 
 
 /**

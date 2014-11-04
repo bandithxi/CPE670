@@ -4,11 +4,14 @@
 #define TOUCH_DEBUG 0
 #define TOUCH_MUXED 0
 
-#define TOUCH_SENSOR IN_3 // msensor_S1_1
-
+#if TOUCH_MUXED
+  #define TOUCH_SENSOR 2  // same as: msensorS1_3
+#else
+  #define TOUCH_SENSOR IN_3 // msensor_S1_1
+#endif
 
 typedef struct {
-  byte value;
+  bool value;
   mutex ownership;
   bool readingIsValid;
 } TouchReading;
@@ -19,6 +22,7 @@ TouchReading gTouchReading;
 
 
 task TASK_TouchSensing();
+bool readTouchSensor(byte pPort);
 void debugOutputTouch(const byte pTouchVal);
 
 
@@ -27,7 +31,6 @@ void debugOutputTouch(const byte pTouchVal);
  */
 task TASK_TouchSensing() {
   #if TOUCH_MUXED
-
   #else
   //#pragma config(Sensor, S4, sonarSensor, sensorSONAR)  maybe this helpful?
     SetSensorTouch(TOUCH_SENSOR);
@@ -36,12 +39,7 @@ task TASK_TouchSensing() {
   while (true) {
     until (gUseTouchSensing);
     while (gUseTouchSensing) {
-      #if TOUCH_MUXED
-
-      #else
-        gTouchReading.value = SensorValue(TOUCH_SENSOR);
-        Wait(MS_10);
-      #endif //Touch_MUXED
+      gTouchReading.value = readTouchSensor(TOUCH_SENSOR);
 
       #if TOUCH_DEBUG
         debugOutputTouch(gTouchReading.value);
@@ -50,6 +48,13 @@ task TASK_TouchSensing() {
   }
 }
 
+bool readTouchSensor(byte pPort) {
+      #if TOUCH_MUXED
+        return smuxReadSensorLegoTouch(pPort);
+      #else
+        return SensorValue(pPort);
+      #endif //Touch_MUXED
+}
 
 void debugOutputTouch(const byte pTouchVal) {
   ClearScreen();

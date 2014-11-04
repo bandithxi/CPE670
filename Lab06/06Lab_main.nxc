@@ -41,16 +41,19 @@ task main();
 task TASK_controller();
 
 
+/**
+ * Drives the robot to the NW corner of the arena, ideally aligning it for
+ * ball capture.
+ */
 void goToBallAreaStartCorner();
-void orientSelf(const int pHeading);
-void driveUpToWall(const bool pWallIsEndzone);
 void alignForBallPickup();
 void findBall();
 int captureBall();
 void dumpBallInBallArea();
 void dumpBallInFarArea();
-void dumpBall();
-
+void dumpBall(int pHeading);
+void orientSelf(const int pHeading);
+void driveUpToWall(const bool pWallIsEndzone);
 
 task main() {
   Precedes(
@@ -72,18 +75,22 @@ task main() {
 
 
 task TASK_controller() {
-  bool testStuff = false;
-  gUseLightSensing = true;
-  int i  = 0;
-  while (testStuff) {
-    TextOut(2, LCD_LINE7, "TESTING SHIT");
-    NumOut(6, LCD_LINE8, i++);
-  }
-  gUseLightSensing = false;
+
+  #if 0
+    gUseLightSensing = true;
+    int i  = 0;
+    while (true) {
+      // this let's us know that the robot is processing things
+      TextOut(2, LCD_LINE7, "TESTING SHIT");
+      NumOut(6, LCD_LINE8, i++);
+      // sensor debug output should be concurrently printing
+    }
+    gUseLightSensing = false;
+  #endif
 
   int strategy;
 
-  while (true) { // no stopping condition for contest given
+  while (true) { // we will stop the contest after 2 minutes
     goToBallAreaStartCorner();
     alignForBallPickup();
     findBall();
@@ -101,16 +108,89 @@ task TASK_controller() {
 }
 
 
+int determineStrategy(int pLastStrategy) {
+
+}
+
+
 void goToBallAreaStartCorner() {
   orientSelf(ARENA_NORTH);
 
   driveUpToWall(false);
-  stationaryTurn(LEFT, TURN_90);
+  orientSelf(ARENA_EAST);
 
+  // get up in that corner
   driveUpToWall(true);
-  stationaryTurn(LEFT, TURN_90);
+  orientSelf(ARENA_SE);
+  moveSetDistance(FORWARD, 2);
+  orientSelf(ARENA_SOUTH);
   
-  gUseCompassSensing = false;
+}
+
+
+void alignForBallPickup() {
+  orientSelf(ARENA_SOUTH - 5); // TODO: maybe refine this
+}
+
+
+
+void findBall() {
+  gUseColorSensing = true;
+
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until(gColorReading.value.colorNum != 0);
+  
+  gUseColorSensing = false;
+}
+
+
+int captureBall() {
+  moveClawToPosition(CLAW_DOWN);
+
+  orientSelf(ARENA_SE);
+  moveSetDistance(REVERSE, 4);
+
+  gUseColorSensing = true;
+  Wait(MS_50);
+   
+  int strategy = DUMP_RED_BALL;
+  if (gColorReading.value.colorNum == BLUE_BALL_COLOR) {
+    strategy = DUMP_BLUE_BALL;
+  } else if (gColorReading.value.colorNum == RED_BALL_COLOR) {
+    strategy = DUMP_RED_BALL;
+  }
+   
+  return strategy;
+}
+
+
+void dumpBallInBallArea() {
+  orientSelf(ARENA_EAST);
+  dumpBall();
+}
+
+
+void dumpBallInFarArea() {
+  orientSelf(ARENA_WEST);
+  driveUpToWall(true);
+  dumpBall();
+}
+
+void dumpBall(int pHeading) {
+  gUseTouchSensing = true;
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until(gTouchReading.value == 1);
+  gUseTouchSensing = false;
+
+  moveSetDistance(REVERSE, 1);
+  orientSelf(pHeading);
+
+  moveClawToPosition(CLAW_LOW);
+  moveClawToPosition(CLAW_UP);
+  holdClawUp();
+  moveSetDistance(FORWARD, 4);
+  
+  moveSetDistance(REVERSE, 10);
 }
 
 
@@ -118,8 +198,17 @@ void orientSelf(const int pHeading) {
   gUseCompassSensing = true;
   bool aboveThreshold = false;
   bool belowThreshold = false;
-  startStationarySpin(RIGHT);
 
+  int currentHeading = gCompassReading.value;
+  if (currentHeading - pHeading > ORIENTATION_TOLERANCE) {
+    startStationarySpin(LEFT);
+  } else if (currentHeading - pHeading < -1 *ORIENTATION_TOLERANCE) {
+    startStationarySpin(RIGHT);
+  }
+
+  // if we are already at the correct heading, the robot won't be moving.
+  // this would honestly be more readable with a do-while, but I am
+  // principally against do-whiles
   while (!(aboveThreshold && belowThreshold)) {
     aboveThreshold =
       (pHeading - ORIENTATION_TOLERANCE) <= gCompassReading.value;
@@ -162,68 +251,5 @@ void driveUpToWall(const bool pWallIsEndzone) {
   gUseSonarSensing = false;
   gUseLightSensing = false;
 }
-
-
-void alignForBallPickup() {
-  orientSelf(ARENA_SOUTH);
-}
-
-
-
-void findBall() {
-  gUseColorSensing = true;
-
-  startDrivingStraight(FORWARD, CRAWL_SPEED);
-  until(gColorReading.value.colorNum != 0);
-  
-  gUseColorSensing = false;
-}
-
-
-int captureBall() {
-  moveClawToPosition(CLAW_DOWN);
-   
-  gUseColorSensing = true;
-  Wait(MS_50);
-   
-  int strategy = DUMP_RED_BALL;
-  if (gColorReading.value.colorNum == BLUE_BALL_COLOR) {
-    strategy = DUMP_BLUE_BALL;
-  } else if (gColorReading.value.colorNum == RED_BALL_COLOR) {
-    strategy = DUMP_RED_BALL;
-  }
-   
-  return strategy;
-}
-
-
-void dumpBallInBallArea() {
-  orientSelf(ARENA_EAST);
-  dumpBall();
-}
-
-
-void dumpBallInFarArea() {
-  orientSelf(ARENA_WEST);
-  driveUpToWall(true);
-  dumpBall();
-}
-
-void dumpBall() {
-  gUseTouchSensing = true;
-  startDrivingStraight(FORWARD, CRAWL_SPEED);
-  until(gTouchReading.value == 1);
-
-  moveSetDistance(REVERSE, 1);
-  gUseTouchSensing = false;
-
-  moveClawToPosition(CLAW_LOW);
-  moveClawToPosition(CLAW_UP);
-  holdClawUp();
-  moveSetDistance(FORWARD, 4);
-  
-  moveSetDistance(REVERSE, 10);
-}
-
 
 #endif //__LAB06_CONTROLLER_NXC__
