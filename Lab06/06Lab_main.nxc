@@ -13,8 +13,8 @@
 #include "TouchSensing.nxc"
 
 
-#define ORIENTATION_TOLERANCE 5 // degrees(ish))
-#define WALL_PROXIMITY 20       // cm(ish)
+#define ORIENTATION_TOLERANCE 2 // degrees(ish))
+#define WALL_PROXIMITY 22       // cm(ish)
 
 /**
  * An enumeration of control strategy values.
@@ -43,7 +43,7 @@ task TASK_controller();
 
 void goToBallAreaStartCorner();
 void orientSelf(const int pHeading);
-void driveUpToWall();
+void driveUpToWall(const bool pWallIsEndzone);
 void alignForBallPickup();
 void findBall();
 int captureBall();
@@ -56,7 +56,7 @@ task main() {
   Precedes(
     TASK_ColorSensing,
     TASK_CompassSensing,
-//    TASK_LightSensing,
+    TASK_LightSensing,
     TASK_SonarSensing,
     TASK_TouchSensing,
     TASK_controller
@@ -73,13 +73,13 @@ task main() {
 
 task TASK_controller() {
   bool testStuff = false;
-  TextOut(2, LCD_LINE7, "TESTING SHIT");
-  gUseTouchSensing = true;
+  gUseLightSensing = true;
   int i  = 0;
   while (testStuff) {
+    TextOut(2, LCD_LINE7, "TESTING SHIT");
     NumOut(6, LCD_LINE8, i++);
   }
-  gUseTouchSensing = false;
+  gUseLightSensing = false;
 
   int strategy;
 
@@ -102,15 +102,12 @@ task TASK_controller() {
 
 
 void goToBallAreaStartCorner() {
-  TextOut(2, LCD_LINE3, "GOING TO CORNER");
-  Wait(MS_500);
-  
   orientSelf(ARENA_NORTH);
 
-  driveUpToWall();
+  driveUpToWall(false);
   stationaryTurn(LEFT, TURN_90);
 
-  driveUpToWall();
+  driveUpToWall(true);
   stationaryTurn(LEFT, TURN_90);
   
   gUseCompassSensing = false;
@@ -135,20 +132,35 @@ void orientSelf(const int pHeading) {
 }
 
 
-void driveUpToWall() {
+void driveUpToWall(const bool pWallIsEndzone) {
   gUseSonarSensing = true;
+  if (pWallIsEndzone) {
+    gUseLightSensing = true;
+  }
   Wait(MS_50);
   
+  bool stopDriving = false;
+  while (!stopDriving) {
   startDrivingStraight(FORWARD, CRUISE_SPEED);
-  until(
-//    gSonarReading.rightValue <= WALL_PROXIMITY ||
-    gSonarReading.leftValue <= WALL_PROXIMITY
-  );
+    until(
+//      gSonarReading.rightValue <= WALL_PROXIMITY ||
+      gSonarReading.leftValue <= WALL_PROXIMITY
+    );
+    
+    if (gUseLightSensing) {
+      if (gLightReading.rightValue <= MUXED_BLACK_UPPER) {
+        stopDriving = true;
+      }
+    } else {
+      stopDriving = true;
+    }
+  }
   stopWheels();
   
   moveSetDistance(REVERSE, 2);
   
   gUseSonarSensing = false;
+  gUseLightSensing = false;
 }
 
 
@@ -193,7 +205,7 @@ void dumpBallInBallArea() {
 
 void dumpBallInFarArea() {
   orientSelf(ARENA_WEST);
-  driveUpToWall();
+  driveUpToWall(true);
   dumpBall();
 }
 
@@ -204,11 +216,13 @@ void dumpBall() {
 
   moveSetDistance(REVERSE, 1);
   gUseTouchSensing = false;
-    
+
+  moveClawToPosition(CLAW_LOW);
   moveClawToPosition(CLAW_UP);
+  holdClawUp();
   moveSetDistance(FORWARD, 4);
   
-  moveSetDistance(REVERSE, 12);
+  moveSetDistance(REVERSE, 10);
 }
 
 

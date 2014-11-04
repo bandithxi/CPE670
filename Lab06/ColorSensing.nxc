@@ -1,7 +1,7 @@
 #ifndef __COLORSENSING_NXC__
 #define __COLORSENSING_NXC__
 
-#define COLOR_DEBUG 1
+#define COLOR_DEBUG 0
 #define COLOR_MUXED 0
 
 #define COLOR_SENSOR IN_2 // msensor_S1_1

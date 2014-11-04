@@ -20,19 +20,13 @@
 #define MIN_TURN 15
 
 #define SPEED_INCREMENT 4
-#define TIME_PER_UNIT (MS_150 + MS_50) // time to move 1/4 of a "car length"
+#define TIME_PER_UNIT (MS_150) // time to move 1/4 of a "car length"
                                        // at FAST_SPEED
 
-enum DrivingSpeed {
-  CRAWL_SPEED = 42,
-  SLOW_SPEED = 45,
-  CRUISE_SPEED = 85,
-  FAST_SPEED = 95
-};
 
 enum DrivingSpeed {
-  CRAWL_SPEED = 20,
-  SLOW_SPEED = 45,
+  CRAWL_SPEED = 45,
+  SLOW_SPEED = 60,
   CRUISE_SPEED = 85,
   FAST_SPEED = 95
 };
@@ -174,8 +168,9 @@ void testMovementLib() {
  */
 #define CLAW_MOTOR OUT_B
 
-#define CLAW_POWER 35
-#define CLAW_INCREMENT_TIME (MS_150 + MS_20)
+#define CLAW_POWER 45
+#define CLAW_HOLD_POWER 30
+#define CLAW_INCREMENT_TIME (MS_150)
 
 enum ClawPosition {
   CLAW_DOWN = 0, // on the ground
@@ -205,18 +200,21 @@ void moveClawToPosition(int pPosition);
 /**
  *
  */
+void holdClawUp();
+
+/**
+ *
+ */
 void testClawAPI();
 
 
 void initializeClaw() {
-    // lower the claw ``past" what should be the bottom (DOWN) for good measure
-    OnRev(CLAW_MOTOR, CLAW_POWER);
-    for (int i = 0; i < 4; i++) {
+    OnFwd(CLAW_MOTOR, CLAW_POWER);
+    for (int i = 0; i < 3; i++) {
         Wait(CLAW_INCREMENT_TIME);
     }
-    gClawPosition = 0;
-
-    moveClawToPosition(CLAW_UP);
+    Off(CLAW_MOTOR);
+    gClawPosition = CLAW_UP;
 }
 
 
@@ -226,6 +224,10 @@ void moveClawToPosition(int pPosition) {
   }
 
   int unitsToMove = pPosition - gClawPosition;
+
+  if (pPosition == CLAW_UP) {
+    unitsToMove += 2;
+  }
 
   if (unitsToMove > 0) {
     OnFwd(CLAW_MOTOR, CLAW_POWER);
@@ -239,6 +241,11 @@ void moveClawToPosition(int pPosition) {
   }
   Off(CLAW_MOTOR);
   gClawPosition = pPosition;
+}
+
+
+void holdClawUp() {
+  OnFwd(CLAW_MOTOR, CLAW_HOLD_POWER);
 }
 
 

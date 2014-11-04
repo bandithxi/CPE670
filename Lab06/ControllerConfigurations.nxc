@@ -28,6 +28,8 @@
  */
 #define WHITE_LIGHT_LOWER_THRESHOLD 55 // units: ??? (0 - 75 apparently)
 #define BLACK_LIGHT_UPPER_THRESHOLD 45 // units: ???(0 - 75 apparently)
+#define MUXED_WHITE_LOWER 28
+#define MUXED_BLACK_UPPER 19
 
 
 /**

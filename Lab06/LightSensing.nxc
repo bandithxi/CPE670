@@ -2,7 +2,7 @@
 #define __LIGHTSENSING_NXC__
 
 #define REFLECTANCE_DEBUG 0
-#define REFLECTANCE_MUXED 0
+#define REFLECTANCE_MUXED 1
 
 #if REFLECTANCE_MUXED
     #define RIGHT_LIGHT 2  // msensorS1_3
@@ -20,7 +20,7 @@ typedef struct {
 } LightReading;
 
 
-bool gUseLightSensing = true;
+bool gUseLightSensing = false;
 LightReading gLightReading;
 
 
@@ -30,23 +30,25 @@ void debugOutputLight(const int pRightLightVal, const int pLeftLightVal);
 
 
 task TASK_LightSensing() {
-  SetSensorLight(RIGHT_LIGHT);
-  SetSensorLight(LEFT_LIGHT);
+  #if REFLECTANCE_MUXED
+  #else
+    SetSensorLight(RIGHT_LIGHT);
+    SetSensorLight(LEFT_LIGHT);
+  #endif
 
   gLightReading.readingIsValid = false;
 
-  while (gUseLightSensing) {
-    gLightReading.rightValue = readReflectanceSensor(RIGHT_LIGHT);
-    gLightReading.rightValue = readReflectanceSensor(LEFT_LIGHT);
-    Wait(MS_20);
-    gLightReading.readingIsValid = true;
-
-#if REFLECTANCE_DEBUG
-    debugOutputLight(gLightReading.rightValue, gLightReading.leftValue);
-#endif // REFLECTANCE_DEBUG
+  while (true) {
+    until (gUseLightSensing);
+    while (gUseLightSensing) {
+      gLightReading.rightValue = readReflectanceSensor(RIGHT_LIGHT);
+      gLightReading.rightValue = readReflectanceSensor(LEFT_LIGHT);
+TextOut(2, LCD_LINE2, "wooo!");
+      #if REFLECTANCE_DEBUG
+        debugOutputLight(gLightReading.rightValue, gLightReading.leftValue);
+      #endif // REFLECTANCE_DEBUG
+    }
   }
-
-  gLightReading.readingIsValid = false;
 }
 
 int readReflectanceSensor(byte pPort) {
