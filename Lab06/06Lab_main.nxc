@@ -5,14 +5,17 @@
 
 #include "Utilities.nxc"
 #include "DrivingAPI.nxc"
-//#inlcude "ClawAPI.nxc"
+//#inlcude "ClawAPI.nxc" // TODO: why won't having a separate file work?
 #include "SonarSensing.nxc"
 #include "ColorSensing.nxc"
 #include "LightSensing.nxc"
 #include "CompassSensing.nxc"
 #include "TouchSensing.nxc"
 
-
+/**
+ * Some constants specific to this particular controller program. For more
+ * "universal" constant definitions, see 'ControllerConfigurations.nxc'.
+ */
 #define ORIENTATION_TOLERANCE 2 // degrees(ish))
 #define WALL_PROXIMITY 22       // cm(ish)
 #define ENDZONE_WALL true
@@ -23,14 +26,16 @@
  */
 enum Strategies {
   PROCEED,
-  GO_TO_ENDZONE,
   U_TURN,
+  GO_TO_WALL,
   GO_TO_BALL_AREA,
+  TURN_TO_BALL_AREA,
+  ALIGN_FOR_BALL_PICKUP,
   CREEP_UP_TO_BALL,
   CAPTURE_BALL,
-  DUMP_BALL,
   DUMP_RED_BALL,
-  DUMP_BLUE_BALL
+  DUMP_BLUE_BALL,
+  GO_TO_MIDDLE
 };
 
 
@@ -40,24 +45,33 @@ enum Strategies {
 task main();
 
 /**
- * 
+ * The main controlling task. Controls the robot to achieve the goal of
+ * finding colored balls, capturing them, and depositing them over the
+ * correct edge of the arena. 
  */
 task TASK_controller();
 
+/**
+ * 
+ */
+int determineStrategy(int pLastStrategy);
 
 /**
- * Drives the robot to the NW corner of the arena, ideally aligning it for
- * ball capture.
+ *
  */
-void goToBallAreaStartCorner();
+int driveTowardsWall(const int pWallHeading, const int pLastStrategy);
+int backUpAndTurn(const int pStrategy);
 void alignForBallPickup();
-void findBall();
+int creepUpToBall();
 int captureBall();
 void dumpBallInBallArea();
 void dumpBallInFarArea();
 void dumpBall(int pHeading);
+bool ballObserved();
+bool wallObserved();
+bool blackFloorObserved();
 void orientSelf(const int pHeading);
-void driveUpToWall(const bool pWallIsEndzone);
+
 
 task main() {
   Precedes(
@@ -71,7 +85,7 @@ task main() {
 
   initializeMUX(MUX_PORT);
   initializeClaw();
-  Wait(MS_500);
+  Wait(MS_50);
   
 //  testMovementLib();
 //  testClawAPI();
@@ -132,7 +146,8 @@ task TASK_controller() {
 }
 
 
-int determineStrategy(int pLastStrategy) {
+int
+determineStrategy(int pLastStrategy) {
   int strategy;
 
   if (pLastStrategy != DUMP_BLUE_BALL && != DUMP_RED_BALL) {
@@ -143,7 +158,7 @@ int determineStrategy(int pLastStrategy) {
 
     bool ballPresent = ballObserved();
     bool wallPresent = wallObserved();
-    bool onTheBlack = gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD;
+    bool onTheBlack = blackFloorObserved();
 
     gUseSonarSensing = false;
     gUseColorSensing = false;
@@ -174,7 +189,8 @@ int determineStrategy(int pLastStrategy) {
 }
 
 
-int driveTowardsWall(const int pWallHeading, const int pLastStrategy) {
+int
+driveTowardsWall(const int pWallHeading, const int pLastStrategy) {
   orientSelf(pWallHeading);
   moveSetDistance(FORWARD, 4);
   stopWheels();
@@ -182,7 +198,8 @@ int driveTowardsWall(const int pWallHeading, const int pLastStrategy) {
   return pLastStrategy;
 }
 
-int backUpAndTurn(const int pStrategy) {
+int
+backUpAndTurn(const int pStrategy) {
   moveSetDistance(REVERSE, 2);
 
   int heading;
@@ -203,14 +220,16 @@ int backUpAndTurn(const int pStrategy) {
   return strategy;
 } 
 
-void alignForBallPickup() {
+void
+alignForBallPickup() {
   // get up in that corner
   orientSelf(ARENA_SE);
   moveSetDistance(FORWARD, 2);
   orientSelf(ARENA_SOUTH - 5); // TODO: maybe refine this
 }
 
-int creepUpToBall() {
+int
+creepUpToBall() {
   gUseColorSensing = true;
   gUseSonarSensing = true;
 
@@ -231,7 +250,8 @@ int creepUpToBall() {
   return strategy;
 }
 
-int captureBall() {
+int
+captureBall() {
   moveClawToPosition(CLAW_DOWN);
 
   gUseColorSensing = true;
@@ -253,13 +273,15 @@ int captureBall() {
 }
 
 
-void dumpBallInBallArea() {
+void
+dumpBallInBallArea() {
   orientSelf(ARENA_EAST);
   dumpBall();
 }
 
 
-void dumpBallInFarArea() {
+void
+dumpBallInFarArea() {
   orientSelf(ARENA_WEST);
 
   gUseSonarSensing = true;
@@ -275,7 +297,8 @@ void dumpBallInFarArea() {
   dumpBall();
 }
 
-void dumpBall(int pHeading) {
+void
+dumpBall(int pHeading) {
   gUseTouchSensing = true;
   startDrivingStraight(FORWARD, CRAWL_SPEED);
   until(gTouchReading.value == 1);
@@ -292,8 +315,8 @@ void dumpBall(int pHeading) {
   moveSetDistance(REVERSE, 10);
 }
 
-
-bool ballObserved() {
+bool
+ballObserved() {
   return (
     gColorReading.value.colorNum == BLUE_BALL_COLOR || 
     gColorReading.value.colorNum == RED_BALL_COLOR
@@ -304,8 +327,12 @@ bool wallObserved() {
   return gSonarReading.leftValue <= WALL_PROXIMITY;
 }
 
+bool blackFloorObserved() {
+  return gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD;
+}
 
-void orientSelf(const int pHeading) {
+void
+orientSelf(const int pHeading) {
   gUseCompassSensing = true;
   bool aboveThreshold = false;
   bool belowThreshold = false;
@@ -330,6 +357,5 @@ void orientSelf(const int pHeading) {
   stopWheels();
   gUseCompassSensing = false;
 }
-
 
 #endif //__LAB06_CONTROLLER_NXC__
