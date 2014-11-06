@@ -6,7 +6,7 @@
 
 #if TOUCH_MUXED
   #define TOUCH_SENSOR 2  // same as: msensorS1_3
-  #define TOUCH_WORM 1
+  #define TOUCH_WORM 1    // same as: msensorS1_2
 #else
   #define TOUCH_SENSOR IN_3
 #endif
@@ -34,7 +34,6 @@ void debugOutputTouch(const byte pTouchVal);
 task TASK_TouchSensing() {
   #if TOUCH_MUXED
   #else
-  //#pragma config(Sensor, S4, sonarSensor, sensorSONAR)  maybe this helpful?
     SetSensorTouch(TOUCH_SENSOR);
   #endif //TOUCH_MUXED
 

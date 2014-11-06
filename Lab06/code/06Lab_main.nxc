@@ -18,8 +18,6 @@
  */
 #define ORIENTATION_TOLERANCE 3 // degrees(ish))
 #define WALL_PROXIMITY 16       // cm(ish)
-#define ENDZONE_WALL true
-#define NORMAL_WALL false
 
 /**
  * An enumeration of control strategy values.
@@ -60,6 +58,8 @@ int determineStrategy(int pLastStrategy);
 /**
  *
  */
+void moveToPlainWall(const int pHeading);
+void moveToBlackFloor(const int pHeading);
 void alignForBallPickup();
 int creepUpToBall();
 int captureBall();
@@ -89,37 +89,14 @@ task main() {
 
 
 task TASK_controller() {
-  #if 0
-    gUseCompassSensing = true;
-    int i  = 0;
-    while (true) {
-      // this let's us know that the robot is processing things
-      TextOut(2, LCD_LINE7, "TESTING SHIT");
-      NumOut(6, LCD_LINE8, i++);
-      // sensor debug output should be concurrently printing
-    }
-    gUseCompassSensing = false;
-  #endif
-
-
   int ballsInStartPositions = true;
   int strategy = GO_TO_WALL;
 
   while (ballsInStartPositions) { // we will stop the contest after 2 minutes
 
-    gUseSonarSensing = true;
-    orientSelf(ARENA_NORTH);
-    startDrivingStraight(FORWARD, CRUISE_SPEED);
-    until(wallObserved());
-    moveSetDistance(REVERSE, 3);
-    gUseSonarSensing = false;
+    moveToPlainWall(ARENA_NORTH);
     
-    gUseLightSensing = true;
-    Wait(MS_50);
-    orientSelf(ARENA_EAST - 15);
-    startDrivingStraight(FORWARD, CRUISE_SPEED);
-    until(blackFloorObserved());
-    gUseLightSensing = false;
+    moveToBlackFloor(ARENA_EAST - 15);
     
     alignForBallPickup();
     strategy = creepUpToBall();
@@ -144,6 +121,26 @@ task TASK_controller() {
   StopAllTasks();
 }
 
+
+void
+moveToPlainWall(const int pHeading) {
+  gUseSonarSensing = true;
+  orientSelf(pHeading);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(wallObserved());
+  moveSetDistance(REVERSE, 3);
+  gUseSonarSensing = false;
+}
+
+void
+moveToBlackFloor(const int pHeading) {
+  gUseLightSensing = true;
+  Wait(MS_50);
+  orientSelf(pHeading);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until(blackFloorObserved());
+  gUseLightSensing = false;
+}
 
 void
 alignForBallPickup() {
