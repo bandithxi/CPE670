@@ -38,13 +38,11 @@ task TASK_LightSensing() {
     SetSensorLight(LEFT_LIGHT);
   #endif
 
-  gLightReading.readingIsValid = false;
-
   while (true) {
     until (gUseLightSensing);
     while (gUseLightSensing) {
       gLightReading.rightValue = readReflectanceSensor(RIGHT_LIGHT);
-      gLightReading.rightValue = readReflectanceSensor(LEFT_LIGHT);
+      gLightReading.leftValue = readReflectanceSensor(LEFT_LIGHT);
 
       #if REFLECTANCE_DEBUG
         debugOutputLight(gLightReading.rightValue, gLightReading.leftValue);

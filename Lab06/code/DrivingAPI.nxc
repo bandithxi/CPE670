@@ -25,7 +25,7 @@
 
 
 enum DrivingSpeed {
-  CRAWL_SPEED = 45,
+  CRAWL_SPEED = 40,
   SLOW_SPEED = 60,
   CRUISE_SPEED = 85,
   FAST_SPEED = 95
@@ -170,7 +170,7 @@ void testMovementLib() {
 
 #define CLAW_POWER 45
 #define CLAW_HOLD_POWER 30
-#define CLAW_INCREMENT_TIME (MS_150)
+#define CLAW_INCREMENT_TIME (MS_150 + MS_20)
 
 enum ClawPosition {
   CLAW_DOWN = 0, // on the ground

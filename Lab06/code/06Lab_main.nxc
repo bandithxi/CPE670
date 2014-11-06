@@ -16,8 +16,8 @@
  * Some constants specific to this particular controller program. For more
  * "universal" constant definitions, see 'ControllerConfigurations.nxc'.
  */
-#define ORIENTATION_TOLERANCE 2 // degrees(ish))
-#define WALL_PROXIMITY 22       // cm(ish)
+#define ORIENTATION_TOLERANCE 3 // degrees(ish))
+#define WALL_PROXIMITY 16       // cm(ish)
 #define ENDZONE_WALL true
 #define NORMAL_WALL false
 
@@ -35,7 +35,8 @@ enum Strategies {
   CAPTURE_BALL,
   DUMP_RED_BALL,
   DUMP_BLUE_BALL,
-  GO_TO_MIDDLE
+  GO_TO_MIDDLE,
+  WORM_TOUCHED
 };
 
 
@@ -59,8 +60,6 @@ int determineStrategy(int pLastStrategy);
 /**
  *
  */
-int driveTowardsWall(const int pWallHeading, const int pLastStrategy);
-int backUpAndTurn(const int pStrategy);
 void alignForBallPickup();
 int creepUpToBall();
 int captureBall();
@@ -86,16 +85,12 @@ task main() {
   initializeMUX(MUX_PORT);
   initializeClaw();
   Wait(MS_50);
-  
-//  testMovementLib();
-//  testClawAPI();
 }
 
 
 task TASK_controller() {
-
   #if 0
-    gUseLightSensing = true;
+    gUseCompassSensing = true;
     int i  = 0;
     while (true) {
       // this let's us know that the robot is processing things
@@ -103,149 +98,89 @@ task TASK_controller() {
       NumOut(6, LCD_LINE8, i++);
       // sensor debug output should be concurrently printing
     }
-    gUseLightSensing = false;
+    gUseCompassSensing = false;
   #endif
 
+
+  int ballsInStartPositions = true;
   int strategy = GO_TO_WALL;
 
-  while (true) { // we will stop the contest after 2 minutes
-    switch (strategy) {
-      case GO_TO_WALL:
-        strategy = driveTowardsWall(ARENA_NORTH, strategy);
-        break;
-      case GO_TO_BALL_AREA:
-        strategy = driveTowardsWall(ARENA_EAST, strategy);
-        break;
-      case TURN_TO_BALL_AREA:
-        backUpAndTurn(strategy);
-        break;
-      case ALIGN_FOR_BALL_PICKUP:
-        alignForBallPickup();
-        break;
-      case CREEP_UP_TO_BALL:
-        strategy = creepUpToBall();
-        break;
-      case CAPTURE_BALL:
-        strategy = captureBall();
-        break;
-      case DUMP_RED_BALL:
-        strategy = dumpBallInBallArea();
-        break;
-      case DUMP_BLUE_BALL:
-        strategy = dumpBallInFarArea();
-        break;
-      case GO_TO_MIDDLE:
-        backUpAndTurn(GO_TO_MIDDLE);
-      default:
-        break;
+  while (ballsInStartPositions) { // we will stop the contest after 2 minutes
+
+    gUseSonarSensing = true;
+    orientSelf(ARENA_NORTH);
+    startDrivingStraight(FORWARD, CRUISE_SPEED);
+    until(wallObserved());
+    moveSetDistance(REVERSE, 3);
+    gUseSonarSensing = false;
+    
+    gUseLightSensing = true;
+    Wait(MS_50);
+    orientSelf(ARENA_EAST - 15);
+    startDrivingStraight(FORWARD, CRUISE_SPEED);
+    until(blackFloorObserved());
+    gUseLightSensing = false;
+    
+    alignForBallPickup();
+    strategy = creepUpToBall();
+
+    if (strategy != WORM_TOUCHED) {
+         strategy = captureBall();
+
+         if (strategy == DUMP_RED_BALL) {
+             dumpBallInBallArea();
+         } else if (strategy == DUMP_BLUE_BALL) {
+             dumpBallInFarArea();
+         }
+    } else {
+      moveSetDistance(REVERSE, 3);
+      orientSelf(ARENA_EAST);
+      moveSetDistance(REVERSE, 5);
+      ballsInStartPositions = false;
     }
-    strategy = determineStrategy(strategy);
+    moveSetDistance(REVERSE, 8);
   }
 
   StopAllTasks();
 }
 
 
-int
-determineStrategy(int pLastStrategy) {
-  int strategy;
-
-  if (pLastStrategy != DUMP_BLUE_BALL && != DUMP_RED_BALL) {
-    gUseSonarSensing = true;
-    gUseColorSensing = true;
-    gUseLightSensing = true;
-    Wait(MS_50);
-
-    bool ballPresent = ballObserved();
-    bool wallPresent = wallObserved();
-    bool onTheBlack = blackFloorObserved();
-
-    gUseSonarSensing = false;
-    gUseColorSensing = false;
-    gUseLightSensing = false;
-
-    if (ballPresent) {
-      strategy = CAPTURE_BALL;
-    } else if (wallPresent) {
-      switch (pLastStrategy) {
-        case GO_TO_WALL:
-          strategy = TURN_TO_BALL_AREA;
-          break;
-        case GO_TO_BALL_AREA:
-          if (onTheBlack) {
-            strategy = ALIGN_FOR_BALL_PICKUP;
-          } else {
-            strategy = GO_TO_BALL_AREA;
-          }
-        default:
-          strategy = GO_TO_MIDDLE;
-          break;
-      }  
-  } else {
-    strategy = pLastStrategy;
-  }
-
-  return strategy;
-}
-
-
-int
-driveTowardsWall(const int pWallHeading, const int pLastStrategy) {
-  orientSelf(pWallHeading);
-  moveSetDistance(FORWARD, 4);
-  stopWheels();
-
-  return pLastStrategy;
-}
-
-int
-backUpAndTurn(const int pStrategy) {
-  moveSetDistance(REVERSE, 2);
-
-  int heading;
-  int strategy = pStrategy;
-  switch (pStrategy) {
-    case TURN_TO_BALL_AREA:
-      heading = ARENA_EAST;
-      strategy = GO_TO_BALL_AREA;
-      break;
-    case GO_TO_MIDDLE:
-    default:
-      heading = ARENA_NORTH;
-      strategy = GO_TO_MIDDLE;
-      break;
-  }
-  orientSelf(heading);
-
-  return strategy;
-} 
-
 void
 alignForBallPickup() {
+  moveClawToPosition(CLAW_UP);
+
   // get up in that corner
+  orientSelf(ARENA_NE);
+  moveSetDistance(FORWARD, 2);
   orientSelf(ARENA_SE);
   moveSetDistance(FORWARD, 2);
-  orientSelf(ARENA_SOUTH - 5); // TODO: maybe refine this
+  orientSelf(ARENA_SOUTH - 17); // TODO: maybe refine this
 }
 
 int
 creepUpToBall() {
   gUseColorSensing = true;
-  gUseSonarSensing = true;
 
   int strategy = CREEP_UP_TO_BALL;
 
-  startDrivingStraight(FORWARD, CRAWL_SPEED);
-  until (ballObserved() || wallObserved());      // TODO: reconsider using sonar
+  moveClawToPosition(CLAW_UP);
+  holdClawUp();
 
-  if (wallObserved()) {
+  gUseTouchSensing = true;
+  Wait(MS_50);
+  startDrivingStraight(FORWARD, CRAWL_SPEED);
+  until (ballObserved() || gTouchReading.leftValue == 1);
+
+  if (gTouchReading.leftValue == 1) {
+    strategy = WORM_TOUCHED;
+  } else if (wallObserved()) {
     strategy = GO_TO_MIDDLE;
   } else {
     strategy = CAPTURE_BALL;
   }
 
   gUseColorSensing = false;
-  gUseSonarSensing = false;
+  gUseTouchSensing = false;
 
   return strategy;
 }
@@ -255,16 +190,17 @@ captureBall() {
   moveClawToPosition(CLAW_DOWN);
 
   gUseColorSensing = true;
+  Wait(MS_50);
 
   orientSelf(ARENA_SE);
-  moveSetDistance(REVERSE, 4);
+  moveSetDistance(REVERSE, 3);
 
    
   int strategy = GO_TO_MIDDLE;
-  if (gColorReading.value.colorNum == BLUE_BALL_COLOR) {
-    strategy = DUMP_BLUE_BALL;
-  } else if (gColorReading.value.colorNum == RED_BALL_COLOR) {
+  if (gColorReading.value.colorNum >= RED_BALL_COLOR) {
     strategy = DUMP_RED_BALL;
+  } else if (gColorReading.value.colorNum >= BLUE_BALL_COLOR) {
+    strategy = DUMP_BLUE_BALL;
   }
 
   gUseColorSensing = false;
@@ -276,7 +212,7 @@ captureBall() {
 void
 dumpBallInBallArea() {
   orientSelf(ARENA_EAST);
-  dumpBall();
+  dumpBall(ARENA_EAST);
 }
 
 
@@ -286,20 +222,21 @@ dumpBallInFarArea() {
 
   gUseSonarSensing = true;
   gUseLightSensing = true;
-  startDrivingStraight(CRUISE_SPEED);
-  until (
-    wallObserved() &&
-    gLightReading.rightValue <= BLACK_LIGHT_UPPER_THRESHOLD
-  );
+  Wait(MS_50);
+  moveSetDistance(FORWARD, 6);
+  orientSelf(ARENA_WEST);
+  startDrivingStraight(FORWARD, CRUISE_SPEED);
+  until (wallObserved() && blackFloorObserved());
   gUseSonarSensing = false;
   gUseLightSensing = false;
 
-  dumpBall();
+  dumpBall(ARENA_WEST);
 }
 
 void
 dumpBall(int pHeading) {
   gUseTouchSensing = true;
+  Wait(MS_50);
   startDrivingStraight(FORWARD, CRAWL_SPEED);
   until(gTouchReading.value == 1);
   gUseTouchSensing = false;
@@ -310,7 +247,7 @@ dumpBall(int pHeading) {
   moveClawToPosition(CLAW_LOW);
   moveClawToPosition(CLAW_UP);
   holdClawUp();
-  moveSetDistance(FORWARD, 4);
+  moveSetDistance(FORWARD, 5);
   
   moveSetDistance(REVERSE, 10);
 }
@@ -318,7 +255,7 @@ dumpBall(int pHeading) {
 bool
 ballObserved() {
   return (
-    gColorReading.value.colorNum == BLUE_BALL_COLOR || 
+    gColorReading.value.colorNum >= BLUE_BALL_COLOR ||
     gColorReading.value.colorNum == RED_BALL_COLOR
   );
 }
@@ -339,9 +276,9 @@ orientSelf(const int pHeading) {
 
   int currentHeading = gCompassReading.value;
   if (currentHeading - pHeading > ORIENTATION_TOLERANCE) {
-    startStationarySpin(LEFT);
-  } else if (currentHeading - pHeading < -1 *ORIENTATION_TOLERANCE) {
     startStationarySpin(RIGHT);
+  } else if (currentHeading - pHeading < -1 *ORIENTATION_TOLERANCE) {
+    startStationarySpin(LEFT);
   }
 
   // if we are already at the correct heading, the robot won't be moving.

@@ -2,22 +2,24 @@
 #define __TOUCHSENSING_NXC__
 
 #define TOUCH_DEBUG 0
-#define TOUCH_MUXED 0
+#define TOUCH_MUXED 1
 
 #if TOUCH_MUXED
   #define TOUCH_SENSOR 2  // same as: msensorS1_3
+  #define TOUCH_WORM 1
 #else
-  #define TOUCH_SENSOR IN_3 // msensor_S1_1
+  #define TOUCH_SENSOR IN_3
 #endif
 
 typedef struct {
   bool value;
+  bool leftValue;
   mutex ownership;
   bool readingIsValid;
 } TouchReading;
 
 
-bool gUseTouchSensing = true;
+bool gUseTouchSensing = false;
 TouchReading gTouchReading;
 
 
@@ -40,6 +42,7 @@ task TASK_TouchSensing() {
     until (gUseTouchSensing);
     while (gUseTouchSensing) {
       gTouchReading.value = readTouchSensor(TOUCH_SENSOR);
+      gTouchReading.leftValue = readTouchSensor(TOUCH_WORM);
 
       #if TOUCH_DEBUG
         debugOutputTouch(gTouchReading.value);
