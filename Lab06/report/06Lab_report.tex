@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 	\DeclareGraphicsExtensions{.png, .jpeg}
+\usepackage{caption}
+% \usepackage{subcaption}
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage[named]{algo}
 
@@ -17,6 +19,12 @@
 A discussion of the design and performance of a robot designed to dump balls over certain sides of a table depending on their color.
 \end{abstract}
 
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\linewidth]{side_view}
+    \label{fig:cover_pic}
+  \end{figure}
+
 \newpage
 \section{Robot Design}
 A robot design that was capable of carrying a lot of hardware was chosen, for better or for worse. The design featured almost every item in the given NXT kit and utilized nearly every sensor at one point in it's programming or another. The design also featured a large claw that trapped balls very well, and its software controller was designed to be very methodical and procedurally driven.
@@ -24,28 +32,85 @@ A robot design that was capable of carrying a lot of hardware was chosen, for be
 \subsection{Hardware Configuration}
 The ball sorting competition demanded an entirely new level of design and hardware feature breadth. The design required the robot to not only be able to localize itself and move in some sort of desirable pattern, but the robot needed to be able to detect and manipulate objects in a 3-dimensional environment. This resulted in what might be termed ``hardware bloat," but the robot was still sufficiently functional. The robot featured six sensors, a large trapping claw and some trapping arms, a multiplexer, a tall compass tower, and a large ball for a caster wheel.
 
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.3\linewidth]{tall_side_view}
+    \caption{The ball sorting robot}
+    \label{fig:ball_sorting_robot}
+  \end{minipage}%
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.7\linewidth]{captured_ball}
+    \caption{The robot with a captured ball}
+    \label{fig:captured_ball}
+  \end{minipage}
+\end{figure}
+
 \subsubsection{Chassis}
 The chassis of the robot was a tightly constructed 3-motor chassis with 2 driving wheels and a passive caster ``wheel". The motors were grouped tightly together, and the NXT brick sat atop the motor cluster. Extending to the rear was a cage to hold the caster ``wheel" that supported a small platform for holding the multiplexer and its battery pack. Extending to the front of the robot were a pair of arms and a large trapping claw/cage. Attached to the side of the robot and extending upward was a compass tower for holding the compass sensor.
 
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width = 0.4\textwidth]{side_view}
-        % extension usually unnecessary when specifying file
-	\caption{A side view of the robot}
-	\label{fig:side_view}
-	\end{figure}
-
 \begin{description}
+
+  \begin{figure}[h!]
+    \centering
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=.4\linewidth]{caster_ball_side_2}%{caster_ball_side}
+      \caption{The caster from the side}
+      \label{fig:caster_ball_side}
+    \end{minipage}%
+    \begin{minipage}{.4\textwidth}
+      \centering
+      \includegraphics[width=.4\linewidth]{caster_ball_under}
+      \caption{The caster from underneath}
+      \label{fig:caster_ball_under}
+    \end{minipage}
+  \end{figure}
+
   \item[Caster Ball] \hfill \\
   The caster ball (in place of a wheel) was an NXT competition ball and functioned surprisingly well. It provided excellent load bearing capacity and relatively high mobility. The load bearing capacity was greatly desired since the weight of the multiplexer and any apparatus securing it would cause other caster wheel solutions to bow out and risk ruining the lego parts. Due to the smoothness of the arena floor and the ball, the ball would glide easily over the floor.
 
   \item[Ball Trapping Apparatus] \hfill \\
   This apparatus required intricate design, due to the fact that it had to be made out of a scant assortment of parts along with the fact that there was a large degree of functionality it needed to support. The main feature of the apparatus was the cage claw that could be raised and lowered to trap or release a ball. On the front of the claw, there was a bump sensor for detecting when the claw should be raised. Assisting the claw (although, probably more valuable) were two arms protruding from the robot. The arms were set at a height just above the arena walls so that the robot could drive right up to the wall without relinquishing control of the ball. The arms also supported two sensors each, which were both useful for sensing, as well as further trapping the ball. Inside the trapping apparatus was a short, steep ramp and a small extension situated at the top of the ramp. These were used to push balls up and over the wall of the arena when the robot drove forward with the claw raised.
 
+  \begin{figure}[h!]
+    \centering
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=.4\linewidth]{claw_up}
+      \caption{A side view of the trapping claw}
+      \label{fig:claw_side}
+    \end{minipage}%   <---- for some reason that is important for side by side
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=.4\linewidth]{good_picture}
+      \caption{The right arm and its sensors}
+      \label{fig:caster_ball_underneath}
+    \end{minipage} \\
+    \label{fig:ball_trapping_apparatus}
+  \end{figure}
+
+  \begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=.2\linewidth]{ramp_and_extension_front}
+      \caption{The ramp and extension used for pushing the ball over the wall}
+      \label{fig:claw_side}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=.2\linewidth]{compass_tower}
+      \caption{The top of the compass tower}
+      \label{fig:compass_tower}
+    \end{minipage}
+  \end{figure}
+
   \item[Compass Tower] \hfill \\
   The compass tower was built to be tall and showy. While the compass sensor did need to be held away from the other electronics, this height was excessive. Excessive to demonstrate authority.
 \end{description}
-
 
 \subsubsection{Sensors}
 Six sensors in total were used: a color sensor, a compass sensor, a light/reflectance sensor, a sonar sensor, and two bump sensors.
@@ -53,6 +118,13 @@ Six sensors in total were used: a color sensor, a compass sensor, a light/reflec
 \begin{description}
   \item[Color Sensor] \hfill \\
   The color sensor was fixed under the left arm and pointed at a heading just in front of the ramp. It was used to detect when a ball had been brought inside trapping range for the robot.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=.2\linewidth]{right_sensors}
+    \caption{}
+    \label{fig:color_and_light_sensors}
+  \end{figure}
 
   \item[Compass Sensor] \hfill \\
   The compass sensor was arguably one of the more valuable sensors. It was placed high up on the compass tower and was used for orienting the robot. The sensor was not high integrity, much like any other NXT sensor, but it was useful enough.
@@ -70,30 +142,36 @@ Six sensors in total were used: a color sensor, a compass sensor, a light/reflec
   A second touch sensor was added in the hopes of providing additional functionality to the robot once all of the balls had been knocked away from their starting positions.The sensor was fixed on the left side, just above the sonar sensor. It featured a protruding rod with a wheel on the end to help it reach out and contact a wall should the ball robot not encounter any balls when seeking them. Unfortunately, it was decided that since the competition time was so short, it was decided to not implement additional strategies, effectively rendering this sensor a kill switch/button.
 \end{description}
 
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=.2\linewidth]{sonar_and_ramp}
+    \caption{}
+    \label{fig:sonar_and_bump_sensors}
+  \end{figure}
+
 \newpage
 \subsection{Software Design}
 The software design was modular and relatively simple. It featured a driver/controller with an action sequence composed of just a few general actions: find the corner of the ball area to start, creep up to and capture a ball, and dump the ball over the appropriate edge. Supporting the controller was a publish-subscribe architecture for the sensing capabilities.
 
 \subsubsection{Overall Algorithm}
 The psuedo-code for the control algorithm is as follows: \\
-\begin{algorithm}{SORT-BALLS}[]{
+\begin{algorithm}{SORT-BALLS}[]{}
   \qwhile Time Remaining $\neq 0$ \\
   \qdo \\
     Drive to East wall \\
     Drive to the South wall \\
     Turn to the West \\
     \qrepeat \\
-      Creep Southward \\
+      Creep Southward
     \quntil Ball detected \\
     Capture ball \\
-    \qif $Ball.color \eq red$ \\
+    \qif $Ball.color = red$ \\
       \qthen Dump the ball at the South end of the arena \\
-      \qelse \qif $Ball.color \eq blue$ \\
-        \qthen Dump the ball at the North end of the arena \\
-      \qfi \\
-    \qfi \\
-    Back out into the middle of the arena \\
-  \qelihw
+      \qelse \qif $Ball.color = blue$ \\
+        \qthen Dump the ball at the North end of the arena \qfi \qfi \\
+
+    Back out into the middle of the arena
+  \qend
 \end{algorithm}
 
 \begin{description}
