@@ -27,7 +27,7 @@ A discussion of the design and performance of a robot designed to dump balls ove
 
 \newpage
 \section{Robot Design}
-A robot design that was capable of carrying a lot of hardware was chosen, for better or for worse. The design featured almost every item in the given NXT kit and utilized nearly every sensor at one point in it's programming or another. The design also featured a large claw that trapped balls very well, and its software controller was designed to be very methodical and procedurally driven.
+In previous labs bad luck would cause our reliable design to fail during competition. This design aimed to remedy this by "throwing the kitchen sink" at the problem. The design featured almost every item in the given NXT kit and utilized nearly every sensor at one point in it's programming or another. This is to ensure that our robot would be robust enough to handle any situation and return it to state were it can successfully do its job. The final design featured a large claw that trapped balls very well. Its software controller was designed to be very methodical, procedurally driven and relatively simple but all the sensors would ensure this algorithm stays on course. 
 
 \subsection{Hardware Configuration}
 The ball sorting competition demanded an entirely new level of design and hardware feature breadth. The design required the robot to not only be able to localize itself and move in some sort of desirable pattern, but the robot needed to be able to detect and manipulate objects in a 3-dimensional environment. This resulted in what might be termed ``hardware bloat," but the robot was still sufficiently functional. The robot featured six sensors, a large trapping claw and some trapping arms, a multiplexer, a tall compass tower, and a large ball for a caster wheel.
@@ -186,11 +186,11 @@ The psuedo-code for the control algorithm is as follows: \\
 \end{description}
 
 \subsubsection{Publish-Subscribe Architecture}
-As it was with previous designs, a publish-subscribe model was used. That is to say, each sensor and the controlling logic ran in their own threads. Sensor readings were ``published" by storing their data in sensor-data-typed structs. The controller thread ``subscribed" to the data by polling the structs as appropriate. The sensor threads could have their readings turned on or off as needed, ideally in order to save on CPU time, power, etc.
+As it was with previous designs, a publish-subscribe pattern was used. That is to say, each sensor and the controlling logic ran in their own threads. Sensor readings were ``published" by storing their data in sensor-data-typed structures. The controller thread ``subscribed" to the data by pulling the updated structures as appropriate. To save resources sensor threads could be deactivated when unnecessary.
 
 \newpage
 \section{Issues with the Robot}
-In summary, issues pertaining to the robot were more complex than in previous competitions, and were solved simply through creativity and dedication.
+In summary, issues pertaining to the robot were more complex than in previous competitions, and were solved simply through creativity and dedication. Several solutions were developed but ultimately the most reliable solution during testing was chosen. 
 
 \subsection{Implementation Problems and Their Solutions}
 The problems that arose during the development of the ball-sorting robot were subtle and often tricky to resolve.
@@ -213,11 +213,11 @@ The problems that remained unsolved were either difficult to solve or very rare,
   \item[Buggy and Incomplete Software] \hfill \\
   Software bugs were the bane of the robot's existence. On the competition run, bugs there were bugs that caused the robot to not be controlled precisely enough, ruining its performance. One such bug caused the robot to hit a wall at a bad angle and cause it to dump a ball over a side wall and then hit the aforementioned ``kill button." This led to the performance being awarded only mercy points. More elaborate control strategies would have solved this issue. This performance was not the norm, however, since on a second ``just-to-show-I-can" run, the robot performed quite well, actually tying the the score that took first place. But alas, consistency is often preferable to occasional grand performances.
 
-  The software might also be considered incomplete. This was because it was sufficiently complete given that the time limit seemed to be too short to merit additional strategies or because bugs presented themselves so infrequently to merit patching. Of course was shown to not be the case at the competition, and the only solution would be more time investment and testing.  
+  The software might also be considered incomplete. This was because it was sufficiently complete given that the time limit seemed to be too short to merit additional strategies or because bugs presented themselves so infrequently to merit patching. Of course these issues were at the competition and the only solution would be more time investment and testing.  
 
 
   \item[Bulkiness] \hfill \\
-  The robot was bulky. It made it a little difficult to maneuver and caused it to unnecessarily scatter balls. However, the designer was proud of the robot and figured that change was not merited given the limited ball sorting time. However, it became apparent at the competition that knocking away red balls unnecessarily inhibited high score achievement. This would be a difficult problem to solve without doing a complete redesign of large components of the robot. 
+  The robot was bulky and had difficulties maneuvering. This cause unnecessarily ball scattering. However, test results suggested that change was not necessary and not the top priority given the limited amount of time. However, it became apparent at the competition that knocking away red balls unnecessarily inhibited high score achievement. This would be a difficult problem to solve without doing a complete redesign of large components of the robot. 
 \end{description}
 
 \end{document}
